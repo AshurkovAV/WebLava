@@ -1,0 +1,139 @@
+﻿@{
+    ViewData["Title"] = "Контакты";
+}
+    <!-- Header  -->
+    <div class="sub-banner">
+        <figure class="sub-bannerleftlayer mb-0">
+            <img src="~/images/sub-bannerleftlayer.png" alt="" class="img-fluid">
+        </figure>
+        @Html.Partial("Menu");
+        <section class="banner-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="banner_content" data-aos="fade-up">
+                            <figure class="service-rightcircle mb-0">
+                                <img src="~/images/service-rightcircle.png" alt="" class="img-fluid">
+                            </figure>
+                            <h1 class="text-white">Контакты</h1>
+                            <p>Тут можно обсудить проект или сотрудничество и финансовые вопросы</p>
+                            <div class="box">
+                                <span class="mb-0">Главная</span>
+                                <figure class="mb-0 arrow"><img src="~/images/button-arrow.png" alt="" class="img-fluid"></figure>
+                                <span class="mb-0 box_span">Контакты</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <figure class="banner-circleright mb-0">
+            <img src="~/images/banner-circleright.png" class="img-fluid" alt="">
+        </figure>
+        <figure class="sub-bannerrightlayer mb-0">
+            <img src="~/images/sub-bannerrightlayer.png" alt="" class="img-fluid">
+        </figure>
+    </div>
+
+    <div class="text-center">
+        <!--Contact -->
+        <section class="contact-section">
+            <figure class="offer-toplayer mb-0">
+                <img src="~/images/offer-toplayer.png" alt="" class="img-fluid">
+            </figure>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 col-md-12 col-sm-12 col-12">
+                        <div class="contact_content" data-aos="fade-right">
+                            <h6>Информация</h6>
+                            <h3>Связаться с нами</h3>
+                            <div class="contact-box">
+                                <div class="box-image">
+                                    <figure class="contact-location">
+                                        <img src="~/images/contact-location.png" alt="" class="img-fluid">
+                                    </figure>
+                                </div>
+                                <div class="box-content">
+                                    <h4>Местоположение:</h4>
+                                    <p class="text">город Курск, ул. Радищева 64</p>
+                                </div>
+                            </div>
+                            <div class="contact-box">
+                                <div class="box-image">
+                                    <figure class="contact-email">
+                                        <img src="~/images/contact-email.png" alt="" class="img-fluid">
+                                    </figure>
+                                </div>
+                                <div class="box-content">
+                                    <h4 class="heading">Email:</h4>
+                                    <p>
+                                        <a href="mailto:ashurkovav@yandex.ru" class="text-decoration-none">ashurkovav@yandex.ru</a>
+                                    </p>
+                               
+                                </div>
+                            </div>
+                            <div class="contact-box box-mb">
+                                <div class="box-image">
+                                    <figure class="contact-phone">
+                                        <img src="~/images/contact-phone.png" alt="" class="img-fluid">
+                                    </figure>
+                                </div>
+                                <div class="box-content">
+                                    <h4 class="heading">Телефон:</h4>
+                                    <p>
+                                        <a href="tel:+79081209023" class="text-decoration-none text">+7(908) 120-90 23</a>
+                                    </p>
+                                    <p>
+                                        <a href="tel:+79308531417" class="mb-0 text-decoration-none text">+7(930) 853-14 17</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-12 col-sm-12 col-12">
+                        <div class="need-section">
+                            <figure class="offer-circleimage mb-0">
+                                <img src="~/images/offer-circleimage.png" alt="" class="img-fluid">
+                            </figure>
+                            <div class="need_content">
+                                <h6 class="text-white">Напишите нам</h6>
+                                <h3 class="text-white">отправте нам сообщение</h3>
+                                <form id="contactpage" method="POST" action="./contact-form.php">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group mb-0">
+                                                <input type="text" class="form_style" placeholder="Ваше имя:" name="name">
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group mb-0">
+                                                <input type="email" class="form_style" placeholder="Ваш Email:" name="emailid">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class=" form-group mb-0">
+                                                <textarea class="form_style" placeholder="Сообщение" rows="3" name="msg"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="manage-button text-center">
+                                        <button type="submit" class="send_now text-white text-decoration-none">
+                                            Отправить
+                                            <i class="circle fa-thin fa-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </form>
+                                <figure class="faq-image mb-0">
+                                    <img src="~/images/faq-image.png" alt="" class="img-fluid">
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <figure class="offer-bottomlayer mb-0">
+                <img src="~/images/offer-bottomlayer.png" alt="" class="img-fluid">
+            </figure>
+        </section>
+    </div>
+  
