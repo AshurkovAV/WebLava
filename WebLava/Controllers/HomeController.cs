@@ -8,6 +8,25 @@ namespace WebLava.Controllers
         // GET: HomeController
         public ActionResult Index()
         {
+            Console.WriteLine($"Пришли на страницу {DateTime.Now}");
+            try
+            {
+                //// Получение IP-адреса
+                //var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString();
+
+                //// Если за прокси (например, Nginx)
+                //if (HttpContext.Request.Headers.TryGetValue("X-Forwarded-For", out var forwardedFor))
+                //{
+                //    ipAddress = forwardedFor.FirstOrDefault()?.Split(',').FirstOrDefault()?.Trim();
+                //}
+
+                //// User-Agent браузера
+                //var userAgent = HttpContext.Request.Headers["User-Agent"].ToString();
+
+                //Console.WriteLine($"IP: {ipAddress}, Browser: {userAgent}");
+            }
+            catch { }   
+           
             return View("Index");
         }
 
