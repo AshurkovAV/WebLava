@@ -2091,7 +2091,7 @@ p {
     box-shadow: 1px 1px 50px rgb(0 0 0 / 2%);
     border-radius: 10px;
     width: 100%;
-    padding: 52px 70px;
+    padding: 52px 23px;
     background-color: var(--e-global-color-white);
     border: 1px solid white;
     transition: all 0.3s ease-in-out;
@@ -2139,7 +2139,7 @@ p {
     color: var(--e-global-color-white);
 }
 .pricing-section .price_content .text1 {
-    font-size: 56px;
+    font-size: 30px;
     line-height: 60px;
     font-weight: 700;
     color: var(--e-global-color-secondary);
