@@ -1,0 +1,116 @@
+.notification-wrapper {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 350px;
+    max-width: calc(100% - 40px);
+    z-index: 9999;
+}
+
+.notification {
+    position: relative;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    transform: translateX(120%);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    overflow: hidden;
+}
+
+    .notification.show {
+        transform: translateX(0);
+    }
+
+.notification-icon {
+    width: 40px;
+    height: 40px;
+    background: #4BB543;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+    .notification-icon svg {
+        width: 20px;
+        height: 20px;
+        color: white;
+    }
+
+.notification-content h4 {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.notification-content p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.notification-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background: rgba(75, 181, 67, 0.3);
+}
+
+    .notification-progress::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: #4BB543;
+        animation: progress 5s linear forwards;
+    }
+
+@keyframes progress {
+    100% {
+        width: 0%;
+    }
+}
+
+/* Анимация появления/исчезания */
+@keyframes slideIn {
+    from {
+        transform: translateX(120%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(120%);
+    }
+}
+
+.dark .notification {
+    background: #2d3748;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.dark .notification-content h4 {
+    color: #f7fafc;
+}
+
+.dark .notification-content p {
+    color: #cbd5e0;
+}

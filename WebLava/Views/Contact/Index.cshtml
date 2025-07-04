@@ -1,8 +1,10 @@
-﻿@{
+﻿@model WebLava.Models.ContactFormModel
+@{
     ViewData["Title"] = "Контакты | Обсудить проект и сотрудничество";
     ViewData["ActivePage"] = "contact";
     ViewData["Description"] = "Контактная информация для обсуждения проектов, сотрудничества и финансовых вопросов. Находимся в Курске по адресу ул. Радищева 64.";
 }
+<link href="~/css/contactnotification.css" rel="stylesheet" />
     <!-- Header  -->
     <div class="sub-banner">
         <figure class="sub-bannerleftlayer mb-0">
@@ -98,6 +100,7 @@
                             </div>
                         </div>
                     </div>
+               
                     <div class="col-lg-7 col-md-12 col-sm-12 col-12">
                         <div class="need-section">
                             <figure class="offer-circleimage mb-0">
@@ -106,31 +109,51 @@
                             <div class="need_content">
                                 <h6 class="text-white">Напишите нам</h6>
                                 <h3 class="text-white">отправте нам сообщение</h3>
-                                <form id="contactpage" method="POST" action="./contact-form.php">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="form-group mb-0">
-                                                <input type="text" class="form_style" placeholder="Ваше имя:" name="name">
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group mb-0">
-                                                <input type="email" class="form_style" placeholder="Ваш Email:" name="emailid">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <div class=" form-group mb-0">
-                                                <textarea class="form_style" placeholder="Сообщение" rows="3" name="msg"></textarea>
-                                            </div>
+                            <form id="contactForm" method="POST" asp-controller="Contact" asp-action="SubmitForm">
+                                @Html.AntiForgeryToken()
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group mb-0">
+                                            <input type="text" class="form_style" placeholder="Ваше имя:" name="name" asp-for="Name">
+                                            <span asp-validation-for="Name" class="text-danger"></span>
                                         </div>
                                     </div>
-                                    <div class="manage-button text-center">
-                                        <button type="submit" class="send_now text-white text-decoration-none">
-                                            Отправить
-                                            <i class="circle fa-thin fa-arrow-right"></i>
-                                        </button>
+                                    <div class="col-12">
+                                        <div class="form-group mb-0">
+                                            <input type="email" class="form_style" placeholder="Ваш Email:" name="emailid" asp-for="Emailid">
+                                            <span asp-validation-for="Emailid" class="text-danger"></span>
+                                        </div>
                                     </div>
-                                </form>
+                                    <div class="col-lg-12">
+                                        <div class="form-group mb-0">
+                                            <textarea class="form_style" placeholder="Сообщение" rows="3" name="msg" asp-for="Msg"></textarea>
+                                            <span asp-validation-for="Msg" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="manage-button text-center">
+                                    <button type="button" id="submitButton" class="send_now text-white text-decoration-none">
+                                        Отправить
+                                        <i class="circle fa-thin fa-arrow-right"></i>
+                                    </button>
+                                </div>
+                            </form>
+                            <!-- Современное уведомление в правом верхнем углу -->
+                            <div class="notification-wrapper">
+                                <div id="notification" class="notification hidden">
+                                    <div class="notification-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                        </svg>
+                                    </div>
+                                    <div class="notification-content">
+                                        <h4 id="notification-title">Успешно!</h4>
+                                        <p id="notification-message"></p>
+                                    </div>
+                                    <div class="notification-progress"></div>
+                                </div>
+                            </div>
                                 <figure class="faq-image mb-0">
                                     <img src="~/images/faq-image.png" alt="" class="img-fluid">
                                 </figure>
@@ -144,4 +167,84 @@
             </figure>
         </section>
     </div>
-  
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        $(document).ready(function () {
+            // Обработчик клика по кнопке отправки
+            $('#submitButton').click(function (e) {
+                e.preventDefault();
+
+                // Проверяем валидность формы
+                if ($('#contactForm').valid()) {
+                    // Показываем индикатор загрузки
+                    $('#submitButton').prop('disabled', true).html('Отправка... <i class="circle fa-thin fa-spinner fa-spin"></i>');
+
+                    // Отправляем форму через AJAX
+                    $.ajax({
+                        url: $('#contactForm').attr('action'),
+                        type: 'POST',
+                        data: $('#contactForm').serialize(),
+                        headers: {
+                            'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+                        },
+                        success: function (response) {
+                            if (response.success) {
+                                // Показываем уведомление об успехе
+                                showNotification('Успешно!', response.message, 'success');
+
+                                // Очищаем форму
+                                $('#contactForm')[0].reset();
+                            } else {
+                                // Показываем уведомление об ошибке
+                                showNotification('Ошибка!', response.message, 'error');
+                            }
+                        },
+                        error: function (xhr, status, error) {
+                            // Показываем уведомление об ошибке
+                            showNotification('Ошибка!', 'Произошла ошибка при отправке формы.', 'error');
+                        },
+                        complete: function () {
+                            // Восстанавливаем кнопку
+                            $('#submitButton').prop('disabled', false).html('Отправить <i class="circle fa-thin fa-arrow-right"></i>');
+                        }
+                    });
+                }
+            });
+
+            // Функция для показа уведомления
+            function showNotification(title, message, type) {
+                const notification = $('#notification');
+                const icon = notification.find('.notification-icon svg');
+
+                // Устанавливаем заголовок и сообщение
+                $('#notification-title').text(title);
+                $('#notification-message').text(message);
+
+                // Меняем стиль в зависимости от типа
+                notification.removeClass('success error');
+                notification.addClass(type);
+
+                // Показываем уведомление
+                notification.removeClass('hidden');
+                notification.addClass('show');
+
+                // Автоматически скрываем через 5 секунд
+                setTimeout(function () {
+                    notification.removeClass('show');
+                    notification.addClass('hidden');
+                }, 5000);
+            }
+
+            // Если есть сообщение в TempData, показываем его при загрузке страницы
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <text>
+                    showNotification('Успешно!', '@Html.Raw(TempData["SuccessMessage"])', 'success');
+            </text>
+        }
+                });
+    </script>
+}
