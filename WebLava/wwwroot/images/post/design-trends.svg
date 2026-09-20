@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img" aria-label="UX/UI-дизайн и тренды дизайна мобильного приложения">
+  <defs>
+    <linearGradient id="bg5" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#20242c"/>
+      <stop offset="1" stop-color="#121417"/>
+    </linearGradient>
+    <linearGradient id="accent5" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fa6220"/>
+      <stop offset="1" stop-color="#ef8b33"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg5)"/>
+
+  <!-- two phone mockups side by side -->
+  <rect x="230" y="90" width="150" height="300" rx="22" fill="#2b303a" stroke="#3a4050" stroke-width="4"/>
+  <rect x="246" y="118" width="118" height="220" rx="8" fill="#f4f5f8"/>
+  <rect x="258" y="134" width="94" height="14" rx="4" fill="url(#accent5)"/>
+  <rect x="258" y="160" width="94" height="40" rx="6" fill="#dfe2e8"/>
+  <rect x="258" y="210" width="94" height="40" rx="6" fill="#dfe2e8"/>
+  <rect x="258" y="260" width="94" height="40" rx="6" fill="#dfe2e8"/>
+
+  <rect x="420" y="130" width="150" height="300" rx="22" fill="#2b303a" stroke="url(#accent5)" stroke-width="4"/>
+  <rect x="436" y="158" width="118" height="220" rx="8" fill="#191c22"/>
+  <circle cx="495" cy="200" r="26" fill="url(#accent5)"/>
+  <rect x="452" y="240" width="86" height="10" rx="3" fill="#4a5162"/>
+  <rect x="452" y="260" width="60" height="10" rx="3" fill="#4a5162"/>
+  <rect x="452" y="300" width="86" height="30" rx="15" fill="url(#accent5)" opacity="0.8"/>
+
+  <!-- pencil / design tool -->
+  <g transform="translate(620,110) rotate(35)">
+    <rect x="0" y="0" width="18" height="140" rx="6" fill="#d6d8e2"/>
+    <polygon points="0,140 18,140 9,168" fill="#ef8b33"/>
+  </g>
+</svg>

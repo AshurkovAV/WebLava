@@ -99,6 +99,13 @@ a.item-link{margin-top: 10px; display: inline-block}
 .single-post01 .post-item-description .blockquote small {
 	font-size: 100%;
 }
+.article_img {
+	max-width: 100%;
+	height: auto;
+	border-radius: 8px;
+	margin: 24px auto;
+	display: block;
+}
 .single-post01 .post-tags {
 	margin-bottom: 40px;
 }

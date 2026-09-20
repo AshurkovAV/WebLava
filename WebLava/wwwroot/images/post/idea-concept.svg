@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img" aria-label="Концепция мобильного приложения и целевая аудитория">
+  <defs>
+    <linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#20242c"/>
+      <stop offset="1" stop-color="#121417"/>
+    </linearGradient>
+    <linearGradient id="accent1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fa6220"/>
+      <stop offset="1" stop-color="#ef8b33"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg1)"/>
+
+  <!-- lightbulb -->
+  <circle cx="330" cy="220" r="90" fill="url(#accent1)"/>
+  <rect x="305" y="295" width="50" height="34" rx="8" fill="#d6d8e2"/>
+  <rect x="312" y="332" width="36" height="10" rx="4" fill="#9a9ea8"/>
+  <path d="M330 150 v-30 M270 175 l-22 -22 M390 175 l22 -22" stroke="#d6d8e2" stroke-width="8" stroke-linecap="round"/>
+  <path d="M300 235 q30 30 60 0" stroke="#20242c" stroke-width="8" stroke-linecap="round" fill="none"/>
+
+  <!-- phone with app -->
+  <rect x="470" y="120" width="160" height="290" rx="24" fill="#2b303a" stroke="#3a4050" stroke-width="4"/>
+  <rect x="486" y="150" width="128" height="210" rx="8" fill="#f4f5f8"/>
+  <circle cx="550" cy="380" r="10" fill="#3a4050"/>
+  <rect x="500" y="168" width="100" height="16" rx="4" fill="#fa6220"/>
+  <rect x="500" y="196" width="70" height="10" rx="3" fill="#c7cad2"/>
+  <rect x="500" y="216" width="90" height="10" rx="3" fill="#c7cad2"/>
+  <rect x="500" y="248" width="100" height="60" rx="8" fill="#ef8b33" opacity="0.25"/>
+
+  <!-- audience dots -->
+  <g fill="#d6d8e2">
+    <circle cx="120" cy="340" r="26"/>
+    <circle cx="180" cy="365" r="20"/>
+    <circle cx="90" cy="390" r="16"/>
+  </g>
+  <g fill="none" stroke="#3a4050" stroke-width="3" stroke-dasharray="4 6">
+    <path d="M150 260 C 140 290, 130 310, 120 314"/>
+  </g>
+</svg>

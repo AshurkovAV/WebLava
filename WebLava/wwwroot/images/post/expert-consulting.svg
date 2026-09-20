@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img" aria-label="Консультация экспертов и выбор команды разработчиков">
+  <defs>
+    <linearGradient id="bg6" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#20242c"/>
+      <stop offset="1" stop-color="#121417"/>
+    </linearGradient>
+    <linearGradient id="accent6" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fa6220"/>
+      <stop offset="1" stop-color="#ef8b33"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg6)"/>
+
+  <!-- speech bubble 1 -->
+  <rect x="150" y="130" width="230" height="130" rx="20" fill="#2b303a" stroke="#3a4050" stroke-width="4"/>
+  <polygon points="190,260 190,300 230,260" fill="#2b303a" stroke="#3a4050" stroke-width="4"/>
+  <rect x="180" y="160" width="170" height="12" rx="6" fill="#d6d8e2"/>
+  <rect x="180" y="186" width="130" height="12" rx="6" fill="#8b909c"/>
+  <rect x="180" y="212" width="150" height="12" rx="6" fill="#8b909c"/>
+
+  <!-- speech bubble 2 (accent) -->
+  <rect x="430" y="230" width="230" height="130" rx="20" fill="url(#accent6)"/>
+  <polygon points="620,360 620,400 580,360" fill="url(#accent6)"/>
+  <rect x="460" y="260" width="170" height="12" rx="6" fill="#2b303a" opacity="0.7"/>
+  <rect x="460" y="286" width="120" height="12" rx="6" fill="#2b303a" opacity="0.5"/>
+  <rect x="460" y="312" width="150" height="12" rx="6" fill="#2b303a" opacity="0.5"/>
+
+  <!-- two person icons -->
+  <g fill="#d6d8e2">
+    <circle cx="120" cy="380" r="26"/>
+    <path d="M70 440 q50 -60 100 0 z"/>
+  </g>
+  <g fill="#ef8b33">
+    <circle cx="690" cy="150" r="22"/>
+    <path d="M648 200 q42 -50 84 0 z"/>
+  </g>
+</svg>
