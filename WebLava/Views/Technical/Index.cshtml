@@ -1,14 +1,10 @@
 ﻿@{
-    ViewData["Title"] = "Техническое задание";
+    ViewData["Title"] = "Пример технического задания на мобильное приложение | Big Lava";
+    ViewData["Description"] = "Образец технического задания на мобильное приложение для Android: структура, требования и функционал — на что ориентироваться при заказе разработки.";
     ViewData["ActivePage"] = "technical";
 }
 
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ТЗ на мобильное приложение | BIGLV Style</title>
+<section class="technical-tz-page">
     <style>
         :root {
             --bg-dark: #121212;
@@ -18,35 +14,33 @@
             --text-secondary: #A0A0A0;
         }
 
-        body {
+        .technical-tz-page {
             font-family: 'Roboto', sans-serif;
             background-color: var(--bg-dark);
             color: var(--text-main);
             line-height: 1.6;
-            margin: 0;
-            padding: 0;
         }
 
-        .container {
+        .technical-tz-page .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
 
-        header {
+        .technical-tz-page header {
             border-bottom: 3px solid var(--primary);
             padding-bottom: 15px;
             margin-bottom: 30px;
         }
 
-        h1 {
+        .technical-tz-page h1 {
             color: var(--primary);
             font-size: 2.5rem;
             margin: 0;
             font-weight: 700;
         }
 
-        h2 {
+        .technical-tz-page h2 {
             color: var(--primary);
             font-size: 1.8rem;
             border-left: 4px solid var(--primary);
@@ -54,13 +48,13 @@
             margin: 40px 0 20px;
         }
 
-        h3 {
+        .technical-tz-page h3 {
             color: var(--text-main);
             font-size: 1.3rem;
             margin: 25px 0 15px;
         }
 
-        .card {
+        .technical-tz-page .card {
             background-color: var(--bg-card);
             border-radius: 5px;
             padding: 25px;
@@ -68,13 +62,13 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
 
-        table {
+        .technical-tz-page table {
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
         }
 
-        th {
+        .technical-tz-page th {
             background-color: var(--primary);
             color: #000;
             text-align: left;
@@ -82,25 +76,25 @@
             font-weight: 700;
         }
 
-        td {
+        .technical-tz-page td {
             padding: 10px 15px;
             border-bottom: 1px solid #333;
         }
 
-        tr:nth-child(even) {
+        .technical-tz-page tr:nth-child(even) {
             background-color: rgba(255,107,0,0.05);
         }
 
-        ul {
+        .technical-tz-page ul {
             padding-left: 25px;
         }
 
-        li {
+        .technical-tz-page li {
             margin-bottom: 10px;
             position: relative;
         }
 
-            li:before {
+            .technical-tz-page li:before {
                 content: "•";
                 color: var(--primary);
                 font-weight: bold;
@@ -109,20 +103,20 @@
                 margin-left: -1em;
             }
 
-        .signature-block {
+        .technical-tz-page .signature-block {
             display: flex;
             justify-content: space-between;
             margin-top: 50px;
         }
 
-        .signature-card {
+        .technical-tz-page .signature-card {
             width: 48%;
             background-color: var(--bg-card);
             padding: 20px;
             border-radius: 5px;
         }
 
-        .badge {
+        .technical-tz-page .badge {
             display: inline-block;
             background-color: var(--primary);
             color: #000;
@@ -133,27 +127,25 @@
             margin-right: 10px;
         }
 
-        .divider {
+        .technical-tz-page .divider {
             height: 2px;
             background: linear-gradient(90deg, transparent 0%, var(--primary) 50%, transparent 100%);
             margin: 30px 0;
         }
 
-        .requirements-table {
+        .technical-tz-page .requirements-table {
             width: 100%;
         }
 
-            .requirements-table td:first-child {
+            .technical-tz-page .requirements-table td:first-child {
                 width: 30%;
                 font-weight: 500;
                 color: var(--primary);
             }
     </style>
-</head>
-<body>
     <div class="container">
         <header>
-            <h1>ТЕХНИЧЕСКОЕ ЗАДАНИЕ</h1>
+            <h1>Техническое задание на мобильное приложение (пример)</h1>
             <p style="color: var(--text-secondary); font-size: 1.2rem;">на разработку мобильного приложения для Android</p>
         </header>
 
@@ -288,6 +280,4 @@
             </div>
         </div>
     </div>
-</body>
-</html>
-   
+</section>

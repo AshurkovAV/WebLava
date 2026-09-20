@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Услуги по разработке мобильных приложений и IT-решений";
+    ViewData["Title"] = "Услуги по разработке мобильных приложений | Big Lava";
     ViewData["ActivePage"] = "service";
     ViewData["Description"] = "Профессиональная разработка мобильных приложений, UX/UI дизайн, frontend и backend разработка. Создаем IT-решения для вашего бизнеса.";
 }
@@ -110,39 +110,36 @@
 
 <!-- Structured data for better search engine understanding -->
 <script type="application/ld+json">
-    @Html.Raw(Json.Serialize(new
-        {
-            context = "https://schema.org",
-            type = "ProfessionalService",
-            name = "Услуги по разработке IT-решений",
-            description = "Профессиональная разработка мобильных приложений, UX/UI дизайн, frontend и backend разработка",
-            hasOfferCatalog = new
-            {
-                type = "OfferCatalog",
-                name = "IT Услуги",
-                itemListElement = new[]
-                    {
-                new
-                {
-                    type = "Offer",
-                    itemOffered = new
-                    {
-                        type = "Service",
-                        name = "Техническое задание",
-                        description = "Техническое задание на разработку приложения сэкономит бюджет"
-                    }
-                },
-                new
-                {
-                    type = "Offer",
-                    itemOffered = new
-                    {
-                        type = "Service",
-                        name = "Мобильная разработка",
-                        description = "Профессионально создаём мобильные приложения"
-                    }
-                }
+    {
+      "@@context": "https://schema.org",
+      "@@type": "Service",
+      "name": "Услуги по разработке IT-решений",
+      "description": "Профессиональная разработка мобильных приложений, UX/UI дизайн, frontend и backend разработка",
+      "provider": {
+        "@@type": "ProfessionalService",
+        "name": "Big Lava"
+      },
+      "hasOfferCatalog": {
+        "@@type": "OfferCatalog",
+        "name": "IT Услуги",
+        "itemListElement": [
+          {
+            "@@type": "Offer",
+            "itemOffered": {
+              "@@type": "Service",
+              "name": "Техническое задание",
+              "description": "Техническое задание на разработку приложения сэкономит бюджет"
             }
+          },
+          {
+            "@@type": "Offer",
+            "itemOffered": {
+              "@@type": "Service",
+              "name": "Мобильная разработка",
+              "description": "Профессионально создаём мобильные приложения"
             }
-        }))
+          }
+        ]
+      }
+    }
 </script>

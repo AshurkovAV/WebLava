@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta name="description" content="@Html.Raw(ViewData["Description"])" />
-    <title>@Html.Raw(ViewData["Title"]) | biglv</title>
+    <title>@Html.Raw(ViewData["Title"])</title>
     <!-- /SEO Ultimate -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <meta charset="utf-8">  
@@ -26,11 +26,11 @@
 
     <script type="application/ld+json">
         {
-          "context": "http://schema.org",
-          "type": "LocalBusiness",
-          "name": "Big Lava",  
+          "@@context": "https://schema.org",
+          "@@type": "ProfessionalService",
+          "name": "Big Lava",
           "address": {
-            "type": "PostalAddress",
+            "@@type": "PostalAddress",
             "streetAddress": "ул. Радищева, 64",
             "addressLocality": "Курск",
             "addressRegion": "Курская область",
@@ -38,9 +38,16 @@
             "addressCountry": "RU"
           },
           "telephone": "+79081209023",
-          "url": "https://biglv.ru/"
+          "url": "https://biglv.ru/",
+          "priceRange": "от 500 000 ₽ до 3 000 000+ ₽",
+          "sameAs": []
         }
     </script>
+    @{
+        var currentPath = Context.Request.Path.Value ?? "/";
+        var canonicalPath = currentPath == "/" ? "/" : currentPath.TrimEnd('/');
+    }
+    <link rel="canonical" href="https://biglv.ru@(canonicalPath)" />
 </head>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -79,7 +86,7 @@
                         <div class="first-column">
                             <a href="./index">
                                 <figure class="footer-logo">
-                                    <img src="~/images/logo.png" class="img-fluid" alt="">
+                                    <img src="~/images/logo.png" class="img-fluid" alt="Big Lava — логотип">
                                 </figure>
                             </a>
                             <p class="text-size-18 footer-text">
@@ -88,7 +95,7 @@
                             <div class="lower">
                                 <div class="lower-content">
                                     <figure class="icon">
-                                        <img src="~/images/footer-callicon.png" alt="" class="img-fluid">
+                                        <img src="~/images/footer-callicon.png" alt="Иконка: телефон" class="img-fluid">
                                     </figure>
                                     <div class="content" itemscope itemtype="http://schema.org/LocalBusiness">
                                         <span class="text-white">Телефон:</span>
@@ -97,7 +104,7 @@
                                 </div>
                                 <div class="lower-content">
                                     <figure class="icon">
-                                        <img src="~/images/footer-emailicon.png" alt="" class="img-fluid">
+                                        <img src="~/images/footer-emailicon.png" alt="Иконка: email" class="img-fluid">
                                     </figure>
                                     <div class="content">
                                         <span class="text-white">Email:</span>
