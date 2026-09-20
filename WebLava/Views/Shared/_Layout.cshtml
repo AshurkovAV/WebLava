@@ -1,8 +1,21 @@
 ﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
+    @{
+        var currentPath = Context.Request.Path.Value ?? "/";
+        var canonicalPath = currentPath == "/" ? "/" : currentPath.TrimEnd('/');
+        var ogImage = ViewData["OgImage"] as string ?? "https://biglv.ru/images/logo-og-default.jpg";
+    }
     <meta name="description" content="@Html.Raw(ViewData["Description"])" />
     <title>@Html.Raw(ViewData["Title"])</title>
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Big Lava" />
+    <meta property="og:title" content="@Html.Raw(ViewData["Title"])" />
+    <meta property="og:description" content="@Html.Raw(ViewData["Description"])" />
+    <meta property="og:url" content="https://biglv.ru@(canonicalPath)" />
+    <meta property="og:image" content="@ogImage" />
+    <meta name="twitter:card" content="summary_large_image" />
     <!-- /SEO Ultimate -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <meta charset="utf-8">  
@@ -43,10 +56,6 @@
           "sameAs": []
         }
     </script>
-    @{
-        var currentPath = Context.Request.Path.Value ?? "/";
-        var canonicalPath = currentPath == "/" ? "/" : currentPath.TrimEnd('/');
-    }
     <link rel="canonical" href="https://biglv.ru@(canonicalPath)" />
 </head>
 <!-- Yandex.Metrika counter -->

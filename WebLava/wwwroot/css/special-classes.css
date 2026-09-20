@@ -2,6 +2,16 @@
 .post-item.border > .post-item-wrap > .post-item-description{
     color: #676767;
 }
+.single-post01 .post-item-description p a,
+.single-post01 .post-item-description li a {
+    color: var(--e-global-color-accent);
+    text-decoration: underline;
+    font-weight: 600;
+}
+.single-post01 .post-item-description p a:hover,
+.single-post01 .post-item-description li a:hover {
+    color: var(--e-button-gradient-1);
+}
 .single-post01 .post-item-description h2,
 .single-post01 .comments .comment .text .name,
 .sidebar .widget-title,

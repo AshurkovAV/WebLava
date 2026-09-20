@@ -100,11 +100,17 @@ a.item-link{margin-top: 10px; display: inline-block}
 	font-size: 100%;
 }
 .article_img {
-	max-width: 100%;
+	max-width: 480px;
+	width: 100%;
 	height: auto;
 	border-radius: 8px;
 	margin: 24px auto;
 	display: block;
+}
+.post-image img {
+	max-height: 340px;
+	object-fit: cover;
+	border-radius: 8px;
 }
 .single-post01 .post-tags {
 	margin-bottom: 40px;
