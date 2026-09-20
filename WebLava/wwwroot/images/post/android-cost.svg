@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img" aria-label="Стоимость разработки Android-приложения">
+  <defs>
+    <linearGradient id="bg9" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#20242c"/>
+      <stop offset="1" stop-color="#121417"/>
+    </linearGradient>
+    <linearGradient id="accent9" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fa6220"/>
+      <stop offset="1" stop-color="#ef8b33"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg9)"/>
+
+  <!-- android robot -->
+  <g transform="translate(230,150)">
+    <rect x="0" y="40" width="140" height="130" rx="18" fill="#3ddc84"/>
+    <rect x="20" y="0" width="14" height="46" rx="7" fill="#3ddc84" transform="rotate(-24 27 23)"/>
+    <rect x="106" y="0" width="14" height="46" rx="7" fill="#3ddc84" transform="rotate(24 113 23)"/>
+    <circle cx="45" cy="80" r="10" fill="#121417"/>
+    <circle cx="95" cy="80" r="10" fill="#121417"/>
+    <rect x="-22" y="60" width="20" height="90" rx="10" fill="#3ddc84"/>
+    <rect x="142" y="60" width="20" height="90" rx="10" fill="#3ddc84"/>
+    <rect x="18" y="170" width="34" height="70" rx="12" fill="#3ddc84"/>
+    <rect x="88" y="170" width="34" height="70" rx="12" fill="#3ddc84"/>
+  </g>
+
+  <!-- price tag -->
+  <g transform="translate(470,140)">
+    <path d="M0 30 L110 30 L170 90 L110 150 L0 150 Z" fill="url(#accent9)"/>
+    <circle cx="30" cy="90" r="14" fill="#20242c"/>
+    <text x="95" y="100" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#20242c" text-anchor="middle">₽</text>
+  </g>
+
+  <g fill="#d6d8e2" opacity="0.6">
+    <circle cx="620" cy="330" r="5"/>
+    <circle cx="650" cy="360" r="4"/>
+    <circle cx="180" cy="360" r="4"/>
+  </g>
+</svg>
