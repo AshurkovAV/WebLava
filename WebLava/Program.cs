@@ -3,10 +3,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-// Add services to the container. для работы mvc
+// Add services to the container. пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ mvc
 builder.Services.AddControllersWithViews();
 
-var supportedCultures = new[] { "ru", "es", "en" }; // en-английский, es-испанский, ru-русский
+var supportedCultures = new[] { "ru", "es", "en" }; // en-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, es-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, ru-пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 var localizationOptions = new RequestLocalizationOptions()
     .SetDefaultCulture(supportedCultures[0])
     .AddSupportedCultures(supportedCultures)
@@ -21,6 +21,7 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
 }
+app.UseDefaultFiles();
 app.UseStaticFiles();
 
 app.UseRouting();

@@ -112,6 +112,118 @@ a.item-link{margin-top: 10px; display: inline-block}
 	object-fit: cover;
 	border-radius: 8px;
 }
+
+/* Универсальная сетка карточек: кейсы, блог-превью и т.п. */
+.cards-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 24px;
+}
+@media (max-width: 991px) {
+	.cards-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+@media (max-width: 575px) {
+	.cards-grid {
+		grid-template-columns: 1fr;
+	}
+}
+.card-item {
+	background-color: #fff;
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 1px 1px 30px rgb(0 0 0 / 6%);
+	display: flex;
+	flex-direction: column;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-item:hover {
+	transform: translateY(-4px);
+	box-shadow: 1px 1px 40px rgb(0 0 0 / 12%);
+}
+.card-item .card-item-image {
+	display: block;
+	width: 100%;
+	height: 200px;
+	overflow: hidden;
+	background-color: #0d0f1a;
+}
+.card-item .card-item-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.card-item .card-item-body {
+	padding: 22px 24px 26px;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+}
+.card-item .card-item-badge {
+	display: inline-block;
+	align-self: flex-start;
+	font-size: 12px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.03em;
+	color: var(--e-global-color-accent);
+	background-color: var(--e-global-color-very-pale-orange);
+	border-radius: 20px;
+	padding: 4px 14px;
+	margin-bottom: 12px;
+}
+.card-item .card-item-title {
+	font-size: 20px;
+	font-weight: 700;
+	color: #1f1f1f;
+	margin-bottom: 10px;
+}
+.card-item .card-item-result {
+	font-size: 15px;
+	color: #676767;
+	line-height: 24px;
+	margin-bottom: 16px;
+	flex-grow: 1;
+}
+.card-item .card-item-link {
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--e-global-color-accent);
+	text-decoration: none;
+}
+.card-item .card-item-link:hover {
+	color: var(--e-button-gradient-1);
+	text-decoration: underline;
+}
+.card-item .card-item-meta {
+	font-size: 13px;
+	color: #9a9a9a;
+	margin-bottom: 8px;
+}
+.project-section .get_started,
+.portfolio-section .get_started {
+	background-image: linear-gradient(to right, var(--e-button-gradient-1) 0%, var(--e-button-gradient-2) 100%);
+	color: #fff;
+	font-size: 18px;
+	line-height: 28px;
+	font-weight: 600;
+	border-radius: 30px;
+	padding: 14px 24px 14px 40px;
+	text-align: center;
+	display: inline-block;
+	transition: all 0.3s ease-in-out;
+}
+.project-section .get_started figure,
+.portfolio-section .get_started figure {
+	display: inline-block;
+	margin-left: 14px;
+}
+.project-section .get_started:hover,
+.portfolio-section .get_started:hover {
+	opacity: 0.9;
+	color: #fff;
+}
 .single-post01 .post-tags {
 	margin-bottom: 40px;
 }
