@@ -1,350 +1,355 @@
-﻿@{
+@{
     ViewData["Title"] = "Разработка мобильных приложений на аутсорсе | Big Lava";
-    ViewData["Description"] = "Студия Big Lava разрабатывает мобильные приложения для бизнеса и стартапов под ключ: UX/UI-дизайн, техническое задание, frontend и backend. Курск.";
+    ViewData["Description"] = "Студия Big Lava (Курск) разрабатывает мобильные приложения для iOS и Android под ключ: от MVP до сложных систем. UX/UI-дизайн, ТЗ, frontend и backend. Обсудим ваш проект.";
     ViewData["ActivePage"] = "home";
 }
 
-<!-- Header  -->
-<div class="banner_outer">
-    @Html.Partial("Menu");
-    <figure class="banner-layerright mb-0">
-        <img src="~/images/banner-layerright.png" class="img-fluid" alt="">
-    </figure>
-    <section class="banner-section">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-5 col-md-12 col-sm-12 col-12" data-aos="fade-right">
-                    <div class="banner_content">
-                        <figure class="banner-line mb-0"><img src="~/images/banner-line.png" alt="" class="img-fluid"></figure>
-                        <h6 class="text-white">Услуги на аутсорсинге</h6>
-                        <h1 class="text-white">Разработка мобильных приложений и IT-решений</h1>
-                        <p>Мы создаем мобильные приложения для бизнеса и стартапов на заказ.</p>
-                        <a class="get_started button1 text-white text-decoration-none" href="./contact">
-                            Обсудить проект
-                            <figure class="mb-0"><img src="~/images/button-arrow.png" alt="" class="img-fluid"></figure>
-                        </a>
-                        <figure class="banner-circleleft mb-0">
-                            <img src="~/images/banner-circleleft.png" class="img-fluid" alt="">
-                        </figure>
-                        <figure class="banner-dotleft mb-0">
-                            <img src="~/images/banner-dotleft.png" class="img-fluid" alt="">
-                        </figure>
-                    </div>
-                </div>
-                <div class="col-lg-7 col-md-12 col-sm-12 col-12">
-                    <div class="banner_wrapper">
-                        <figure class="mb-0 banner-image">
-                            <img src="~/images/banner-image.jpg" alt="Разработка мобильных приложений — Big Lava" class="img-fluid">
-                        </figure>
-                        <div class="position-relative">
-                            <a class="popup-vimeo" href="#">
-                                <figure class="mb-0 banner-vedioimage">
-                                    <img class="thumb img-fluid" style="cursor: pointer" src="~/images/banner-vedioimage.png" alt="Видео о разработке приложений Big Lava">
-                                </figure>
-                            </a>
-                        </div>
-                        <figure class="banner-circleright mb-0">
-                            <img src="~/images/banner-circleright.png" class="img-fluid" alt="">
-                        </figure>
-                        <figure class="banner-dotright mb-0">
-                            <img src="~/images/banner-dotright.png" class="img-fluid" alt="">
-                        </figure>
-                    </div>
-                </div>
-            </div>
+@section Head {
+    <style>
+        .pg-home-shot { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+        .pg-home-shot img {
+            height: 88%; width: auto; max-width: none; border-radius: 26px; border: 1px solid rgba(255,255,255,.18);
+            box-shadow: 0 40px 80px rgba(0,0,0,.55); transition: transform 1s var(--ml-ease);
+        }
+        .ml-case:hover .pg-home-shot img { transform: translateY(-8px) rotate(-2deg); }
+        .pg-home-shot--offset { justify-content: flex-end; padding-right: 12%; }
+        .pg-home-cover-title { position: absolute; left: clamp(20px, 4vw, 56px); top: 50%; transform: translateY(-50%); max-width: 44%; }
+        .pg-home-cover-title span { display: block; font-family: var(--ml-display); font-size: clamp(28px, 3.6vw, 56px); font-weight: 600; letter-spacing: -.04em; line-height: 1.02; }
+        .pg-home-cover-title small { display: block; margin-top: 14px; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.6); }
+        @@media (max-width: 760px) {
+            .pg-home-shot--offset { justify-content: center; padding-right: 0; }
+            .pg-home-cover-title { display: none; }
+        }
+        .pg-home-about { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(32px, 6vw, 96px); align-items: end; margin-bottom: clamp(48px, 6vw, 88px); }
+        .pg-home-about__big { font-family: var(--ml-display); font-size: clamp(96px, 16vw, 240px); font-weight: 600; letter-spacing: -.06em; line-height: .85; }
+        .pg-home-about__big sup { font-size: .4em; color: var(--ml-accent); vertical-align: top; }
+        .pg-home-about__cap { margin-top: 16px; color: #55524d; }
+        @@media (max-width: 1024px) { .pg-home-about { grid-template-columns: 1fr; } }
+        .ml-section--light .ml-card__icon svg { width: 24px; height: 24px; }
+        .pg-home-teasers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--ml-line); }
+        .pg-home-teaser { padding: 32px 32px 32px 0; border-bottom: 1px solid var(--ml-line); display: flex; flex-direction: column; gap: 10px; }
+        .pg-home-teaser + .pg-home-teaser { padding-left: 32px; border-left: 1px solid var(--ml-line); }
+        .pg-home-teaser__name { font-size: 24px; }
+        .pg-home-teaser__for { color: var(--ml-muted); font-size: 15px; }
+        .pg-home-teaser__value { font-family: var(--ml-display); font-size: clamp(32px, 3.2vw, 48px); font-weight: 600; letter-spacing: -.04em; line-height: 1; margin-top: 24px; }
+        .pg-home-teaser__term { color: var(--ml-muted); font-size: 15px; }
+        .pg-home-teaser--featured .pg-home-teaser__value { color: var(--ml-accent); }
+        @@media (max-width: 860px) {
+            .pg-home-teasers { grid-template-columns: 1fr; }
+            .pg-home-teaser, .pg-home-teaser + .pg-home-teaser { padding: 28px 0; border-left: 0; }
+        }
+    </style>
+}
+
+<!-- Hero -->
+<section class="ml-hero">
+    <div class="ml-hero__glow" aria-hidden="true"></div>
+    <div class="ml-container">
+        <div class="ml-eyebrow" data-reveal>Студия мобильной разработки · Курск</div>
+        <h1 class="ml-display" data-reveal>Разработка мобильных приложений, <span class="ml-gradient-text">которые работают на бизнес</span></h1>
+        <p class="ml-lead" data-reveal>Создаём мобильные приложения для бизнеса и стартапов на заказ — полный цикл от анализа идеи и UX/UI-дизайна до запуска и поддержки.</p>
+        <div class="ml-hero__actions" data-reveal>
+            <a class="ml-btn ml-btn--accent ml-btn--lg" href="/contact">Обсудить проект <span class="ml-arrow">→</span></a>
+            <a class="ml-btn ml-btn--ghost ml-btn--lg" href="/portfolio">Смотреть кейсы</a>
         </div>
-    </section>
+        <div class="ml-hero__meta" data-reveal-stagger>
+            <div><strong>6+ лет</strong>опыта в разработке</div>
+            <div><strong>iOS и Android</strong>дизайн и разработка под обе платформы</div>
+            <div><strong>MVP — до 2 мес.</strong>срок простого приложения</div>
+            <div><strong>От MVP до маркетплейса</strong>три тарифа под разные бюджеты</div>
+        </div>
+    </div>
+</section>
+
+<!-- Marquee -->
+<div class="ml-marquee">
+    <div class="ml-marquee__track" style="gap:0">
+        <div class="ml-flex" style="gap:64px;flex-wrap:nowrap;padding-right:64px">
+            <span class="ml-marquee__item">iOS</span>
+            <span class="ml-marquee__item">Android</span>
+            <span class="ml-marquee__item">Кроссплатформа</span>
+            <span class="ml-marquee__item">UX/UI-дизайн</span>
+            <span class="ml-marquee__item">MVP</span>
+            <span class="ml-marquee__item">Frontend</span>
+            <span class="ml-marquee__item">Backend и API</span>
+            <span class="ml-marquee__item">Техническое задание</span>
+            <span class="ml-marquee__item">ИИ-агенты ЯДРО</span>
+        </div>
+        <div class="ml-flex" style="gap:64px;flex-wrap:nowrap;padding-right:64px" aria-hidden="true">
+            <span class="ml-marquee__item">iOS</span>
+            <span class="ml-marquee__item">Android</span>
+            <span class="ml-marquee__item">Кроссплатформа</span>
+            <span class="ml-marquee__item">UX/UI-дизайн</span>
+            <span class="ml-marquee__item">MVP</span>
+            <span class="ml-marquee__item">Frontend</span>
+            <span class="ml-marquee__item">Backend и API</span>
+            <span class="ml-marquee__item">Техническое задание</span>
+            <span class="ml-marquee__item">ИИ-агенты ЯДРО</span>
+        </div>
+    </div>
 </div>
 
-<!-- Service -->
-<section class="service-section">
-    <figure class="service-leftlayer mb-0">
-        <img src="~/images/service-leftlayer.png" alt="" class="img-fluid">
-    </figure>
-    <figure class="service-dotimage mb-0">
-        <img src="~/images/service-dotimage.png" alt="" class="img-fluid">
-    </figure>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                <div class="service_contentbox">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-                            <div class="service-box box-mb">
-                                <figure class="service-marketicon">
-                                    <img src="~/images/service-marketicon.png" alt="Иконка услуги «Техническое задание»" class="img-fluid">
-                                </figure>
-                                <h4>Техническое задание</h4>
-                                <p class="text-size-18">Техническое задание на разработку приложения сэкономит бюджет.</p>
-                                <a class="arrow text-decoration-none" href="./technical"><i class="circle fa-thin fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-                            <div class="box-top">
-                                <div class="service-box box-mb">
-                                    <figure class="service-producticon">
-                                        <img src="~/images/service-producticon.png" alt="Иконка услуги «Мобильная разработка»" class="img-fluid">
-                                    </figure>
-                                    <h4>Мобильная разработка</h4>
-                                    <p class="text-size-18">Профессионально создаём мобильные приложения.</p>
-                                    <a class="arrow text-decoration-none" href="./service"><i class="circle fa-thin fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
+<!-- Cases -->
+<section class="ml-section">
+    <div class="ml-container">
+        <div class="ml-section-head" data-reveal>
+            <div>
+                <div class="ml-eyebrow">Избранные работы</div>
+                <h2 class="ml-h2">Не просто приложения — цифровые решения под задачи бизнеса</h2>
+            </div>
+            <a class="ml-link" href="/portfolio">Все кейсы <span class="ml-arrow">→</span></a>
+        </div>
+
+        <div class="ml-cases" data-reveal-stagger>
+            <a class="ml-case ml-case--wide" href="/portfolio">
+                <div class="ml-case__media">
+                    <div class="ml-cover" aria-hidden="true"></div>
+                    <div class="pg-home-cover-title" aria-hidden="true">
+                        <span>Вакансии для водителей такси</span>
+                        <small>Мобильное приложение</small>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-                            <div class="service-box">
-                                <figure class="service-designicon">
-                                    <img src="~/images/service-designicon.png" alt="Иконка услуги «UX/UI-дизайн»" class="img-fluid">
-                                </figure>
-                                <h4>UX/UI-дизайн</h4>
-                                <p class="text-size-18">Разрабатываем удобные и красивые дизайны.</p>
-                                <a class="arrow text-decoration-none" href="./service"><i class="circle fa-thin fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-                            <div class="box-top">
-                                <div class="service-box">
-                                    <figure class="service-dataicon">
-                                        <img src="~/images/service-dataicon.png" alt="Иконка услуги «Frontend-разработка»" class="img-fluid">
-                                    </figure>
-                                    <h4>Frontend – разработка</h4>
-                                    <p class="text-size-18">Полноценная frontend разработка для прибыльности бизнеса.</p>
-                                    <a class="arrow text-decoration-none" href="./service"><i class="circle fa-thin fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="pg-home-shot pg-home-shot--offset">
+                        <img src="~/images/portfolio/taxi-app-vacancies.jpg" alt="Экран приложения-агрегатора вакансий для таксопарков: лента предложений с кнопкой «Откликнуться»">
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                <div class="service_content position-relative" data-aos="fade-up">
-                    <figure class="service-rightcircle mb-0">
-                        <img src="~/images/service-rightcircle.png" alt="" class="img-fluid">
-                    </figure>
-                    <h6>НАШИ УСЛУГИ</h6>
-                    <h3>РАЗРАБОТКА ПРОГРАММНОГО ОБЕСПЕЧЕНИЯ НА ЗАКАЗ</h3>
-                    <p>
-                        Мы разрабатываем ИТ-решения для клиентов, хорошо знающих особенности своего бизнеса. Поможем превратить ваши знания в эффективно работающий продукт.
-                    </p>
-                    <ul class="list-unstyled mb-0">
-                        <li class="text"><i class="circle fa-duotone fa-check"></i>Знакомство с заказчиком.</li>
-                        <li class="text"><i class="circle fa-duotone fa-check"></i>Выявление потребностей.</li>
-                        <li class="text"><i class="circle fa-duotone fa-check"></i>Постановка задачи.</li>
-                        <li class="text"><i class="circle fa-duotone fa-check"></i>Разработка.</li>
-                        <li class="text"><i class="circle fa-duotone fa-check"></i>Тестирование.</li>
-                        <li class="text text1"><i class="circle fa-duotone fa-check"></i>Запуск проекта.</li>
-                    </ul>
-                    <a class="get_started text-white text-decoration-none" href="./contact">
-                        Узнать стоимость
-                        <figure class="mb-0"><img src="~/images/button-arrow.png" alt="" class="img-fluid"></figure>
-                    </a>
+                <div class="ml-case__body">
+                    <div>
+                        <h3 class="ml-case__title">Агрегатор вакансий для таксопарков</h3>
+                        <p class="ml-case__desc">Карта с поиском по местоположению, лента предложений с откликом в один тап, фильтры по городу и классу автомобиля, карточка автомобиля с условиями аренды.</p>
+                        <div class="ml-tags"><span class="ml-tag">Мобильное приложение</span></div>
+                    </div>
+                    <span class="ml-case__arrow" aria-hidden="true">→</span>
                 </div>
-            </div>
+            </a>
+
+            <a class="ml-case" href="/yadro/">
+                <div class="ml-case__media">
+                    <img src="~/images/post/og-case-ai-agent.jpg" alt="ЯДРО — схема ИИ-агента, связанного с несколькими мессенджерами">
+                </div>
+                <div class="ml-case__body">
+                    <div>
+                        <h3 class="ml-case__title">ЯДРО — ИИ-агент для бизнеса</h3>
+                        <p class="ml-case__desc">Один ИИ-агент вместо трёх ботов и команды поддержки: заказы и запись в Telegram, MAX и WhatsApp через единый пайплайн с интеграцией amoCRM.</p>
+                        <div class="ml-tags"><span class="ml-tag">Интеграция / ИИ</span></div>
+                    </div>
+                    <span class="ml-case__arrow" aria-hidden="true">→</span>
+                </div>
+            </a>
+
+            <a class="ml-case" href="/contact">
+                <div class="ml-case__media">
+                    <div class="ml-cover ml-cover--violet" aria-hidden="true">
+                        <div class="ml-cover__phone"><i></i><i></i><i></i><i></i></div>
+                        <span class="ml-cover__label">Ваш проект</span>
+                    </div>
+                </div>
+                <div class="ml-case__body">
+                    <div>
+                        <h3 class="ml-case__title">Следующий кейс — ваш</h3>
+                        <p class="ml-case__desc">MVP, кроссплатформенное приложение или сложная система — расскажите об идее, и мы предложим выгодное решение под ваш бюджет.</p>
+                        <div class="ml-tags"><span class="ml-tag">MVP</span><span class="ml-tag">Кроссплатформа</span></div>
+                    </div>
+                    <span class="ml-case__arrow" aria-hidden="true">→</span>
+                </div>
+            </a>
         </div>
     </div>
-    <figure class="service-rightlayer mb-0">
-        <img src="~/images/service-rightlayer.png" alt="" class="img-fluid">
-    </figure>
 </section>
-<!-- Offer -->
-<section class="offer-section">
-    <figure class="offer-toplayer mb-0">
-        <img src="~/images/offer-toplayer.png" alt="" class="img-fluid">
-    </figure>
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="offer_content" data-aos="fade-up">
-                    <h6>ЧТО МЫ ПРЕДЛАГАЕМ</h6>
-                    <h3>ПОЧЕМУ ВЫ ДОЛЖНЫ ВЫБРАТЬ НАС</h3>
-                    <p>Мы создаем инновационные мобильные приложения, которые помогают бизнесу расти, а пользователям — решать их задачи с комфортом. Наша команда специализируется на полном цикле разработки: от анализа идеи до запуска и поддержки.</p>
-                </div>
+
+<!-- Services -->
+<section class="ml-section ml-section--surface">
+    <div class="ml-container">
+        <div class="ml-section-head" data-reveal>
+            <div>
+                <div class="ml-eyebrow">Услуги</div>
+                <h2 class="ml-h2">Разработка программного обеспечения на заказ</h2>
             </div>
+            <p class="ml-lead ml-max-600 ml-mb-0">Мы разрабатываем ИТ-решения для клиентов, хорошо знающих особенности своего бизнеса, и помогаем превратить эти знания в эффективно работающий продукт.</p>
         </div>
-        <div class="row position-relative">
-            <figure class="offer-circleimage mb-0">
-                <img src="~/images/offer-circleimage.png" alt="" class="img-fluid">
-            </figure>
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 article_padding">
-                <div class="offer_boxcontent">
-                    <div class="upper_portion">
-                        <figure class="mb-0"><img src="~/images/offer-image1.jpg" class="article_img" alt="Соблюдение сроков разработки — преимущество Big Lava"></figure>
-                        <div class="image_content">
-                            <figure class="offer-icon">
-                                <img src="~/images/offer-icon1.png" alt="Иконка: соблюдение сроков" class="img-fluid">
-                            </figure>
-                        </div>
-                    </div>
-                    <div class="lower_portion_wrapper">
-                        <div class="lower_portion">
-                            <h4 class="mb-0">Соблюдаем сроки: предоставляем план работ и четко следуем графику</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 article_padding">
-                <div class="offer_boxcontent">
-                    <div class="upper_portion">
-                        <figure class="mb-0"><img src="~/images/offer-image2.jpg" class="article_img" alt="Работа с разными бюджетами — преимущество Big Lava"></figure>
-                        <div class="image_content">
-                            <figure class="offer-icon offer-icon2">
-                                <img src="~/images/offer-icon2.png" alt="Иконка: гибкие бюджеты" class="img-fluid">
-                            </figure>
-                        </div>
-                    </div>
-                    <div class="lower_portion_wrapper">
-                        <div class="lower_portion">
-                            <h4 class="mb-0">Работаем с разными бюджетами: найдем выгодное решение</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 article_padding">
-                <div class="offer_boxcontent mb-0">
-                    <div class="upper_portion">
-                        <figure class="mb-0"><img src="~/images/offer-image3.jpg" class="article_img" alt="Повышение квалификации специалистов Big Lava"></figure>
-                        <div class="image_content">
-                            <figure class="offer-icon">
-                                <img src="~/images/offer-icon3.png" alt="Иконка: обучение специалистов" class="img-fluid">
-                            </figure>
-                        </div>
-                    </div>
-                    <div class="lower_portion_wrapper">
-                        <div class="lower_portion">
-                            <h4 class="mb-0">Наши специалисты обучаются и повышают компетенции</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+        <div class="ml-rows" data-reveal-stagger>
+            <a class="ml-row" href="/service">
+                <span class="ml-row__num">01</span>
+                <h3 class="ml-row__title">Мобильная разработка</h3>
+                <p class="ml-row__desc">Профессионально создаём мобильные приложения для iOS и Android — от MVP до сложных решений.</p>
+                <span class="ml-row__arrow" aria-hidden="true">→</span>
+            </a>
+            <a class="ml-row" href="/design">
+                <span class="ml-row__num">02</span>
+                <h3 class="ml-row__title">UX/UI-дизайн</h3>
+                <p class="ml-row__desc">Удобные и красивые интерфейсы: UX-исследования, прототипы, дизайн-системы с учётом гайдлайнов iOS и Android.</p>
+                <span class="ml-row__arrow" aria-hidden="true">→</span>
+            </a>
+            <a class="ml-row" href="/technical">
+                <span class="ml-row__num">03</span>
+                <h3 class="ml-row__title">Техническое задание</h3>
+                <p class="ml-row__desc">Техническое задание на разработку приложения сэкономит бюджет и зафиксирует требования до старта.</p>
+                <span class="ml-row__arrow" aria-hidden="true">→</span>
+            </a>
+            <a class="ml-row" href="/service">
+                <span class="ml-row__num">04</span>
+                <h3 class="ml-row__title">Frontend и backend</h3>
+                <p class="ml-row__desc">Полноценная frontend-разработка, собственный backend, API и интеграции для прибыльности бизнеса.</p>
+                <span class="ml-row__arrow" aria-hidden="true">→</span>
+            </a>
+            <a class="ml-row" href="/yadro/">
+                <span class="ml-row__num">05</span>
+                <h3 class="ml-row__title">ИИ-агенты ЯДРО</h3>
+                <p class="ml-row__desc">ИИ-агент для Telegram, MAX и WhatsApp: обработка заказов и записи с интеграцией amoCRM.</p>
+                <span class="ml-row__arrow" aria-hidden="true">→</span>
+            </a>
         </div>
     </div>
-    <figure class="offer-bottomlayer mb-0">
-        <img src="~/images/offer-bottomlayer.png" alt="" class="img-fluid">
-    </figure>
-</section>
-<!-- About Us -->
-<section class="about-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 col-md-12 col-sm-12 col-12 order-lg-1 order-2">
-                <div class="about_wrapper">
-                    <figure class="mb-0 about-image1">
-                        <img src="~/images/about-image1.jpg" alt="Команда Big Lava за работой" class="">
-                    </figure>
-                    <figure class="mb-0 about-image2">
-                        <img src="~/images/about-image2.jpg" alt="Офис студии Big Lava" class="img-fluid">
-                    </figure>
-                    <div class="image-circle">
-                        <div class="years">
-                            <span class="text-white value counter">6</span>
-                            <sup class="text-white mb-0 plus">+</sup>
-                            <span class="text-white text">Многолетний опыт работы</span>
-                        </div>
-                        <figure class="mb-0 about-imagecircle">
-                            <img src="~/images/about-imagecircle.png" alt="" class="">
-                        </figure>
-                    </div>
-                    <figure class="mb-0 about-dot">
-                        <img src="~/images/about-dot.png" alt="" class="img-fluid">
-                    </figure>
-                    <figure class="mb-0 about-leftcircle">
-                        <img src="~/images/about-leftcircle.png" alt="" class="img-fluid">
-                    </figure>
-                    <figure class="mb-0 about-layer">
-                        <img src="~/images/about-layer.png" alt="" class="img-fluid">
-                    </figure>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-12 col-sm-12 col-12 order-lg-2 order-1">
-                <div class="about_content" data-aos                                                ="fade-right">
-                    <h6>О нас</h6>
-                    <h3 class="text-white">Помогаем бизнесу формировать завтрашний день.</h3>
-                    <p class="text1">
-                        Технологии меняют мир — мы помогаем бизнесу успевать за этими изменениями.
-                        Наша команда создает не просто мобильные приложения, а цифровые решения, которые упрощают процессы, увеличивают прибыль и выводят компании на новый уровень. Мы верим, что будущее бизнеса — в умных технологиях, и помогаем клиентам стать частью этого будущего уже сегодня.
-                    </p>
-                    
-                    <a class="read_more text-white text-decoration-none" href="./contact">
-                        Связь с нами
-                        <figure class="mb-0"><img src="~/images/button-arrow.png" alt="" class="img-fluid"></figure>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <figure class="mb-0 about-rightimage">
-        <img src="~/images/about-rightimage.png" alt="" class="img-fluid">
-    </figure>
-    <figure class="mb-0 about-rightcircle">
-        <img src="~/images/about-rightcircle.png" alt="" class="img-fluid">
-    </figure>
 </section>
 
-<!-- Project -->
-<section class="project-section" style="padding: 80px 0;">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 text-center" style="margin-bottom: 40px;">
-                <h6>Недавние проекты</h6>
-                <h3>Наши последние работы</h3>
-                <p style="max-width: 720px; margin: 0 auto;">
-                    Каждый наш проект — это не просто приложение, а уникальное цифровое решение, созданное под конкретные бизнес-задачи.
-                </p>
+<!-- Why us -->
+<section class="ml-section ml-section--light">
+    <div class="ml-container">
+        <div class="pg-home-about" data-reveal>
+            <div>
+                <div class="pg-home-about__big">6<sup>+</sup></div>
+                <p class="pg-home-about__cap">лет опыта в разработке</p>
+            </div>
+            <div>
+                <div class="ml-eyebrow">Почему Big Lava</div>
+                <h2 class="ml-h2">Помогаем бизнесу формировать завтрашний день</h2>
+                <p class="ml-lead ml-mt-m ml-mb-0">Технологии меняют мир — мы помогаем бизнесу успевать за этими изменениями. Создаём цифровые решения, которые упрощают процессы и выводят компании на новый уровень.</p>
             </div>
         </div>
 
-        <div class="cards-grid">
-            <!-- TODO: заменить на реальный кейс -->
-            <div class="card-item">
-                <div class="card-item-image">
-                    <img src="~/images/post/og-case-mobileapp.jpg" alt="[Название проекта] — мобильное приложение">
+        <div class="ml-grid ml-grid-3" data-reveal-stagger>
+            <div class="ml-card">
+                <div class="ml-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
                 </div>
-                <div class="card-item-body">
-                    <span class="card-item-badge">Мобильное приложение</span>
-                    <h3 class="card-item-title">[Название проекта]</h3>
-                    <p class="card-item-result">[Результат: срок разработки, стек, измеримый эффект]</p>
-                    <a class="card-item-link" href="/portfolio">Подробнее <i class="fa fa-arrow-right"></i></a>
-                </div>
+                <h3>Соблюдаем сроки</h3>
+                <p>Предоставляем план работ и чётко следуем графику.</p>
             </div>
-
-            <!-- TODO: заменить на реальный кейс -->
-            <div class="card-item">
-                <div class="card-item-image">
-                    <img src="~/images/post/og-case-mvp.jpg" alt="[Название проекта] — MVP">
+            <div class="ml-card">
+                <div class="ml-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h3"/></svg>
                 </div>
-                <div class="card-item-body">
-                    <span class="card-item-badge">MVP</span>
-                    <h3 class="card-item-title">[Название проекта]</h3>
-                    <p class="card-item-result">[Результат: во сколько раз сократили бюджет за счёт MVP-подхода]</p>
-                    <a class="card-item-link" href="/portfolio">Подробнее <i class="fa fa-arrow-right"></i></a>
-                </div>
+                <h3>Работаем с разными бюджетами</h3>
+                <p>Найдём выгодное решение — от MVP до сложной системы.</p>
             </div>
-
-            <!-- TODO: заменить на реальный кейс -->
-            <div class="card-item">
-                <div class="card-item-image">
-                    <img src="~/images/post/og-case-crossplatform.jpg" alt="[Название проекта] — кроссплатформенная разработка">
+            <div class="ml-card">
+                <div class="ml-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg>
                 </div>
-                <div class="card-item-body">
-                    <span class="card-item-badge">Кроссплатформа</span>
-                    <h3 class="card-item-title">[Название проекта]</h3>
-                    <p class="card-item-result">[Результат: запуск на iOS и Android с единой кодовой базой]</p>
-                    <a class="card-item-link" href="/portfolio">Подробнее <i class="fa fa-arrow-right"></i></a>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-12 text-center" style="margin-top: 40px;">
-                <a class="get_started text-white text-decoration-none" href="/portfolio">
-                    Смотреть все кейсы
-                    <figure class="mb-0"><img src="~/images/button-arrow.png" alt="" class="img-fluid"></figure>
-                </a>
+                <h3>Постоянно растём</h3>
+                <p>Наши специалисты обучаются и повышают компетенции.</p>
             </div>
         </div>
     </div>
 </section>
 
-@await Html.PartialAsync("_Testimonials")
+<!-- Process -->
+<section class="ml-section">
+    <div class="ml-container">
+        <div class="ml-section-head" data-reveal>
+            <div>
+                <div class="ml-eyebrow">Как мы работаем</div>
+                <h2 class="ml-h2">Полный цикл — от идеи до запуска</h2>
+            </div>
+            <a class="ml-btn ml-btn--ghost" href="/contact">Узнать стоимость <span class="ml-arrow">→</span></a>
+        </div>
+        <div class="ml-steps" data-reveal-stagger>
+            <div class="ml-step">
+                <h3>Знакомство</h3>
+                <p>Знакомимся с вами, вашим бизнесом и идеей продукта.</p>
+            </div>
+            <div class="ml-step">
+                <h3>Выявление потребностей</h3>
+                <p>Разбираемся, какие задачи должно решать приложение для бизнеса и пользователей.</p>
+            </div>
+            <div class="ml-step">
+                <h3>Постановка задачи</h3>
+                <p>Фиксируем требования в техническом задании и составляем план работ.</p>
+            </div>
+            <div class="ml-step">
+                <h3>Разработка</h3>
+                <p>Проектируем дизайн, пишем frontend и backend, подключаем интеграции.</p>
+            </div>
+            <div class="ml-step">
+                <h3>Тестирование</h3>
+                <p>Проверяем продукт и дорабатываем его до стабильной работы.</p>
+            </div>
+            <div class="ml-step">
+                <h3>Запуск проекта</h3>
+                <p>Выпускаем приложение и остаёмся рядом для поддержки.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing teaser -->
+<section class="ml-section ml-section--surface">
+    <div class="ml-container">
+        <div class="ml-section-head" data-reveal>
+            <div>
+                <div class="ml-eyebrow">Тарифы</div>
+                <h2 class="ml-h2">Прозрачные цены и сроки</h2>
+            </div>
+            <a class="ml-link" href="/pricingplan">Все тарифы <span class="ml-arrow">→</span></a>
+        </div>
+        <div class="pg-home-teasers" data-reveal-stagger>
+            <a class="pg-home-teaser" href="/pricingplan">
+                <h3 class="pg-home-teaser__name">Простое</h3>
+                <span class="pg-home-teaser__for">MVP, визитка</span>
+                <span class="pg-home-teaser__value">до 500 000 ₽</span>
+                <span class="pg-home-teaser__term">Срок: до 2 мес.</span>
+            </a>
+            <a class="pg-home-teaser pg-home-teaser--featured" href="/pricingplan">
+                <h3 class="pg-home-teaser__name">Среднее</h3>
+                <span class="pg-home-teaser__for">Каталог, блог</span>
+                <span class="pg-home-teaser__value">до 1 200 000 ₽</span>
+                <span class="pg-home-teaser__term">Срок: 3–6 мес.</span>
+            </a>
+            <a class="pg-home-teaser" href="/pricingplan">
+                <h3 class="pg-home-teaser__name">Сложное</h3>
+                <span class="pg-home-teaser__for">Маркетплейс, соцсеть</span>
+                <span class="pg-home-teaser__value">3 000 000+ ₽</span>
+                <span class="pg-home-teaser__term">Срок: 6–12+ мес.</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Blog -->
+<section class="ml-section">
+    <div class="ml-container">
+        <div class="ml-section-head" data-reveal>
+            <div>
+                <div class="ml-eyebrow">Блог</div>
+                <h2 class="ml-h2">Статьи о создании мобильных приложений</h2>
+            </div>
+            <a class="ml-link" href="/blog">Все статьи <span class="ml-arrow">→</span></a>
+        </div>
+        <div class="ml-posts" data-reveal-stagger>
+            <a class="ml-post" href="/blog/mvp">
+                <div class="ml-post__media">
+                    <img src="~/images/post/og-mvp.jpg" alt="MVP мобильного приложения: как проверить идею с минимальным бюджетом">
+                </div>
+                <div class="ml-post__meta"><span class="ml-tag">Разработка</span><span>20 сентября 2026 · 4 мин</span></div>
+                <h3 class="ml-post__title">MVP мобильного приложения: как проверить идею с минимальным бюджетом</h3>
+                <p class="ml-post__excerpt">Что такое MVP мобильного приложения, из чего он состоит и сколько стоит.</p>
+            </a>
+            <a class="ml-post" href="/QuamDevelopMobili">
+                <div class="ml-post__media">
+                    <img src="~/images/post/og-quamdevelopmobili.jpg" alt="Сколько стоит разработка приложения для бизнеса">
+                </div>
+                <div class="ml-post__meta"><span class="ml-tag">Разработка</span><span>28 февраля 2025 · 8 мин</span></div>
+                <h3 class="ml-post__title">Сколько стоит разработка приложения для бизнеса?</h3>
+                <p class="ml-post__excerpt">Разработка мобильного приложения — инвестиция, которая может значительно увеличить доход компании.</p>
+            </a>
+            <a class="ml-post" href="/singlepost">
+                <div class="ml-post__media">
+                    <img src="~/images/post-featured.jpg" alt="Разработка успешного мобильного приложения: от идеи до запуска">
+                </div>
+                <div class="ml-post__meta"><span class="ml-tag">Разработка</span><span>21 января 2025 · 9 мин</span></div>
+                <h3 class="ml-post__title">Разработка успешного мобильного приложения: от идеи до запуска</h3>
+                <p class="ml-post__excerpt">Каковы ключи к разработке успешного мобильного приложения.</p>
+            </a>
+        </div>
+    </div>
+</section>

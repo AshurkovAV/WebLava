@@ -1,283 +1,253 @@
-﻿@{
+@{
     ViewData["Title"] = "Пример технического задания на мобильное приложение | Big Lava";
     ViewData["Description"] = "Образец технического задания на мобильное приложение для Android: структура, требования и функционал — на что ориентироваться при заказе разработки.";
-    ViewData["ActivePage"] = "technical";
+    ViewData["ActivePage"] = "service";
 }
 
-<section class="technical-tz-page">
+@section Head {
     <style>
-        :root {
-            --bg-dark: #121212;
-            --bg-card: #1E1E1E;
-            --primary: #FF6B00;
-            --text-main: #E0E0E0;
-            --text-secondary: #A0A0A0;
-        }
-
-        .technical-tz-page {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            line-height: 1.6;
-        }
-
-        .technical-tz-page .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .technical-tz-page header {
-            border-bottom: 3px solid var(--primary);
-            padding-bottom: 15px;
-            margin-bottom: 30px;
-        }
-
-        .technical-tz-page h1 {
-            color: var(--primary);
-            font-size: 2.5rem;
-            margin: 0;
-            font-weight: 700;
-        }
-
-        .technical-tz-page h2 {
-            color: var(--primary);
-            font-size: 1.8rem;
-            border-left: 4px solid var(--primary);
-            padding-left: 15px;
-            margin: 40px 0 20px;
-        }
-
-        .technical-tz-page h3 {
-            color: var(--text-main);
-            font-size: 1.3rem;
-            margin: 25px 0 15px;
-        }
-
-        .technical-tz-page .card {
-            background-color: var(--bg-card);
-            border-radius: 5px;
-            padding: 25px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-        }
-
-        .technical-tz-page table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-
-        .technical-tz-page th {
-            background-color: var(--primary);
-            color: #000;
-            text-align: left;
-            padding: 12px 15px;
-            font-weight: 700;
-        }
-
-        .technical-tz-page td {
-            padding: 10px 15px;
-            border-bottom: 1px solid #333;
-        }
-
-        .technical-tz-page tr:nth-child(even) {
-            background-color: rgba(255,107,0,0.05);
-        }
-
-        .technical-tz-page ul {
-            padding-left: 25px;
-        }
-
-        .technical-tz-page li {
-            margin-bottom: 10px;
-            position: relative;
-        }
-
-            .technical-tz-page li:before {
-                content: "•";
-                color: var(--primary);
-                font-weight: bold;
-                display: inline-block;
-                width: 1em;
-                margin-left: -1em;
-            }
-
-        .technical-tz-page .signature-block {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 50px;
-        }
-
-        .technical-tz-page .signature-card {
-            width: 48%;
-            background-color: var(--bg-card);
-            padding: 20px;
-            border-radius: 5px;
-        }
-
-        .technical-tz-page .badge {
-            display: inline-block;
-            background-color: var(--primary);
-            color: #000;
-            padding: 3px 8px;
-            border-radius: 3px;
-            font-weight: bold;
-            font-size: 0.8rem;
-            margin-right: 10px;
-        }
-
-        .technical-tz-page .divider {
-            height: 2px;
-            background: linear-gradient(90deg, transparent 0%, var(--primary) 50%, transparent 100%);
-            margin: 30px 0;
-        }
-
-        .technical-tz-page .requirements-table {
-            width: 100%;
-        }
-
-            .technical-tz-page .requirements-table td:first-child {
-                width: 30%;
-                font-weight: 500;
-                color: var(--primary);
-            }
+        .pg-tz-spec { margin: 0; border-top: 1px solid var(--ml-line); }
+        .pg-tz-spec > div { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 8px 32px; padding: 20px 0; border-bottom: 1px solid var(--ml-line); }
+        .pg-tz-spec dt { color: var(--ml-muted); font-size: 15px; }
+        .pg-tz-spec dd { margin: 0; }
+        .ml-section--light .pg-tz-spec, .ml-section--light .pg-tz-spec > div { border-color: rgba(0,0,0,.14); }
+        .ml-section--light .pg-tz-spec dt { color: #6b6862; }
+        @@media (max-width: 680px) { .pg-tz-spec > div { grid-template-columns: 1fr; } }
+        .pg-tz-block + .pg-tz-block { margin-top: clamp(48px, 6vw, 88px); }
+        .pg-tz-block .ml-h3, .pg-tz-intro .ml-h3 { margin-bottom: 16px; }
+        .pg-tz-features { grid-template-columns: 1fr; }
+        .pg-tz-features .pg-tz-list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 24px; }
+        @@media (max-width: 860px) { .pg-tz-features .pg-tz-list { grid-template-columns: 1fr; } }
+        .pg-tz-sub { font-size: 14px; color: var(--ml-accent); font-variant-numeric: tabular-nums; margin-bottom: 12px; display: block; }
+        .pg-tz-card__num { display: block; font-size: 14px; color: var(--ml-accent); margin-bottom: 24px; }
+        .pg-tz-card p { color: var(--ml-text) !important; }
+        .pg-tz-list { list-style: none; display: grid; gap: 12px; margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--ml-line); }
+        .pg-tz-list li { display: flex; gap: 12px; color: var(--ml-muted); }
+        .pg-tz-list li::before { content: ""; flex: none; width: 6px; height: 6px; margin-top: 10px; border-radius: 50%; background: var(--ml-accent); }
+        .pg-tz-feature__head { display: flex; justify-content: space-between; gap: 16px; align-items: start; flex-wrap: wrap; }
+        .pg-tz-badge { border-color: rgba(255, 91, 31, .5); color: var(--ml-accent); }
+        .pg-tz-sign { display: flex; flex-direction: column; gap: 28px; }
+        .pg-tz-sign__line { border-bottom: 1px solid var(--ml-line-strong); height: 32px; }
+        .pg-tz-sign small { color: var(--ml-muted-2); font-size: 13px; }
+        .pg-tz-other .ml-card { display: flex; flex-direction: column; justify-content: space-between; min-height: 220px; }
+        .pg-tz-other .ml-card__go { margin-top: 32px; display: inline-flex; gap: 10px; align-items: center; font-weight: 500; }
+        .pg-tz-other a.ml-card:hover .ml-card__go { color: var(--ml-accent); }
+        [id^="tz-"] { scroll-margin-top: 100px; }
     </style>
-    <div class="container">
-        <header>
-            <h1>Техническое задание на мобильное приложение (пример)</h1>
-            <p style="color: var(--text-secondary); font-size: 1.2rem;">на разработку мобильного приложения для Android</p>
-        </header>
+}
 
-        <div class="card">
-            <h2>1. Введение</h2>
-
-            <h3>1.1. Назначение документа</h3>
-            <p>Настоящее техническое задание (ТЗ) определяет цели, функциональные и технические требования к разработке мобильного приложения <strong>[Название приложения]</strong> для операционной системы Android.</p>
-
-            <h3>1.2. Цели проекта</h3>
-            <ul>
-                <li>Решает конкретную проблему пользователей (например: упрощает заказ услуг, автоматизирует бизнес-процессы, предоставляет доступ к образовательному контенту)</li>
-                <li>Повышает вовлеченность аудитории за счет удобного интерфейса и полезного функционала</li>
-                <li>Увеличивает конверсию (если приложение коммерческое: продажи, подписки, реклама)</li>
-                <li>Снижает нагрузку на другие каналы (например, заменяет бумажный документооборот или звонки в поддержку)</li>
-                <li>Обеспечивает конкурентное преимущество (уникальные функции, лучшее UX, интеграция с нужными сервисами)</li>
-            </ul>
+<section class="ml-page-hero">
+    <div class="ml-container">
+        <nav class="ml-breadcrumbs" aria-label="Хлебные крошки">
+            <a href="/">Главная</a><span aria-hidden="true">/</span><a href="/service">Услуги</a><span aria-hidden="true">/</span><span>Техническое задание</span>
+        </nav>
+        <p class="ml-eyebrow" data-reveal>Техническое задание</p>
+        <h1 class="ml-h1 ml-max-800" data-reveal>Техническое задание на мобильное приложение (пример)</h1>
+        <p class="ml-lead" data-reveal>Образец ТЗ на разработку мобильного приложения для Android: структура, требования и функционал — на что ориентироваться при заказе разработки. Хорошее техническое задание сэкономит бюджет.</p>
+        <div class="ml-hero__actions" data-reveal>
+            <a class="ml-btn ml-btn--accent ml-btn--lg" href="/contact">Заказать ТЗ <span class="ml-arrow">→</span></a>
+            <a class="ml-btn ml-btn--ghost ml-btn--lg" href="#tz-structure">Смотреть пример</a>
         </div>
+    </div>
+</section>
 
-        <div class="card">
-            <h2>2. Общие требования</h2>
-
-            <h3>2.1. Платформы и устройства</h3>
-            <table class="requirements-table">
-                <tr>
-                    <td>Поддерживаемые версии Android</td>
-                    <td>10 и выше (или другая минимальная версия)</td>
-                </tr>
-                <tr>
-                    <td>Типы устройств</td>
-                    <td>Смартфоны, планшеты (если требуется)</td>
-                </tr>
-                <tr>
-                    <td>Адаптация под экраны</td>
-                    <td>Поддержка различных разрешений (HD, Full HD, 2K) и ориентаций (портретная, альбомная)</td>
-                </tr>
-            </table>
-
-            <h3>2.2. Языки интерфейса</h3>
-            <table class="requirements-table">
-                <tr>
-                    <td>Основной язык</td>
-                    <td>Русский</td>
-                </tr>
-                <tr>
-                    <td>Дополнительные языки</td>
-                    <td>Английский, другие (если нужно)</td>
-                </tr>
-            </table>
-
-            <h3>2.3. Технические ограничения</h3>
-            <table class="requirements-table">
-                <tr>
-                    <td>Размер приложения</td>
-                    <td>Не более 50 МБ (оптимизация под Google Play)</td>
-                </tr>
-                <tr>
-                    <td>Минимальные требования</td>
-                    <td>Оперативная память: 2 ГБ+<br>Процессор: ARMv8, 4 ядра</td>
-                </tr>
-                <tr>
-                    <td>Оффлайн-режим</td>
-                    <td>Частичная или полная работа без интернета (если требуется)</td>
-                </tr>
-            </table>
-        </div>
-
-        <div class="card">
-            <h2>3. Функциональные требования</h2>
-
-            <h3>3.1. Основной функционал</h3>
-            <table>
-                <tr>
-                    <th>Функция</th>
-                    <th>Описание</th>
-                    <th>Приоритет</th>
-                </tr>
-                <tr>
-                    <td>Регистрация и авторизация</td>
-                    <td>
-                        <ul style="padding-left: 0; list-style: none;">
-                            <li>Через номер телефона (SMS-подтверждение)</li>
-                            <li>Через email и пароль</li>
-                            <li>Через соцсети (VK, Google, Telegram и др.)</li>
-                        </ul>
-                    </td>
-                    <td><span class="badge">HIGH</span></td>
-                </tr>
-                <tr>
-                    <td>Личный кабинет</td>
-                    <td>
-                        <ul style="padding-left: 0; list-style: none;">
-                            <li>Профиль пользователя (редактирование данных, аватар)</li>
-                            <li>История действий/заказов</li>
-                            <li>Настройки уведомлений</li>
-                        </ul>
-                    </td>
-                    <td><span class="badge">HIGH</span></td>
-                </tr>
-            </table>
-
-            <h3>3.2. Дополнительные функции</h3>
-            <table class="requirements-table">
-                <tr>
-                    <td>Интеграция с сервисами</td>
-                    <td>Google Maps, Firebase, платежные системы (СБП, ЮKassa, Stripe)</td>
-                </tr>
-                <tr>
-                    <td>Геймификация</td>
-                    <td>Бонусы, рейтинги, достижения</td>
-                </tr>
-                <tr>
-                    <td>Синхронизация</td>
-                    <td>С веб-версией (если есть)</td>
-                </tr>
-            </table>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="signature-block">
-            <div class="signature-card">
-                <h3>ЗАКАЗЧИК</h3>
-                <p>_________________________</p>
-                <p>Дата: _____._____.2024</p>
+<section class="ml-section ml-section--tight" id="tz-structure" aria-labelledby="tz-structure-title">
+    <div class="ml-container">
+        <div class="ml-section-head">
+            <div data-reveal>
+                <p class="ml-eyebrow">Структура документа</p>
+                <h2 class="ml-h2" id="tz-structure-title">Из чего состоит ТЗ</h2>
             </div>
+        </div>
+        <div class="ml-rows" data-reveal-stagger>
+            <a class="ml-row" href="#tz-intro">
+                <span class="ml-row__num">01</span>
+                <h3 class="ml-row__title">Введение</h3>
+                <p class="ml-row__desc">Назначение документа и цели проекта.</p>
+                <span class="ml-row__arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6" /></svg></span>
+            </a>
+            <a class="ml-row" href="#tz-general">
+                <span class="ml-row__num">02</span>
+                <h3 class="ml-row__title">Общие требования</h3>
+                <p class="ml-row__desc">Платформы и устройства, языки интерфейса, технические ограничения.</p>
+                <span class="ml-row__arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6" /></svg></span>
+            </a>
+            <a class="ml-row" href="#tz-functional">
+                <span class="ml-row__num">03</span>
+                <h3 class="ml-row__title">Функциональные требования</h3>
+                <p class="ml-row__desc">Основной функционал с приоритетами и дополнительные функции.</p>
+                <span class="ml-row__arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6" /></svg></span>
+            </a>
+        </div>
+    </div>
+</section>
 
-            <div class="signature-card">
-                <h3>ИСПОЛНИТЕЛЬ</h3>
-                <p>_________________________</p>
-                <p>Дата: _____._____.2024</p>
+<!-- 1. Введение -->
+<section class="ml-section" id="tz-intro" aria-labelledby="tz-intro-title">
+    <div class="ml-container">
+        <div class="ml-split">
+            <div data-reveal>
+                <p class="ml-eyebrow">Раздел 1</p>
+                <h2 class="ml-h2" id="tz-intro-title">Введение</h2>
             </div>
+            <div class="pg-tz-intro" data-reveal>
+                <span class="pg-tz-sub">1.1</span>
+                <h3 class="ml-h3">Назначение документа</h3>
+                <p class="ml-lead">Настоящее техническое задание (ТЗ) определяет цели, функциональные и технические требования к разработке мобильного приложения <strong>«Название приложения»</strong> для операционной системы Android.</p>
+            </div>
+        </div>
+
+        <div class="ml-mt-l">
+            <span class="pg-tz-sub" data-reveal>1.2</span>
+            <h3 class="ml-h3" data-reveal>Цели проекта</h3>
+            <div class="ml-grid ml-grid-3 ml-mt-m" data-reveal-stagger>
+                <div class="ml-card pg-tz-card"><span class="pg-tz-card__num">01</span><p>Решает конкретную проблему пользователей: упрощает заказ услуг, автоматизирует бизнес-процессы, предоставляет доступ к образовательному контенту.</p></div>
+                <div class="ml-card pg-tz-card"><span class="pg-tz-card__num">02</span><p>Повышает вовлеченность аудитории за счет удобного интерфейса и полезного функционала.</p></div>
+                <div class="ml-card pg-tz-card"><span class="pg-tz-card__num">03</span><p>Увеличивает конверсию, если приложение коммерческое: продажи, подписки, реклама.</p></div>
+                <div class="ml-card pg-tz-card"><span class="pg-tz-card__num">04</span><p>Снижает нагрузку на другие каналы — например, заменяет бумажный документооборот или звонки в поддержку.</p></div>
+                <div class="ml-card pg-tz-card"><span class="pg-tz-card__num">05</span><p>Обеспечивает конкурентное преимущество: уникальные функции, лучший UX, интеграция с нужными сервисами.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 2. Общие требования -->
+<section class="ml-section ml-section--light" id="tz-general" aria-labelledby="tz-general-title">
+    <div class="ml-container">
+        <div class="ml-split">
+            <div data-reveal>
+                <p class="ml-eyebrow">Раздел 2</p>
+                <h2 class="ml-h2" id="tz-general-title">Общие требования</h2>
+            </div>
+            <div>
+                <div class="pg-tz-block" data-reveal>
+                    <span class="pg-tz-sub">2.1</span>
+                    <h3 class="ml-h3">Платформы и устройства</h3>
+                    <dl class="pg-tz-spec ml-mt-m">
+                        <div><dt>Поддерживаемые версии Android</dt><dd>10 и выше (или другая минимальная версия)</dd></div>
+                        <div><dt>Типы устройств</dt><dd>Смартфоны, планшеты (если требуется)</dd></div>
+                        <div><dt>Адаптация под экраны</dt><dd>Поддержка различных разрешений (HD, Full HD, 2K) и ориентаций (портретная, альбомная)</dd></div>
+                    </dl>
+                </div>
+                <div class="pg-tz-block" data-reveal>
+                    <span class="pg-tz-sub">2.2</span>
+                    <h3 class="ml-h3">Языки интерфейса</h3>
+                    <dl class="pg-tz-spec ml-mt-m">
+                        <div><dt>Основной язык</dt><dd>Русский</dd></div>
+                        <div><dt>Дополнительные языки</dt><dd>Английский, другие (если нужно)</dd></div>
+                    </dl>
+                </div>
+                <div class="pg-tz-block" data-reveal>
+                    <span class="pg-tz-sub">2.3</span>
+                    <h3 class="ml-h3">Технические ограничения</h3>
+                    <dl class="pg-tz-spec ml-mt-m">
+                        <div><dt>Размер приложения</dt><dd>Не более 50 МБ (оптимизация под Google Play)</dd></div>
+                        <div><dt>Минимальные требования</dt><dd>Оперативная память: 2 ГБ+<br>Процессор: ARMv8, 4 ядра</dd></div>
+                        <div><dt>Оффлайн-режим</dt><dd>Частичная или полная работа без интернета (если требуется)</dd></div>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 3. Функциональные требования -->
+<section class="ml-section" id="tz-functional" aria-labelledby="tz-functional-title">
+    <div class="ml-container">
+        <div class="ml-split">
+            <div data-reveal>
+                <p class="ml-eyebrow">Раздел 3</p>
+                <h2 class="ml-h2" id="tz-functional-title">Функциональные требования</h2>
+            </div>
+            <div>
+                <div class="pg-tz-block" data-reveal>
+                    <span class="pg-tz-sub">3.1</span>
+                    <h3 class="ml-h3">Основной функционал</h3>
+                    <div class="ml-grid pg-tz-features ml-mt-m">
+                        <div class="ml-card">
+                            <div class="pg-tz-feature__head">
+                                <h4 class="ml-h4">Регистрация и авторизация</h4>
+                                <span class="ml-tag pg-tz-badge">Приоритет: HIGH</span>
+                            </div>
+                            <ul class="pg-tz-list">
+                                <li>Через номер телефона (SMS-подтверждение)</li>
+                                <li>Через email и пароль</li>
+                                <li>Через соцсети (VK, Google, Telegram и др.)</li>
+                            </ul>
+                        </div>
+                        <div class="ml-card">
+                            <div class="pg-tz-feature__head">
+                                <h4 class="ml-h4">Личный кабинет</h4>
+                                <span class="ml-tag pg-tz-badge">Приоритет: HIGH</span>
+                            </div>
+                            <ul class="pg-tz-list">
+                                <li>Профиль пользователя (редактирование данных, аватар)</li>
+                                <li>История действий/заказов</li>
+                                <li>Настройки уведомлений</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="pg-tz-block" data-reveal>
+                    <span class="pg-tz-sub">3.2</span>
+                    <h3 class="ml-h3">Дополнительные функции</h3>
+                    <dl class="pg-tz-spec ml-mt-m">
+                        <div><dt>Интеграция с сервисами</dt><dd>Google Maps, Firebase, платежные системы (СБП, ЮKassa, Stripe)</dd></div>
+                        <div><dt>Геймификация</dt><dd>Бонусы, рейтинги, достижения</dd></div>
+                        <div><dt>Синхронизация</dt><dd>С веб-версией (если есть)</dd></div>
+                    </dl>
+                </div>
+                <div class="pg-tz-block" data-reveal>
+                    <h3 class="ml-h3">Согласование</h3>
+                    <p class="ml-muted ml-mt-s">Документ подписывают обе стороны.</p>
+                    <div class="ml-grid ml-grid-2 ml-mt-m">
+                        <div class="ml-card pg-tz-sign">
+                            <h4 class="ml-h4">Заказчик</h4>
+                            <div><div class="pg-tz-sign__line"></div><small>Подпись</small></div>
+                            <div><div class="pg-tz-sign__line"></div><small>Дата</small></div>
+                        </div>
+                        <div class="ml-card pg-tz-sign">
+                            <h4 class="ml-h4">Исполнитель</h4>
+                            <div><div class="pg-tz-sign__line"></div><small>Подпись</small></div>
+                            <div><div class="pg-tz-sign__line"></div><small>Дата</small></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ml-section ml-section--tight pg-tz-other" aria-labelledby="tz-other">
+    <div class="ml-container">
+        <div class="ml-section-head">
+            <h2 class="ml-h3" id="tz-other" data-reveal>Другие услуги</h2>
+        </div>
+        <div class="ml-grid ml-grid-3" data-reveal-stagger>
+            <a class="ml-card" href="/design">
+                <div>
+                    <p class="ml-eyebrow ml-mb-0">Дизайн</p>
+                    <h3 class="ml-mt-s">UX/UI-дизайн</h3>
+                    <p>Удобные и красивые интерфейсы для вашего бизнеса.</p>
+                </div>
+                <span class="ml-card__go">Перейти <span aria-hidden="true">→</span></span>
+            </a>
+            <a class="ml-card" href="/service">
+                <div>
+                    <p class="ml-eyebrow ml-mb-0">Разработка</p>
+                    <h3 class="ml-mt-s">Все услуги</h3>
+                    <p>Мобильная разработка, frontend и backend для вашего бизнеса.</p>
+                </div>
+                <span class="ml-card__go">Перейти <span aria-hidden="true">→</span></span>
+            </a>
+            <a class="ml-card" href="/blog/mvp">
+                <div>
+                    <p class="ml-eyebrow ml-mb-0">Блог</p>
+                    <h3 class="ml-mt-s">MVP приложения</h3>
+                    <p>Как проверить идею с минимальным бюджетом до полноценной разработки.</p>
+                </div>
+                <span class="ml-card__go">Читать <span aria-hidden="true">→</span></span>
+            </a>
         </div>
     </div>
 </section>

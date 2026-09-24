@@ -1,114 +1,167 @@
-﻿@{
+@{
     ViewData["Title"] = "Услуги по разработке мобильных приложений | Big Lava";
     ViewData["ActivePage"] = "service";
     ViewData["Description"] = "Профессиональная разработка мобильных приложений, UX/UI дизайн, frontend и backend разработка. Создаем IT-решения для вашего бизнеса.";
 }
 
-<!-- Semantic main tag for better document structure -->
-<main>
-    <!-- Header Section with proper heading hierarchy -->
-    <header class="sub-banner sub-banner4" role="banner">
-        <figure class="sub-bannerleftlayer mb-0" aria-hidden="true">
-            <img src="~/images/sub-bannerleftlayer.png" alt="" class="img-fluid" loading="lazy">
-        </figure>
+@section Head {
+    <style>
+        .pg-svc-price { display: flex; flex-direction: column; }
+        .pg-svc-price__value { font-family: var(--ml-display); font-size: clamp(30px, 3vw, 44px); font-weight: 600; letter-spacing: -.035em; line-height: 1; margin: 28px 0 10px; color: var(--ml-ink); }
+        .pg-svc-price .ml-card__sub { margin-top: 4px; }
+        .pg-svc-other .ml-card { display: flex; flex-direction: column; justify-content: space-between; min-height: 220px; }
+        .pg-svc-other .ml-card__go { margin-top: 32px; display: inline-flex; gap: 10px; align-items: center; font-weight: 500; }
+        .pg-svc-other a.ml-card:hover .ml-card__go { color: var(--ml-accent); }
+    </style>
+}
 
-        @Html.Partial("Menu")
-
-        <section class="banner-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="banner_content" data-aos="fade-up">
-                            <figure class="service-rightcircle mb-0" aria-hidden="true">
-                                <img src="~/images/service-rightcircle.png" alt="" class="img-fluid" loading="lazy">
-                            </figure>
-                            <h1 class="text-white">Услуги по разработке IT-решений</h1>
-                            <p>Разрабатываем мобильные приложения и другие IT-продукты для вашего бизнеса</p>
-                            <div class="box" aria-label="Хлебные крошки">
-                                <span class="mb-0">Главная</span>
-                                <figure class="mb-0 arrow" aria-hidden="true"><img src="~/images/button-arrow.png" alt="" class="img-fluid" loading="lazy"></figure>
-                                <span class="mb-0 box_span">Услуги</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<div class="pg-svc">
+    <section class="ml-page-hero">
+        <div class="ml-container">
+            <nav class="ml-breadcrumbs" aria-label="Хлебные крошки">
+                <a href="/">Главная</a><span aria-hidden="true">/</span><span>Услуги</span>
+            </nav>
+            <p class="ml-eyebrow" data-reveal>Услуги</p>
+            <h1 class="ml-h1 ml-max-800" data-reveal>Услуги по разработке IT-решений</h1>
+            <p class="ml-lead" data-reveal>Разрабатываем мобильные приложения и другие IT-продукты для вашего бизнеса — от технического задания и дизайна до frontend и backend.</p>
+            <div class="ml-hero__actions" data-reveal>
+                <a class="ml-btn ml-btn--accent ml-btn--lg" href="/contact">Обсудить проект <span class="ml-arrow">→</span></a>
+                <a class="ml-btn ml-btn--ghost ml-btn--lg" href="/pricingplan">Тарифы и сроки</a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <figure class="banner-circleright mb-0" aria-hidden="true">
-            <img src="~/images/banner-circleright.png" class="img-fluid" alt="" loading="lazy">
-        </figure>
-        <figure class="sub-bannerrightlayer mb-0" aria-hidden="true">
-            <img src="~/images/sub-bannerrightlayer.png" alt="" class="img-fluid" loading="lazy">
-        </figure>
-    </header>
-
-    <!-- Services Section with semantic markup -->
-    <section class="servicepage-section service-section" itemscope itemtype="https://schema.org/Service">
-        <figure class="service-leftlayer mb-0" aria-hidden="true">
-            <img src="~/images/service-leftlayer.png" alt="" class="img-fluid" loading="lazy">
-        </figure>
-        <figure class="service-dotimage mb-0" aria-hidden="true">
-            <img src="~/images/service-dotimage.png" alt="" class="img-fluid" loading="lazy">
-        </figure>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="servicepage_content" data-aos="fade-right">
-                        <h2>Наши услуги</h2>
-                        <h3>Разработка программного обеспечения на заказ</h3>
-                        <p itemprop="description">
-                            Мы разрабатываем ИТ-решения для клиентов, хорошо знающих особенности своего бизнеса. Поможем превратить ваши знания в эффективно работающий продукт.
-                        </p>
-                        <figure class="offer-circleimage mb-0" aria-hidden="true">
-                            <img src="~/images/offer-circleimage.png" alt="" class="img-fluid" loading="lazy">
-                        </figure>
-                    </div>
+    <section class="ml-section ml-section--tight">
+        <div class="ml-container">
+            <div class="ml-split">
+                <div data-reveal>
+                    <p class="ml-eyebrow">Наши услуги</p>
+                    <h2 class="ml-h2">Разработка программного обеспечения на заказ</h2>
                 </div>
-            </div>
-
-            <!-- Services Carousel with proper heading structure -->
-            <div class="service_contentbox">
-                <div class="row">
-                    <div class="owl-carousel owl-theme">
-                        <!-- Each service item with microdata -->
-                        <div class="item" itemprop="hasOfferCatalog" itemscope itemtype="https://schema.org/OfferCatalog">
-                            <div class="service-box box-mb" itemprop="itemListElement" itemscope itemtype="https://schema.org/Offer">
-                                <figure class="service-marketicon">
-                                    <img src="~/images/service-marketicon.png" alt="Иконка технического задания" class="img-fluid" loading="lazy" itemprop="image">
-                                </figure>
-                                <h4 itemprop="name">Техническое задание</h4>
-                                <p class="text-size-18" itemprop="description">Техническое задание на разработку приложения сэкономит бюджет.</p>
-                                <a class="arrow text-decoration-none" href="./technical" itemprop="url"><i class="circle fa-thin fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-
-                        <div class="item" itemprop="hasOfferCatalog" itemscope itemtype="https://schema.org/OfferCatalog">
-                            <div class="service-box box-mb" itemprop="itemListElement" itemscope itemtype="https://schema.org/Offer">
-                                <figure class="service-producticon">
-                                    <img src="~/images/service-producticon.png" alt="Иконка мобильной разработки" class="img-fluid" loading="lazy" itemprop="image">
-                                </figure>
-                                <h4 itemprop="name">Мобильная разработка</h4>
-                                <p class="text-size-18" itemprop="description">Профессионально создаём мобильные приложения.</p>
-                                <a class="arrow text-decoration-none" href="./service" itemprop="url"><i class="circle fa-thin fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-
-                        <!-- Other service items follow the same pattern -->
-                        <!-- ... -->
-                    </div>
+                <div data-reveal>
+                    <p class="ml-lead">Мы разрабатываем ИТ-решения для клиентов, хорошо знающих особенности своего бизнеса. Поможем превратить ваши знания в эффективно работающий продукт.</p>
                 </div>
             </div>
         </div>
-
-        <figure class="service-rightlayer mb-0" aria-hidden="true">
-            <img src="~/images/service-rightlayer.png" alt="" class="img-fluid" loading="lazy">
-        </figure>
     </section>
-</main>
 
-<!-- Structured data for better search engine understanding -->
+    <section class="ml-section ml-section--tight" aria-labelledby="svc-list">
+        <div class="ml-container">
+            <div class="ml-section-head">
+                <h2 class="ml-h2" id="svc-list" data-reveal>Что мы делаем</h2>
+            </div>
+            <div class="ml-rows" data-reveal-stagger>
+                <a class="ml-row" href="/technical">
+                    <span class="ml-row__num">01</span>
+                    <h3 class="ml-row__title">Техническое задание</h3>
+                    <p class="ml-row__desc">Техническое задание на разработку приложения сэкономит бюджет: цели, требования и функционал фиксируются до старта.</p>
+                    <span class="ml-row__arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
+                </a>
+                <a class="ml-row" href="/design">
+                    <span class="ml-row__num">02</span>
+                    <h3 class="ml-row__title">UX/UI-дизайн</h3>
+                    <p class="ml-row__desc">Разрабатываем удобные и красивые интерфейсы: мобильные и веб-интерфейсы, прототипы, дизайн-системы.</p>
+                    <span class="ml-row__arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
+                </a>
+                <a class="ml-row" href="/pricingplan">
+                    <span class="ml-row__num">03</span>
+                    <h3 class="ml-row__title">Мобильная разработка</h3>
+                    <p class="ml-row__desc">Профессионально создаём мобильные приложения — от MVP и визитки до маркетплейса и соцсети.</p>
+                    <span class="ml-row__arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
+                </a>
+                <a class="ml-row" href="/blog/mvp">
+                    <span class="ml-row__num">04</span>
+                    <h3 class="ml-row__title">MVP приложения</h3>
+                    <p class="ml-row__desc">Проверяем бизнес-идею с минимальным бюджетом — до того, как тратить деньги на полноценную разработку.</p>
+                    <span class="ml-row__arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
+                </a>
+                <div class="ml-row">
+                    <span class="ml-row__num">05</span>
+                    <h3 class="ml-row__title">Frontend-разработка</h3>
+                    <p class="ml-row__desc">Полноценная frontend-разработка для прибыльности бизнеса.</p>
+                </div>
+                <div class="ml-row">
+                    <span class="ml-row__num">06</span>
+                    <h3 class="ml-row__title">Backend-разработка</h3>
+                    <p class="ml-row__desc">Разработка серверного ПО для функционирования проекта.</p>
+                </div>
+                <a class="ml-row" href="/yadro/">
+                    <span class="ml-row__num">07</span>
+                    <h3 class="ml-row__title">ЯДРО — ИИ-агенты</h3>
+                    <p class="ml-row__desc">ИИ-агенты для Telegram, MAX и WhatsApp.</p>
+                    <span class="ml-row__arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="ml-section ml-section--light" aria-labelledby="svc-prices">
+        <div class="ml-container">
+            <div class="ml-section-head">
+                <div data-reveal>
+                    <p class="ml-eyebrow">Стоимость</p>
+                    <h2 class="ml-h2" id="svc-prices">Сколько стоит мобильное приложение</h2>
+                </div>
+                <a class="ml-btn ml-btn--primary" href="/pricingplan" data-reveal>Все тарифы <span class="ml-arrow">→</span></a>
+            </div>
+            <div class="ml-grid ml-grid-3" data-reveal-stagger>
+                <article class="ml-card pg-svc-price">
+                    <h3>Простое</h3>
+                    <p class="ml-card__sub">MVP, визитка</p>
+                    <div class="pg-svc-price__value">до 500 000 ₽</div>
+                    <p>Срок: до 2 мес.</p>
+                </article>
+                <article class="ml-card pg-svc-price">
+                    <h3>Среднее</h3>
+                    <p class="ml-card__sub">Каталог, блог</p>
+                    <div class="pg-svc-price__value">до 1 200 000 ₽</div>
+                    <p>Срок: 3–6 мес.</p>
+                </article>
+                <article class="ml-card pg-svc-price">
+                    <h3>Сложное</h3>
+                    <p class="ml-card__sub">Маркетплейс, соцсеть</p>
+                    <div class="pg-svc-price__value">3 000 000+ ₽</div>
+                    <p>Срок: 6–12+ мес.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="ml-section ml-section--tight pg-svc-other" aria-labelledby="svc-other">
+        <div class="ml-container">
+            <div class="ml-section-head">
+                <h2 class="ml-h3" id="svc-other" data-reveal>Подробнее об услугах</h2>
+            </div>
+            <div class="ml-grid ml-grid-3" data-reveal-stagger>
+                <a class="ml-card" href="/design">
+                    <div>
+                        <p class="ml-eyebrow ml-mb-0">Дизайн</p>
+                        <h3 class="ml-mt-s">UX/UI-дизайн</h3>
+                        <p>Удобные и красивые интерфейсы для вашего бизнеса.</p>
+                    </div>
+                    <span class="ml-card__go">Перейти <span aria-hidden="true">→</span></span>
+                </a>
+                <a class="ml-card" href="/technical">
+                    <div>
+                        <p class="ml-eyebrow ml-mb-0">Документация</p>
+                        <h3 class="ml-mt-s">Техническое задание</h3>
+                        <p>Пример ТЗ на мобильное приложение: структура и требования.</p>
+                    </div>
+                    <span class="ml-card__go">Перейти <span aria-hidden="true">→</span></span>
+                </a>
+                <a class="ml-card" href="/pricingplan">
+                    <div>
+                        <p class="ml-eyebrow ml-mb-0">Цены</p>
+                        <h3 class="ml-mt-s">Тарифы и сроки</h3>
+                        <p>MVP, каталог или сложные решения — прозрачные цены и сроки.</p>
+                    </div>
+                    <span class="ml-card__go">Перейти <span aria-hidden="true">→</span></span>
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+
 <script type="application/ld+json">
     {
       "@@context": "https://schema.org",
@@ -123,22 +176,11 @@
         "@@type": "OfferCatalog",
         "name": "IT Услуги",
         "itemListElement": [
-          {
-            "@@type": "Offer",
-            "itemOffered": {
-              "@@type": "Service",
-              "name": "Техническое задание",
-              "description": "Техническое задание на разработку приложения сэкономит бюджет"
-            }
-          },
-          {
-            "@@type": "Offer",
-            "itemOffered": {
-              "@@type": "Service",
-              "name": "Мобильная разработка",
-              "description": "Профессионально создаём мобильные приложения"
-            }
-          }
+          { "@@type": "Offer", "itemOffered": { "@@type": "Service", "name": "Техническое задание", "description": "Техническое задание на разработку приложения сэкономит бюджет", "url": "https://biglv.ru/technical" } },
+          { "@@type": "Offer", "itemOffered": { "@@type": "Service", "name": "UX/UI-дизайн", "description": "Разрабатываем удобные и красивые интерфейсы", "url": "https://biglv.ru/design" } },
+          { "@@type": "Offer", "itemOffered": { "@@type": "Service", "name": "Мобильная разработка", "description": "Профессионально создаём мобильные приложения" } },
+          { "@@type": "Offer", "itemOffered": { "@@type": "Service", "name": "Frontend-разработка", "description": "Полноценная frontend-разработка для прибыльности бизнеса" } },
+          { "@@type": "Offer", "itemOffered": { "@@type": "Service", "name": "Backend-разработка", "description": "Разработка серверного ПО для функционирования проекта" } }
         ]
       }
     }

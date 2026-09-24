@@ -1,172 +1,158 @@
-﻿@{
+@{
     ViewData["Title"] = "UX/UI-дизайн мобильных приложений | Big Lava";
     ViewData["Description"] = "Разрабатываем удобные и красивые UX/UI-интерфейсы мобильных приложений для бизнеса: прототипирование, дизайн-макеты, тестирование юзабилити.";
-    ViewData["ActivePage"] = "design";
+    ViewData["ActivePage"] = "service";
 }
 
-<!-- Header  -->
-<div class="sub-banner sub-banner4">
-    <figure class="sub-bannerleftlayer mb-0">
-        <img src="~/images/sub-bannerleftlayer.png" alt="" class="img-fluid">
-    </figure>
-    @Html.Partial("Menu");
-    <section class="banner-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="banner_content" data-aos="fade-up">
-                        <figure class="service-rightcircle mb-0">
-                            <img src="~/images/service-rightcircle.png" alt="" class="img-fluid">
-                        </figure>
-                        <h1 class="text-white">UX/UI-дизайн</h1>
-                        <p>Разрабатываем удобные и красивые интерфейсы для вашего бизнеса</p>
-                        <div class="box">
-                            <span class="mb-0">Главная</span>
-                            <figure class="mb-0 arrow"><img src="~/images/button-arrow.png" alt="" class="img-fluid"></figure>
-                            <span class="mb-0 box_span">Услуги</span>
-                            <figure class="mb-0 arrow"><img src="~/images/button-arrow.png" alt="" class="img-fluid"></figure>
-                            <span class="mb-0 box_span">UX/UI-дизайн</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <figure class="banner-circleright mb-0">
-        <img src="~/images/banner-circleright.png" class="img-fluid" alt="">
-    </figure>
-    <figure class="sub-bannerrightlayer mb-0">
-        <img src="~/images/sub-bannerrightlayer.png" alt="" class="img-fluid">
-    </figure>
-</div>
+@section Head {
+    <style>
+        .pg-dsn-steps { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        @@media (max-width: 1024px) { .pg-dsn-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        @@media (max-width: 860px) { .pg-dsn-steps { grid-template-columns: 1fr; } }
+        .pg-dsn-card__num { display: block; font-size: 14px; color: var(--ml-accent); margin-bottom: 28px; font-variant-numeric: tabular-nums; }
+        .pg-dsn-card p { color: var(--ml-ink) !important; font-size: 19px; line-height: 1.45; font-family: var(--ml-display); letter-spacing: -.01em; }
+        .pg-dsn-other .ml-card { display: flex; flex-direction: column; justify-content: space-between; min-height: 220px; }
+        .pg-dsn-other .ml-card__go { margin-top: 32px; display: inline-flex; gap: 10px; align-items: center; font-weight: 500; }
+        .pg-dsn-other a.ml-card:hover .ml-card__go { color: var(--ml-accent); }
+    </style>
+}
 
-<section class="servicepage-section service-section">
-    <figure class="service-leftlayer mb-0">
-        <img src="~/images/service-leftlayer.png" alt="" class="img-fluid">
-    </figure>
-    <figure class="service-dotimage mb-0">
-        <img src="~/images/service-dotimage.png" alt="" class="img-fluid">
-    </figure>
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="servicepage_content" data-aos="fade-right">
-                    <h6>Наши услуги</h6>
-                    <h2>Профессиональный UX/UI-дизайн</h2>
-                    <p>
-                        Создаем интуитивно понятные и эстетичные интерфейсы, которые повышают вовлеченность пользователей и решают бизнес-задачи.
-                    </p>
-                    <figure class="offer-circleimage mb-0">
-                        <img src="~/images/offer-circleimage.png" alt="" class="img-fluid">
-                    </figure>
-                </div>
-            </div>
+<section class="ml-page-hero">
+    <div class="ml-container">
+        <nav class="ml-breadcrumbs" aria-label="Хлебные крошки">
+            <a href="/">Главная</a><span aria-hidden="true">/</span><a href="/service">Услуги</a><span aria-hidden="true">/</span><span>UX/UI-дизайн</span>
+        </nav>
+        <p class="ml-eyebrow" data-reveal>Дизайн</p>
+        <h1 class="ml-h1 ml-max-800" data-reveal>UX/UI-дизайн</h1>
+        <p class="ml-lead" data-reveal>Разрабатываем удобные и красивые интерфейсы для вашего бизнеса.</p>
+        <div class="ml-hero__actions" data-reveal>
+            <a class="ml-btn ml-btn--accent ml-btn--lg" href="/contact">Обсудить дизайн <span class="ml-arrow">→</span></a>
+            <a class="ml-btn ml-btn--ghost ml-btn--lg" href="/service">Все услуги</a>
         </div>
-        <div class="service_contentbox">
-            <div class="row">
-                <div class="owl-carousel owl-theme">
-                    <div class="item">
-                        <div class="service-box box-mb">
-                            <figure class="service-designicon">
-                                <img src="~/images/service-designicon.png" alt="Иконка услуги «Мобильные интерфейсы»" class="img-fluid">
-                            </figure>
-                            <h4>Мобильные интерфейсы</h4>
-                            <p class="text-size-18">Дизайн приложений для iOS и Android с учетом гайдлайнов</p>
-                            <a class="arrow text-decoration-none" href="#"><i class="circle fa-thin fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="service-box box-mb">
-                            <figure class="service-designicon">
-                                <img src="~/images/service-designicon.png" alt="Иконка услуги «Веб-интерфейсы»" class="img-fluid">
-                            </figure>
-                            <h4>Веб-интерфейсы</h4>
-                            <p class="text-size-18">Современный дизайн сайтов, SaaS и админ-панелей</p>
-                            <a class="arrow text-decoration-none" href="#"><i class="circle fa-thin fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="service-box">
-                            <figure class="service-designicon">
-                                <img src="~/images/service-designicon.png" alt="Иконка услуги «UX-исследования»" class="img-fluid">
-                            </figure>
-                            <h4>UX-исследования</h4>
-                            <p class="text-size-18">Анализ пользователей и проектирование CJM</p>
-                            <a class="arrow text-decoration-none" href="#"><i class="circle fa-thin fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="service-box">
-                            <figure class="service-designicon">
-                                <img src="~/images/service-designicon.png" alt="Иконка услуги «Прототипирование»" class="img-fluid">
-                            </figure>
-                            <h4>Прототипирование</h4>
-                            <p class="text-size-18">Создание интерактивных прототипов и user flow</p>
-                            <a class="arrow text-decoration-none" href="#"><i class="circle fa-thin fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="service-box box-mb">
-                            <figure class="service-designicon">
-                                <img src="~/images/service-designicon.png" alt="Иконка услуги «Дизайн-системы»" class="img-fluid">
-                            </figure>
-                            <h4>Дизайн-системы</h4>
-                            <p class="text-size-18">Комплексные решения для масштабирования продукта</p>
-                            <a class="arrow text-decoration-none" href="#"><i class="circle fa-thin fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="service-box box-mb">
-                            <figure class="service-designicon">
-                                <img src="~/images/service-designicon.png" alt="Иконка услуги «Брендинг в UI»" class="img-fluid">
-                            </figure>
-                            <h4>Брендинг в UI</h4>
-                            <p class="text-size-18">Фирменный стиль для цифровых продуктов</p>
-                            <a class="arrow text-decoration-none" href="#"><i class="circle fa-thin fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </div>
+</section>
 
-        <!-- Дополнительный блок с описанием -->
-        <div class="row mt-5">
-            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                <div class="service-detail" data-aos="fade-up">
-                    <h3>Наш подход к дизайну</h3>
-                    <p>Мы сочетаем эстетику с функциональностью, создавая интерфейсы, которые:</p>
-                    <ul>
-                        <li>Увеличивают конверсию и удержание пользователей</li>
-                        <li>Соответствуют современным трендам и стандартам</li>
-                        <li>Учитывают особенности вашей целевой аудитории</li>
-                        <li>Решают конкретные бизнес-задачи</li>
-                    </ul>
-                </div>
+<section class="ml-section ml-section--tight">
+    <div class="ml-container">
+        <div class="ml-split">
+            <div data-reveal>
+                <p class="ml-eyebrow">Наши услуги</p>
+                <h2 class="ml-h2">Профессиональный UX/UI-дизайн</h2>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                <div class="service-process" data-aos="fade-up">
-                    <h3>Процесс работы</h3>
-                    <div class="process-step">
-                        <span>1</span>
-                        <p>Анализ требований и исследование ЦА</p>
-                    </div>
-                    <div class="process-step">
-                        <span>2</span>
-                        <p>Прототипирование и user flow</p>
-                    </div>
-                    <div class="process-step">
-                        <span>3</span>
-                        <p>Разработка визуального дизайна</p>
-                    </div>
-                    <div class="process-step">
-                        <span>4</span>
-                        <p>Тестирование и доработка</p>
-                    </div>
-                </div>
+            <div data-reveal>
+                <p class="ml-lead">Создаем интуитивно понятные и эстетичные интерфейсы, которые повышают вовлеченность пользователей и решают бизнес-задачи.</p>
             </div>
         </div>
     </div>
-    <figure class="service-rightlayer mb-0">
-        <img src="~/images/service-rightlayer.png" alt="" class="img-fluid">
-    </figure>
+</section>
+
+<section class="ml-section ml-section--tight" aria-labelledby="dsn-list">
+    <div class="ml-container">
+        <div class="ml-section-head">
+            <h2 class="ml-h2" id="dsn-list" data-reveal>Направления</h2>
+        </div>
+        <div class="ml-rows" data-reveal-stagger>
+            <div class="ml-row">
+                <span class="ml-row__num">01</span>
+                <h3 class="ml-row__title">Мобильные интерфейсы</h3>
+                <p class="ml-row__desc">Дизайн приложений для iOS и Android с учетом гайдлайнов.</p>
+            </div>
+            <div class="ml-row">
+                <span class="ml-row__num">02</span>
+                <h3 class="ml-row__title">Веб-интерфейсы</h3>
+                <p class="ml-row__desc">Современный дизайн сайтов, SaaS и админ-панелей.</p>
+            </div>
+            <div class="ml-row">
+                <span class="ml-row__num">03</span>
+                <h3 class="ml-row__title">UX-исследования</h3>
+                <p class="ml-row__desc">Анализ пользователей и проектирование CJM.</p>
+            </div>
+            <div class="ml-row">
+                <span class="ml-row__num">04</span>
+                <h3 class="ml-row__title">Прототипирование</h3>
+                <p class="ml-row__desc">Создание интерактивных прототипов и user flow.</p>
+            </div>
+            <div class="ml-row">
+                <span class="ml-row__num">05</span>
+                <h3 class="ml-row__title">Дизайн-системы</h3>
+                <p class="ml-row__desc">Комплексные решения для масштабирования продукта.</p>
+            </div>
+            <div class="ml-row">
+                <span class="ml-row__num">06</span>
+                <h3 class="ml-row__title">Брендинг в UI</h3>
+                <p class="ml-row__desc">Фирменный стиль для цифровых продуктов.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ml-section ml-section--light" aria-labelledby="dsn-approach">
+    <div class="ml-container">
+        <div class="ml-split">
+            <div data-reveal>
+                <p class="ml-eyebrow">Подход</p>
+                <h2 class="ml-h2" id="dsn-approach">Наш подход к дизайну</h2>
+            </div>
+            <div data-reveal>
+                <p class="ml-lead">Мы сочетаем эстетику с функциональностью, создавая интерфейсы, которые:</p>
+            </div>
+        </div>
+        <div class="ml-grid ml-grid-4 ml-mt-l" data-reveal-stagger>
+            <div class="ml-card pg-dsn-card"><span class="pg-dsn-card__num">01</span><p>Увеличивают конверсию и удержание пользователей</p></div>
+            <div class="ml-card pg-dsn-card"><span class="pg-dsn-card__num">02</span><p>Соответствуют современным трендам и стандартам</p></div>
+            <div class="ml-card pg-dsn-card"><span class="pg-dsn-card__num">03</span><p>Учитывают особенности вашей целевой аудитории</p></div>
+            <div class="ml-card pg-dsn-card"><span class="pg-dsn-card__num">04</span><p>Решают конкретные бизнес-задачи</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="ml-section" aria-labelledby="dsn-process">
+    <div class="ml-container">
+        <div class="ml-section-head">
+            <div data-reveal>
+                <p class="ml-eyebrow">Процесс</p>
+                <h2 class="ml-h2" id="dsn-process">Процесс работы</h2>
+            </div>
+        </div>
+        <div class="ml-steps pg-dsn-steps" data-reveal-stagger>
+            <div class="ml-step"><h3>Анализ</h3><p>Анализ требований и исследование ЦА.</p></div>
+            <div class="ml-step"><h3>Прототип</h3><p>Прототипирование и user flow.</p></div>
+            <div class="ml-step"><h3>Визуальный дизайн</h3><p>Разработка визуального дизайна.</p></div>
+            <div class="ml-step"><h3>Тестирование</h3><p>Тестирование и доработка.</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="ml-section ml-section--tight pg-dsn-other" aria-labelledby="dsn-other">
+    <div class="ml-container">
+        <div class="ml-section-head">
+            <h2 class="ml-h3" id="dsn-other" data-reveal>Другие услуги</h2>
+        </div>
+        <div class="ml-grid ml-grid-3" data-reveal-stagger>
+            <a class="ml-card" href="/technical">
+                <div>
+                    <p class="ml-eyebrow ml-mb-0">Документация</p>
+                    <h3 class="ml-mt-s">Техническое задание</h3>
+                    <p>Техническое задание на разработку приложения сэкономит бюджет.</p>
+                </div>
+                <span class="ml-card__go">Перейти <span aria-hidden="true">→</span></span>
+            </a>
+            <a class="ml-card" href="/service">
+                <div>
+                    <p class="ml-eyebrow ml-mb-0">Разработка</p>
+                    <h3 class="ml-mt-s">Все услуги</h3>
+                    <p>Мобильная разработка, frontend и backend для вашего бизнеса.</p>
+                </div>
+                <span class="ml-card__go">Перейти <span aria-hidden="true">→</span></span>
+            </a>
+            <a class="ml-card" href="/pricingplan">
+                <div>
+                    <p class="ml-eyebrow ml-mb-0">Цены</p>
+                    <h3 class="ml-mt-s">Тарифы и сроки</h3>
+                    <p>MVP, каталог или сложные решения — прозрачные цены и сроки.</p>
+                </div>
+                <span class="ml-card__go">Перейти <span aria-hidden="true">→</span></span>
+            </a>
+        </div>
+    </div>
 </section>
