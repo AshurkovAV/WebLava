@@ -1,104 +1,170 @@
 @{
     ViewData["Title"] = "Кейсы разработки мобильных приложений | Big Lava";
-    ViewData["Description"] = "Примеры проектов Big Lava: мобильные приложения, MVP и кроссплатформенные решения для бизнеса. Реальные кейсы скоро дополним.";
+    ViewData["Description"] = "Проекты Big Lava: мобильное приложение-агрегатор вакансий для таксопарков и ИИ-агент ЯДРО для бизнеса. Смотрите кейсы и обсудите свой проект.";
     ViewData["ActivePage"] = "portfolio";
 }
 
-<!-- Header  -->
-<div class="sub-banner sub-banner4">
-    <figure class="sub-bannerleftlayer mb-0">
-        <img src="~/images/sub-bannerleftlayer.png" alt="" class="img-fluid">
-    </figure>
-    @Html.Partial("Menu");
-    <section class="banner-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="banner_content" data-aos="fade-up">
-                        <figure class="service-rightcircle mb-0">
-                            <img src="~/images/service-rightcircle.png" alt="" class="img-fluid">
-                        </figure>
-                        <h1 class="text-white">Кейсы</h1>
-                        <p>Проекты, над которыми мы работали</p>
-                        <div class="box">
-                            <span class="mb-0">Главная</span>
-                            <figure class="mb-0 arrow"><img src="~/images/button-arrow.png" alt="" class="img-fluid"></figure>
-                            <span class="mb-0 box_span">Кейсы</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <figure class="banner-circleright mb-0">
-        <img src="~/images/banner-circleright.png" class="img-fluid" alt="">
-    </figure>
-    <figure class="sub-bannerrightlayer mb-0">
-        <img src="~/images/sub-bannerrightlayer.png" alt="" class="img-fluid">
-    </figure>
-</div>
+@section Head {
+    <style>
+        .pg-work-filter { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 48px; }
+        .pg-work-filter button { background: transparent; cursor: pointer; font-size: 15px; padding: 10px 18px; transition: background .2s, color .2s, border-color .2s; }
+        .pg-work-filter button:hover { color: var(--ml-text); border-color: var(--ml-text); }
+        .pg-work-filter button[aria-pressed="true"] { background: var(--ml-text); color: var(--ml-ink); border-color: var(--ml-text); }
+        .pg-work-filter sup { font-size: 11px; margin-left: 4px; opacity: .6; }
+        .pg-work-shot { position: relative; height: 86%; width: auto; aspect-ratio: 9 / 19.5; border-radius: 34px; padding: 8px; background: #050505; border: 1px solid rgba(255,255,255,.2); box-shadow: 0 50px 90px rgba(0,0,0,.55); overflow: hidden; transition: transform 1s var(--ml-ease); }
+        .pg-work-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 27px; }
+        .ml-case:hover .pg-work-shot { transform: translateY(-10px) rotate(-2deg); }
+        .ml-case:hover .pg-work-shot img { transform: none; }
+        .ml-case[hidden] { display: none; }
+        .pg-work-next .ml-cover__label { color: rgba(255,255,255,.75); }
+        @@media (max-width: 760px) { .pg-work-case .ml-case__media { aspect-ratio: 1 / 1; } .pg-work-shot { border-radius: 26px; padding: 6px; } .pg-work-shot img { border-radius: 21px; } }
+    </style>
+}
 
-<section class="portfolio-section" style="padding: 80px 0;">
-    <div class="container">
-        <div class="row">
-            <div class="col-12" style="margin-bottom: 40px;">
-                <p class="text-size-16" style="max-width: 720px;">
-                    Здесь собраны реальные проекты Big Lava — мобильные приложения, MVP, кроссплатформенные решения и ИИ-агенты — с конкретными результатами: сроками, стеком и измеримым эффектом для бизнеса. Часть карточек ниже — пока заглушки под структуру, которые постепенно заменим на настоящие кейсы.
-                </p>
-            </div>
-        </div>
+<section class="ml-page-hero">
+    <div class="ml-container">
+        <nav class="ml-breadcrumbs" aria-label="Хлебные крошки">
+            <a href="/">Главная</a><span aria-hidden="true">/</span><span>Кейсы</span>
+        </nav>
+        <p class="ml-eyebrow">Работы</p>
+        <h1 class="ml-display" data-reveal>Проекты, над&nbsp;которыми мы&nbsp;работали</h1>
+        <p class="ml-lead" data-reveal>
+            Мобильные приложения, MVP, кроссплатформенные решения и&nbsp;ИИ-агенты — каждое под&nbsp;конкретную задачу бизнеса.
+            Раздел пополняется: новые кейсы добавляем по мере публикации.
+        </p>
 
-        <div class="cards-grid">
-            <!-- TODO: добавить название проекта/клиента, платформы, измеримую цифру и целевую страницу кейса, когда появятся -->
-            <div class="card-item">
-                <div class="card-item-image">
-                    <img src="~/images/portfolio/taxi-app-vacancies.jpg" alt="Агрегатор вакансий для таксопарков — мобильное приложение">
-                </div>
-                <div class="card-item-body">
-                    <span class="card-item-badge">Мобильное приложение</span>
-                    <h3 class="card-item-title">Агрегатор вакансий для таксопарков</h3>
-                    <p class="card-item-result">Приложение для поиска вакансий в таксопарках: карта с поиском по местоположению, лента предложений с откликом в один тап, фильтры по городу и классу автомобиля, карточка автомобиля с условиями аренды.</p>
-                    <a class="card-item-link" href="#">Подробнее <i class="fa fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <!-- TODO: заменить на реальный кейс -->
-            <div class="card-item">
-                <div class="card-item-image">
-                    <img src="~/images/post/og-case-mvp.jpg" alt="[Название проекта] — MVP">
-                </div>
-                <div class="card-item-body">
-                    <span class="card-item-badge">MVP</span>
-                    <h3 class="card-item-title">[Название проекта]</h3>
-                    <p class="card-item-result">[Результат: например, во сколько раз сократили бюджет за счёт MVP-подхода, срок запуска]</p>
-                    <a class="card-item-link" href="#">Подробнее <i class="fa fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <!-- TODO: заменить на реальный кейс -->
-            <div class="card-item">
-                <div class="card-item-image">
-                    <img src="~/images/post/og-case-crossplatform.jpg" alt="[Название проекта] — кроссплатформенная разработка">
-                </div>
-                <div class="card-item-body">
-                    <span class="card-item-badge">Кроссплатформа</span>
-                    <h3 class="card-item-title">[Название проекта]</h3>
-                    <p class="card-item-result">[Результат: например, запуск на iOS и Android с единой кодовой базой, экономия на разработке]</p>
-                    <a class="card-item-link" href="#">Подробнее <i class="fa fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <div class="card-item">
-                <div class="card-item-image">
-                    <img src="~/images/post/og-case-ai-agent.jpg" alt="ЯДРО — ИИ-агент для бизнеса">
-                </div>
-                <div class="card-item-body">
-                    <span class="card-item-badge">Интеграция / ИИ</span>
-                    <h3 class="card-item-title">ЯДРО — ИИ-агент для бизнеса</h3>
-                    <p class="card-item-result">Один ИИ-агент вместо трёх ботов и команды поддержки — обрабатывает заказы и запись в Telegram, MAX и WhatsApp через единый ИИ-пайплайн с интеграцией amoCRM.</p>
-                    <a class="card-item-link" href="/yadro/">Подробнее <i class="fa fa-arrow-right"></i></a>
-                </div>
-            </div>
+        <div class="pg-work-filter" role="group" aria-label="Фильтр по направлению" data-reveal>
+            <button type="button" class="ml-tag" data-filter="all" aria-pressed="true">Все<sup>2</sup></button>
+            <button type="button" class="ml-tag" data-filter="mobile" aria-pressed="false">Мобильные приложения<sup>1</sup></button>
+            <button type="button" class="ml-tag" data-filter="ai" aria-pressed="false">ИИ и интеграции<sup>1</sup></button>
         </div>
     </div>
 </section>
+
+<section class="ml-section ml-section--tight" style="padding-top:0">
+    <div class="ml-container">
+        <div class="ml-cases" id="workGrid">
+
+            <article class="ml-case ml-case--wide pg-work-case" data-cat="mobile" data-reveal>
+                <div class="ml-case__media">
+                    <div class="ml-cover">
+                        <div class="pg-work-shot">
+                            <img src="~/images/portfolio/taxi-app-vacancies.jpg" alt="Экран приложения-агрегатора вакансий для таксопарков: поиск, лента предложений таксопарков и кнопка «Откликнуться»">
+                        </div>
+                    </div>
+                </div>
+                <div class="ml-case__body">
+                    <div>
+                        <h2 class="ml-case__title">Агрегатор вакансий для таксопарков</h2>
+                        <p class="ml-case__desc ml-max-800">
+                            Приложение для поиска работы в таксопарках: карта с поиском по местоположению, лента предложений с откликом в один тап,
+                            фильтры по городу и классу автомобиля, карточка автомобиля с условиями аренды.
+                        </p>
+                        <div class="ml-tags">
+                            <span class="ml-tag">Мобильное приложение</span>
+                            <span class="ml-tag">Карта и геопоиск</span>
+                            <span class="ml-tag">Фильтры</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <a class="ml-case" href="/yadro/" data-cat="ai" data-reveal>
+                <div class="ml-case__media">
+                    <img src="~/images/post/og-case-ai-agent.jpg" alt="ЯДРО — схема ИИ-агента Big Lava, который связывает несколько каналов общения в одном центре">
+                </div>
+                <div class="ml-case__body">
+                    <div>
+                        <h2 class="ml-case__title">ЯДРО — ИИ-агент для бизнеса</h2>
+                        <p class="ml-case__desc">
+                            Один ИИ-агент вместо трёх ботов и команды поддержки: обрабатывает заказы и запись в Telegram, MAX и WhatsApp
+                            через единый ИИ-пайплайн с интеграцией amoCRM.
+                        </p>
+                        <div class="ml-tags">
+                            <span class="ml-tag">ИИ-агент</span>
+                            <span class="ml-tag">Интеграция amoCRM</span>
+                        </div>
+                    </div>
+                    <span class="ml-case__arrow" aria-hidden="true">→</span>
+                </div>
+            </a>
+
+            <a class="ml-case pg-work-next" href="/contact" data-cat="all" data-reveal>
+                <div class="ml-case__media">
+                    <div class="ml-cover ml-cover--violet">
+                        <div class="ml-cover__phone" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+                    </div>
+                    <span class="ml-cover__label">Следующий кейс</span>
+                </div>
+                <div class="ml-case__body">
+                    <div>
+                        <h2 class="ml-case__title">Здесь может быть ваш проект</h2>
+                        <p class="ml-case__desc">
+                            Приложение, MVP или кроссплатформенное решение под iOS и Android. Расскажите о задаче — предложим формат и оценим сроки.
+                        </p>
+                    </div>
+                    <span class="ml-case__arrow" aria-hidden="true">→</span>
+                </div>
+            </a>
+
+        </div>
+    </div>
+</section>
+
+<section class="ml-section ml-section--surface">
+    <div class="ml-container">
+        <div class="ml-section-head">
+            <div>
+                <p class="ml-eyebrow">Чем можем помочь</p>
+                <h2 class="ml-h2">От идеи до&nbsp;приложения в&nbsp;сторах</h2>
+            </div>
+            <a class="ml-link" href="/service">Все услуги <span class="ml-arrow">→</span></a>
+        </div>
+        <div class="ml-rows" data-reveal-stagger>
+            <a class="ml-row" href="/service">
+                <span class="ml-row__num">01</span>
+                <h3 class="ml-row__title">Мобильные приложения</h3>
+                <p class="ml-row__desc">Разработка приложений для iOS и Android под задачи бизнеса.</p>
+                <span class="ml-row__arrow" aria-hidden="true">→</span>
+            </a>
+            <a class="ml-row" href="/blog/mvp">
+                <span class="ml-row__num">02</span>
+                <h3 class="ml-row__title">MVP</h3>
+                <p class="ml-row__desc">Быстрый запуск первой версии, чтобы проверить идею до больших вложений.</p>
+                <span class="ml-row__arrow" aria-hidden="true">→</span>
+            </a>
+            <a class="ml-row" href="/design">
+                <span class="ml-row__num">03</span>
+                <h3 class="ml-row__title">UX/UI-дизайн</h3>
+                <p class="ml-row__desc">Интерфейсы, которые понятны пользователю с первого экрана.</p>
+                <span class="ml-row__arrow" aria-hidden="true">→</span>
+            </a>
+            <a class="ml-row" href="/yadro/">
+                <span class="ml-row__num">04</span>
+                <h3 class="ml-row__title">ИИ-агенты и интеграции</h3>
+                <p class="ml-row__desc">Автоматизация заказов и записи в мессенджерах с интеграцией CRM.</p>
+                <span class="ml-row__arrow" aria-hidden="true">→</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        (function () {
+            var buttons = document.querySelectorAll('.pg-work-filter button');
+            var cases = document.querySelectorAll('#workGrid .ml-case');
+            buttons.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    var f = btn.getAttribute('data-filter');
+                    buttons.forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+                    cases.forEach(function (c) {
+                        var cat = c.getAttribute('data-cat');
+                        c.hidden = !(f === 'all' || cat === f || cat === 'all');
+                        if (!c.hidden) c.classList.add('is-visible');
+                    });
+                });
+            });
+        })();
+    </script>
+}

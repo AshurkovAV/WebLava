@@ -1,142 +1,166 @@
-﻿@{
-    ViewData["Title"] = "Тарифы на разработку мобильных приложений | Big Lava";
+@{
+    ViewData["Title"] = "Цены на разработку мобильных приложений | Big Lava";
     ViewData["ActivePage"] = "pricingplan";
-    ViewData["Description"] = "Выберите подходящий тарифный план для разработки мобильного приложения: MVP, каталог или сложные решения. Прозрачные цены и сроки реализации.";
+    ViewData["Description"] = "Тарифы Big Lava на разработку мобильных приложений: MVP до 500 000 ₽ за 2 мес., каталог до 1,2 млн ₽, маркетплейс от 3 млн ₽. Закажите расчёт.";
 }
 
-<!-- Header  -->
-<div class="sub-banner sub-banner4">
-    <figure class="sub-bannerleftlayer mb-0">
-        <img src="~/images/sub-bannerleftlayer.png" alt="" class="img-fluid">
-    </figure>
-    @Html.Partial("Menu");
-    <section class="banner-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="banner_content" data-aos="fade-up">
-                        <figure class="service-rightcircle mb-0">
-                            <img src="~/images/service-rightcircle.png" alt="" class="img-fluid">
-                        </figure>
-                        <h1 class="text-white">Тарифный план</h1>
-                        <p>Технологии, которые окупаются</p>
-                        <div class="box">
-                            <span class="mb-0">Главная</span>
-                            <figure class="mb-0 arrow"><img src="~/images/button-arrow.png" alt="" class="img-fluid"></figure>
-                            <span class="mb-0 box_span">Цены</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <figure class="banner-circleright mb-0">
-        <img src="~/images/banner-circleright.png" class="img-fluid" alt="">
-    </figure>
-    <figure class="sub-bannerrightlayer mb-0">
-        <img src="~/images/sub-bannerrightlayer.png" alt="" class="img-fluid">
-    </figure>
-</div>
+@section Head {
+    <style>
+        .pg-price-kind { font-size: 15px; color: var(--ml-muted); margin-top: 6px; }
+        .pg-price-term { display: inline-flex; align-items: center; gap: 8px; margin-top: 10px; font-size: 15px; color: var(--ml-muted); }
+        .pg-price-term svg { width: 16px; height: 16px; color: var(--ml-accent); flex: none; }
+        .ml-price__value { font-size: clamp(34px, 3vw, 46px); white-space: nowrap; }
+        .pg-price-factors .ml-row__title { font-size: clamp(22px, 2vw, 30px); }
+        .pg-price-factors .ml-row { grid-template-columns: 80px minmax(0, 1fr) minmax(0, 1.2fr); }
+        @@media (max-width: 860px) { .pg-price-factors .ml-row { grid-template-columns: 40px 1fr; } .pg-price-factors .ml-row__desc { grid-column: 2 / 3; } }
+    </style>
+}
 
-<section class="pricing-section">
-    <figure class="offer-toplayer mb-0">
-        <img src="./assets/images/offer-toplayer.png" alt="" class="img-fluid">
-    </figure>
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="pricing_content" data-aos="fade-up">
-                    <h6>Лучшие предложения</h6>
-                    <h2>Наши тарифные планы</h2>
-                    <p>
-                        Выберите идеальный вариант под ваши задачи — мы сделали цены прозрачными, а возможности — безграничными.
-                    </p>
-                    <figure class="offer-circleimage mb-0">
-                        <img src="./assets/images/offer-circleimage.png" alt="" class="img-fluid">
-                    </figure>
+<section class="ml-page-hero">
+    <div class="ml-container">
+        <nav class="ml-breadcrumbs" aria-label="Хлебные крошки">
+            <a href="/">Главная</a><span aria-hidden="true">/</span><span>Цены</span>
+        </nav>
+        <p class="ml-eyebrow">Тарифы</p>
+        <h1 class="ml-display" data-reveal>Цены на&nbsp;разработку <span class="ml-gradient-text">приложений</span></h1>
+        <p class="ml-lead" data-reveal>
+            Технологии, которые окупаются. Три понятных формата — от MVP до маркетплейса: прозрачные цены и сроки.
+            Точную стоимость считаем под ваш проект.
+        </p>
+    </div>
+</section>
+
+<section class="ml-section ml-section--tight" style="padding-top:0">
+    <div class="ml-container">
+        <div class="ml-prices" data-reveal-stagger>
+            <div class="ml-price">
+                <h2 class="ml-price__name">Простое</h2>
+                <p class="pg-price-kind">MVP, визитка</p>
+                <div class="ml-price__value">до 500 000 ₽</div>
+                <div class="pg-price-term">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                    Срок: до 2 мес.
                 </div>
+                <ul>
+                    <li>Стартовый экран</li>
+                    <li>Каталог / Услуги</li>
+                    <li>Контакты / О компании</li>
+                    <li>Push-уведомления</li>
+                    <li>Личный кабинет</li>
+                </ul>
+                <a class="ml-btn ml-btn--ghost" href="/contact">Заказать расчёт <span class="ml-arrow">→</span></a>
+            </div>
+
+            <div class="ml-price ml-price--featured">
+                <h2 class="ml-price__name">Среднее</h2>
+                <p class="pg-price-kind">Каталог, блог</p>
+                <div class="ml-price__value">до 1 200 000 ₽</div>
+                <div class="pg-price-term">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                    Срок: 3–6 мес.
+                </div>
+                <ul>
+                    <li>10–20 экранов</li>
+                    <li>Поиск, фильтры, комментарии</li>
+                    <li>Личный кабинет + админка</li>
+                    <li>API + интеграции</li>
+                    <li>Push-уведомления</li>
+                </ul>
+                <a class="ml-btn ml-btn--accent" href="/contact">Заказать расчёт <span class="ml-arrow">→</span></a>
+            </div>
+
+            <div class="ml-price">
+                <h2 class="ml-price__name">Сложное</h2>
+                <p class="pg-price-kind">Маркетплейс, соцсеть</p>
+                <div class="ml-price__value">3 000 000+ ₽</div>
+                <div class="pg-price-term">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                    Срок: 6–12+ мес.
+                </div>
+                <ul>
+                    <li>20+ экранов с индивидуальным дизайном</li>
+                    <li>Платежи и безопасные транзакции</li>
+                    <li>Чат, UGC, модерация контента</li>
+                    <li>Свой backend и API</li>
+                    <li>Поддержка 10k+ пользователей</li>
+                </ul>
+                <a class="ml-btn ml-btn--ghost" href="/contact">Заказать расчёт <span class="ml-arrow">→</span></a>
             </div>
         </div>
-        <div class="price-block">
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-md-0 mb-4">
-                    <div class="price_content">
-                        <div class="icon">
-                            <figure class="price-basicicon">
-                                <img src="~/images/price-basicicon.png" alt="Иконка тарифа «Простое» (MVP, визитка)" class="img-fluid">
-                            </figure>
-                        </div>
-                        <h4>Простое</h4>
-                        <h4>(MVP, визитка)</h4>
-                        <span class="text1">до 500 000 ₽</span>
-                        <ul class="list-unstyled mb-0">
-                            <li class="text-size-18"><i class="circle fa-duotone fa-check"></i>Стартовый экран</li>                            
-                            <li class="text-size-18"><i class="circle fa-duotone fa-check"></i>Каталог / Услуги</li>
-                            <li class="text-size-18"><i class="circle fa-duotone fa-check"></i>Контакты / О компании</li>
-                            <li class="text-size-18"><i class="circle fa-duotone fa-check"></i>Push-уведомления</li>
-                            <li class="text-size-18"><i class="circle fa-duotone fa-check"></i>Личный кабинет</li>                            
-                            <li class="for-space text-size-18"><i class="circle fa-duotone fa-check"></i>Срок: до 2 мес.</li>
-                        </ul>
-                        <a class="get_started text-decoration-none" href="/contact">
-                            Заказать расчет
-                            <i class="circle fa-thin fa-arrow-right"></i>
-                        </a>
-                    </div>
+    </div>
+</section>
+
+<section class="ml-section ml-section--surface">
+    <div class="ml-container">
+        <div class="ml-split">
+            <div>
+                <p class="ml-eyebrow">Из чего складывается цена</p>
+                <h2 class="ml-h2">Что влияет на&nbsp;стоимость</h2>
+                <p class="ml-lead ml-mt-m">
+                    Тариф задаёт порядок цифр. Итоговая сумма зависит от объёма и сложности — её фиксируем после обсуждения задачи.
+                </p>
+                <a class="ml-btn ml-btn--primary ml-mt-m" href="/technical">Про техническое задание <span class="ml-arrow">→</span></a>
+            </div>
+            <div class="ml-rows pg-price-factors" data-reveal-stagger>
+                <div class="ml-row">
+                    <span class="ml-row__num">01</span>
+                    <h3 class="ml-row__title">Платформы</h3>
+                    <p class="ml-row__desc">Только iOS, только Android или обе платформы сразу.</p>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-md-0 mb-4">
-                    <div class="price_content">
-                        <div class="icon">
-                            <figure class="price-silvericon">
-                                <img src="~/images/price-silvericon.png" alt="Иконка тарифа «Среднее» (каталог, блог)" class="img-fluid">
-                            </figure>
-                        </div>
-                        <h4>Среднее</h4>
-                        <h4>(каталог, блог)</h4>
-                        <span class="text1">до 1 200 000 ₽</span>
-                        <ul class="list-unstyled mb-0">
-                            <li class="text-size-18"><i class="circle fa-duotone fa-check"></i>10–20 экранов</li>
-                            <li class="text-size-18"><i class="circle fa-duotone fa-check"></i>Поиск, фильтры, комментарии</li>
-                            <li class="text-size-18"><i class="circle fa-duotone fa-check"></i>Личный кабинет + админка</li>
-                            <li class="text-size-18"><i class="circle fa-duotone fa-check"></i>API + интеграции</li>
-                            <li class="text-size-18"><i class="circle fa-duotone fa-check"></i>Push-уведомления</li>
-                            <li class="for-space text-size-18"><i class="circle fa-duotone fa-check"></i>Срок: 3–6 мес.</li>
-                        </ul>
-                        <a class="get_started text-decoration-none" href="/contact">
-                            Заказать расчет
-                            <i class="circle fa-thin fa-arrow-right"></i>
-                        </a>
-                    </div>
+                <div class="ml-row">
+                    <span class="ml-row__num">02</span>
+                    <h3 class="ml-row__title">Число экранов</h3>
+                    <p class="ml-row__desc">Чем больше экранов и сценариев, тем больше работы по дизайну и разработке.</p>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-12">
-                    <div class="price_content">
-                        <div class="icon">
-                            <figure class="price-goldicon">
-                                <img src="~/images/price-goldicon.png" alt="Иконка тарифа «Сложное» (маркетплейс, соцсеть)" class="img-fluid">
-                            </figure>
-                        </div>
-                        <h4>Сложное</h4>
-                        <h4>(маркетплейс, соцсеть)</h4>
-                        <span class="text1">3 000 000+ ₽</span>
-                        <ul class="list-unstyled mb-0">
-                            <li class="text-size-18"><i class="circle fa-duotone fa-check"></i> 20+ экранов с индив. дизайном</li>
-                            <li class="text-size-18"><i class="circle fa-duotone fa-check"></i>Платежи + безоп. транзакции</li>
-                            <li class="text-size-18"><i class="circle fa-duotone fa-check"></i>Чат, UGC, модерация контента</li>
-                            <li class="text-size-18"><i class="circle fa-duotone fa-check"></i>Свой backend и API</li>
-                            <li class="text-size-18"><i class="circle fa-duotone fa-check"></i>Поддержка 10k+ пользователей</li>                            
-                            <li class="for-space text-size-18"><i class="circle fa-duotone fa-check"></i>Срок: 6–12+ мес.</li>
-                        </ul>
-                        <a class="get_started text-decoration-none" href="/contact">
-                            Заказать расчет
-                            <i class="circle fa-thin fa-arrow-right"></i>
-                        </a>
-                    </div>
+                <div class="ml-row">
+                    <span class="ml-row__num">03</span>
+                    <h3 class="ml-row__title">Интеграции и backend</h3>
+                    <p class="ml-row__desc">API, CRM, платежи, собственный сервер и админка.</p>
+                </div>
+                <div class="ml-row">
+                    <span class="ml-row__num">04</span>
+                    <h3 class="ml-row__title">Дизайн</h3>
+                    <p class="ml-row__desc">Типовые компоненты или индивидуальный UX/UI под бренд.</p>
+                </div>
+                <div class="ml-row">
+                    <span class="ml-row__num">05</span>
+                    <h3 class="ml-row__title">Функции</h3>
+                    <p class="ml-row__desc">Чат, пользовательский контент, модерация, личные кабинеты.</p>
                 </div>
             </div>
         </div>
     </div>
-    <figure class="offer-bottomlayer mb-0">
-        <img src="./assets/images/offer-bottomlayer.png" alt="" class="img-fluid">
-    </figure>
 </section>
 
-@await Html.PartialAsync("_Testimonials")
+<section class="ml-section">
+    <div class="ml-container">
+        <div class="ml-split">
+            <div>
+                <p class="ml-eyebrow">FAQ</p>
+                <h2 class="ml-h2">Вопросы о&nbsp;ценах и&nbsp;сроках</h2>
+            </div>
+            <div class="ml-faq" data-reveal>
+                <details>
+                    <summary>Сколько стоит простое приложение или MVP?</summary>
+                    <div>Тариф «Простое» (MVP, визитка) — до 500 000 ₽. В него входят стартовый экран, каталог или услуги, контакты и раздел «О компании», push-уведомления и личный кабинет.</div>
+                </details>
+                <details>
+                    <summary>Сколько времени занимает разработка?</summary>
+                    <div>Ориентиры по тарифам: «Простое» — до 2 месяцев, «Среднее» — 3–6 месяцев, «Сложное» — 6–12 месяцев и больше.</div>
+                </details>
+                <details>
+                    <summary>Что входит в тариф «Среднее»?</summary>
+                    <div>10–20 экранов, поиск, фильтры и комментарии, личный кабинет и админка, API и интеграции, push-уведомления. Стоимость — до 1 200 000 ₽.</div>
+                </details>
+                <details>
+                    <summary>Сколько стоит маркетплейс или соцсеть?</summary>
+                    <div>От 3 000 000 ₽. Это 20+ экранов с индивидуальным дизайном, платежи и безопасные транзакции, чат, пользовательский контент и модерация, собственный backend и API, поддержка 10k+ пользователей.</div>
+                </details>
+                <details>
+                    <summary>Как получить точную оценку?</summary>
+                    <div>Оставьте заявку на странице <a class="ml-link" href="/contact">контактов</a> или позвоните по номеру <a class="ml-link" href="tel:+79081209023">+7 (908) 120-90-23</a> — обсудим задачу и рассчитаем стоимость под ваш проект.</div>
+                </details>
+            </div>
+        </div>
+    </div>
+</section>

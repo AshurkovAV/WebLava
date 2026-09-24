@@ -1,250 +1,209 @@
-﻿@model WebLava.Models.ContactFormModel
+@model WebLava.Models.ContactFormModel
 @{
-    ViewData["Title"] = "Контакты | Big Lava";
+    ViewData["Title"] = "Контакты — обсудить проект | Big Lava";
     ViewData["ActivePage"] = "contact";
-    ViewData["Description"] = "Контактная информация для обсуждения проектов, сотрудничества и финансовых вопросов. Находимся в Курске по адресу ул. Радищева 64.";
+    ViewData["Description"] = "Расскажите о проекте мобильного приложения: +7 (908) 120-90-23, ashurkovav@yandex.ru. Big Lava, г. Курск, ул. Радищева, 64. Ответим с оценкой сроков.";
+    ViewData["HideCta"] = true;
 }
-<link href="~/css/contactnotification.css" rel="stylesheet" />
-    <!-- Header  -->
-    <div class="sub-banner">
-        <figure class="sub-bannerleftlayer mb-0">
-            <img src="~/images/sub-bannerleftlayer.png" alt="" class="img-fluid">
-        </figure>
-        @Html.Partial("Menu");
-        <section class="banner-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="banner_content" data-aos="fade-up">
-                            <figure class="service-rightcircle mb-0">
-                                <img src="~/images/service-rightcircle.png" alt="" class="img-fluid">
-                            </figure>
-                            <h1 class="text-white">Контакты</h1>
-                            <p>Тут можно обсудить проект или сотрудничество и финансовые вопросы</p>
-                            <div class="box">
-                                <span class="mb-0">Главная</span>
-                                <figure class="mb-0 arrow"><img src="~/images/button-arrow.png" alt="" class="img-fluid"></figure>
-                                <span class="mb-0 box_span">Контакты</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <figure class="banner-circleright mb-0">
-            <img src="~/images/banner-circleright.png" class="img-fluid" alt="">
-        </figure>
-        <figure class="sub-bannerrightlayer mb-0">
-            <img src="~/images/sub-bannerrightlayer.png" alt="" class="img-fluid">
-        </figure>
-    </div>
 
-    <div class="text-center">
-        <!--Contact -->
-        <section class="contact-section">
-            <figure class="offer-toplayer mb-0">
-                <img src="~/images/offer-toplayer.png" alt="" class="img-fluid">
-            </figure>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-5 col-md-12 col-sm-12 col-12">
-                        <div class="contact_content" data-aos="fade-right">
-                            <h6>Информация</h6>
-                            <h3>Связаться с нами</h3>
-                            <div class="contact-box">
-                                <div class="box-image">
-                                    <figure class="contact-location">
-                                        <img src="~/images/contact-location.png" alt="Иконка: местоположение" class="img-fluid">
-                                    </figure>
-                                </div>
-                                <div class="box-content">
-                                    <h4>Местоположение:</h4>
-                                    <p class="text">город Курск, ул. Радищева 64</p>
-                                </div>
-                            </div>
-                            <div class="contact-box">
-                                <div class="box-image">
-                                    <figure class="contact-email">
-                                        <img src="~/images/contact-email.png" alt="Иконка: email" class="img-fluid">
-                                    </figure>
-                                </div>
-                                <div class="box-content">
-                                    <h4 class="heading">Email:</h4>
-                                    <p>
-                                        <a href="mailto:ashurkovav@yandex.ru" class="text-decoration-none">ashurkovav@yandex.ru</a>
-                                    </p>
-                                </div>
-                                <div class="box-content">
-                                <h4 class="heading">Telegram:</h4>
-                                <a href="https://t.me/ashurkovav" target="_blank" class="text-decoration-none">
-                                        <img src="https://telegram.org/favicon.ico" alt="Telegram">
-                                        @@ashurkovav
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="contact-box box-mb">
-                                <div class="box-image">
-                                    <figure class="contact-phone">
-                                        <img src="~/images/contact-phone.png" alt="Иконка: телефон" class="img-fluid">
-                                    </figure>
-                                </div>
-                                <div class="box-content">
-                                    <h4 class="heading">Телефон:</h4>
-                                    <p>
-                                        <a href="tel:+79081209023" class="text-decoration-none text">+7(908) 120-90 23</a>
-                                    </p>
-                                    <p>
-                                        <a href="tel:+79308531417" class="mb-0 text-decoration-none text">+7(930) 853-14 17</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-               
-                    <div class="col-lg-7 col-md-12 col-sm-12 col-12">
-                        <div class="need-section">
-                            <figure class="offer-circleimage mb-0">
-                                <img src="~/images/offer-circleimage.png" alt="" class="img-fluid">
-                            </figure>
-                            <div class="need_content">
-                                <h6 class="text-white">Напишите нам</h6>
-                                <h3 class="text-white">отправте нам сообщение</h3>
-                            <form id="contactForm" method="POST" asp-controller="Contact" asp-action="SubmitForm">
-                                @Html.AntiForgeryToken()
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="form-group mb-0">
-                                            <input type="text" class="form_style" placeholder="Ваше имя:" name="name" asp-for="Name">
-                                            <span asp-validation-for="Name" class="text-danger"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-group mb-0">
-                                            <input type="email" class="form_style" placeholder="Ваш Email:" name="emailid" asp-for="Emailid">
-                                            <span asp-validation-for="Emailid" class="text-danger"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-group mb-0">
-                                            <textarea class="form_style" placeholder="Сообщение" rows="3" name="msg" asp-for="Msg"></textarea>
-                                            <span asp-validation-for="Msg" class="text-danger"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="manage-button text-center">
-                                    <button type="button" id="submitButton" class="send_now text-white text-decoration-none">
-                                        Отправить
-                                        <i class="circle fa-thin fa-arrow-right"></i>
-                                    </button>
-                                </div>
-                            </form>
-                            <!-- Современное уведомление в правом верхнем углу -->
-                            <div class="notification-wrapper">
-                                <div id="notification" class="notification hidden">
-                                    <div class="notification-icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                                        </svg>
-                                    </div>
-                                    <div class="notification-content">
-                                        <h4 id="notification-title">Успешно!</h4>
-                                        <p id="notification-message"></p>
-                                    </div>
-                                    <div class="notification-progress"></div>
-                                </div>
-                            </div>
-                                <figure class="faq-image mb-0">
-                                    <img src="~/images/faq-image.png" alt="" class="img-fluid">
-                                </figure>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+@section Head {
+    <style>
+        .pg-contact { padding: clamp(140px, 16vw, 200px) 0 clamp(72px, 10vw, 140px); position: relative; overflow: hidden; }
+        .pg-contact .ml-hero__glow { right: auto; left: -360px; top: -380px; }
+        .pg-contact__grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(40px, 7vw, 120px); align-items: start; position: relative; z-index: 1; }
+        .pg-contact__title { font-size: clamp(48px, 7.4vw, 124px); line-height: .96; letter-spacing: -.05em; font-weight: 600; }
+        .pg-contact__list { list-style: none; margin-top: clamp(40px, 5vw, 72px); border-top: 1px solid var(--ml-line); }
+        .pg-contact__list li { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 16px; padding: 22px 0; border-bottom: 1px solid var(--ml-line); align-items: baseline; }
+        .pg-contact__list dt, .pg-contact__label { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--ml-muted-2); }
+        .pg-contact__value { font-family: var(--ml-display); font-size: clamp(20px, 1.8vw, 26px); letter-spacing: -.015em; line-height: 1.3; display: grid; gap: 6px; }
+        .pg-contact__value a { transition: color .2s; overflow-wrap: anywhere; }
+        .pg-contact__value a:hover { color: var(--ml-accent); }
+        .pg-contact__value small { font-family: var(--ml-font); font-size: 15px; letter-spacing: 0; }
+        .pg-contact__form { background: var(--ml-surface); border: 1px solid var(--ml-line); border-radius: var(--ml-radius-lg); padding: clamp(24px, 3.4vw, 52px); }
+        .pg-contact__form .ml-h3 { margin-bottom: 8px; }
+        .pg-contact__form fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 12px; }
+        .pg-contact__form legend { font-size: 14px; color: var(--ml-muted); margin-bottom: 12px; padding: 0; }
+        .pg-contact__submit { justify-self: start; }
+        .pg-contact__submit[disabled] { opacity: .6; cursor: progress; transform: none; }
+        .pg-contact__note { font-size: 14px; color: var(--ml-muted-2); margin: 0; }
+        .pg-contact__alert { display: none; }
+        .pg-contact__alert.is-shown { display: block; }
+        .pg-contact__alert strong { display: block; margin-bottom: 2px; }
+        .input-validation-error { border-bottom-color: #ff7a6b !important; }
+        @@media (max-width: 1024px) { .pg-contact__grid { grid-template-columns: 1fr; } }
+        @@media (max-width: 560px) { .pg-contact__list li { grid-template-columns: 1fr; gap: 6px; } .pg-contact__submit { width: 100%; } }
+    </style>
+}
+
+<section class="pg-contact">
+    <div class="ml-hero__glow" aria-hidden="true"></div>
+    <div class="ml-container">
+        <div class="pg-contact__grid">
+            <div>
+                <nav class="ml-breadcrumbs" aria-label="Хлебные крошки">
+                    <a href="/">Главная</a><span aria-hidden="true">/</span><span>Контакты</span>
+                </nav>
+                <p class="ml-eyebrow">Контакты</p>
+                <h1 class="pg-contact__title" data-reveal>Расскажите о&nbsp;<span class="ml-gradient-text">проекте</span></h1>
+                <p class="ml-lead ml-mt-m" data-reveal>
+                    Здесь можно обсудить проект, сотрудничество и финансовые вопросы. Напишите пару строк о задаче — вернёмся с вопросами и оценкой сроков.
+                </p>
+
+                <ul class="pg-contact__list" data-reveal-stagger>
+                    <li>
+                        <span class="pg-contact__label">Телефон</span>
+                        <span class="pg-contact__value">
+                            <a href="tel:+79081209023">+7 (908) 120-90-23</a>
+                            <a href="tel:+79308531417">+7 (930) 853-14-17</a>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="pg-contact__label">Email</span>
+                        <span class="pg-contact__value"><a href="mailto:ashurkovav@yandex.ru">ashurkovav@yandex.ru</a></span>
+                    </li>
+                    <li>
+                        <span class="pg-contact__label">Telegram</span>
+                        <span class="pg-contact__value"><a href="https://t.me/ashurkovav" target="_blank" rel="noopener">@@ashurkovav</a></span>
+                    </li>
+                    <li>
+                        <span class="pg-contact__label">Адрес</span>
+                        <span class="pg-contact__value">
+                            <span>305004, г. Курск, ул. Радищева, 64</span>
+                            <small><a class="ml-link" href="https://yandex.ru/maps/?text=%D0%9A%D1%83%D1%80%D1%81%D0%BA%2C%20%D1%83%D0%BB.%20%D0%A0%D0%B0%D0%B4%D0%B8%D1%89%D0%B5%D0%B2%D0%B0%2C%2064" target="_blank" rel="noopener">Открыть на Яндекс Картах <span class="ml-arrow">↗</span></a></small>
+                        </span>
+                    </li>
+                </ul>
             </div>
-            <figure class="offer-bottomlayer mb-0">
-                <img src="~/images/offer-bottomlayer.png" alt="" class="img-fluid">
-            </figure>
-        </section>
+
+            <div class="pg-contact__form" data-reveal>
+                <h2 class="ml-h3">Напишите нам</h2>
+                <p class="ml-muted">Все поля обязательны. Выбор типа проекта и бюджета — по желанию.</p>
+
+                @{ var successMessage = TempData["SuccessMessage"]?.ToString(); }
+                <div id="contactAlert" class="ml-alert pg-contact__alert ml-mt-s@(successMessage != null ? " is-shown" : "")" role="status" aria-live="polite">
+                    <strong id="contactAlertTitle">@(successMessage != null ? "Успешно!" : "")</strong>
+                    <span id="contactAlertMessage">@successMessage</span>
+                </div>
+
+                <form id="contactForm" class="ml-form ml-mt-m" method="POST" asp-controller="Contact" asp-action="SubmitForm">
+                    @Html.AntiForgeryToken()
+                    <div asp-validation-summary="ModelOnly" class="ml-field-error"></div>
+
+                    <fieldset>
+                        <legend>Тип проекта</legend>
+                        <div class="ml-chips">
+                            <label class="ml-chip"><input type="radio" name="pgProjectType" value="Мобильное приложение"><span>Мобильное приложение</span></label>
+                            <label class="ml-chip"><input type="radio" name="pgProjectType" value="MVP"><span>MVP</span></label>
+                            <label class="ml-chip"><input type="radio" name="pgProjectType" value="UX/UI-дизайн"><span>UX/UI-дизайн</span></label>
+                            <label class="ml-chip"><input type="radio" name="pgProjectType" value="Техническое задание"><span>Техническое задание</span></label>
+                            <label class="ml-chip"><input type="radio" name="pgProjectType" value="ИИ-агент"><span>ИИ-агент</span></label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Бюджет</legend>
+                        <div class="ml-chips">
+                            <label class="ml-chip"><input type="radio" name="pgBudget" value="до 500 000 ₽"><span>до 500 000 ₽</span></label>
+                            <label class="ml-chip"><input type="radio" name="pgBudget" value="до 1 200 000 ₽"><span>до 1 200 000 ₽</span></label>
+                            <label class="ml-chip"><input type="radio" name="pgBudget" value="3 000 000+ ₽"><span>3 000 000+ ₽</span></label>
+                            <label class="ml-chip"><input type="radio" name="pgBudget" value="Пока не знаю"><span>Пока не знаю</span></label>
+                        </div>
+                    </fieldset>
+
+                    <div class="ml-field">
+                        <label asp-for="Name">Ваше имя</label>
+                        <input asp-for="Name" class="ml-input" type="text" placeholder="Как к вам обращаться" autocomplete="name">
+                        <span asp-validation-for="Name" class="ml-field-error"></span>
+                    </div>
+                    <div class="ml-field">
+                        <label asp-for="Emailid">Email</label>
+                        <input asp-for="Emailid" class="ml-input" type="email" placeholder="you@company.ru" autocomplete="email">
+                        <span asp-validation-for="Emailid" class="ml-field-error"></span>
+                    </div>
+                    <div class="ml-field">
+                        <label asp-for="Msg">О проекте</label>
+                        <textarea asp-for="Msg" class="ml-textarea" rows="4" placeholder="Какую задачу должно решать приложение, есть ли сроки"></textarea>
+                        <span asp-validation-for="Msg" class="ml-field-error"></span>
+                    </div>
+
+                    <button type="submit" id="submitButton" class="ml-btn ml-btn--accent ml-btn--lg pg-contact__submit">
+                        <span class="pg-contact__submit-text">Отправить</span> <span class="ml-arrow">→</span>
+                    </button>
+                    <p class="pg-contact__note">Нажимая «Отправить», вы передаёте имя, email и сообщение для ответа на заявку.</p>
+                </form>
+            </div>
+        </div>
     </div>
+</section>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 
     <script>
-        $(document).ready(function () {
-            // Обработчик клика по кнопке отправки
-            $('#submitButton').click(function (e) {
-                e.preventDefault();
+        $(function () {
+            var $form = $('#contactForm');
+            var $btn = $('#submitButton');
+            var $btnText = $btn.find('.pg-contact__submit-text');
+            var $alert = $('#contactAlert');
+            var hideTimer = null;
 
-                // Проверяем валидность формы
-                if ($('#contactForm').valid()) {
-                    // Показываем индикатор загрузки
-                    $('#submitButton').prop('disabled', true).html('Отправка... <i class="circle fa-thin fa-spinner fa-spin"></i>');
-
-                    // Отправляем форму через AJAX
-                    $.ajax({
-                        url: $('#contactForm').attr('action'),
-                        type: 'POST',
-                        data: $('#contactForm').serialize(),
-                        headers: {
-                            'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
-                        },
-                        success: function (response) {
-                            if (response.success) {
-                                // Показываем уведомление об успехе
-                                showNotification('Успешно!', response.message, 'success');
-
-                                // Очищаем форму
-                                $('#contactForm')[0].reset();
-                            } else {
-                                // Показываем уведомление об ошибке
-                                showNotification('Ошибка!', response.message, 'error');
-                            }
-                        },
-                        error: function (xhr, status, error) {
-                            // Показываем уведомление об ошибке
-                            showNotification('Ошибка!', 'Произошла ошибка при отправке формы.', 'error');
-                        },
-                        complete: function () {
-                            // Восстанавливаем кнопку
-                            $('#submitButton').prop('disabled', false).html('Отправить <i class="circle fa-thin fa-arrow-right"></i>');
-                        }
-                    });
-                }
-            });
-
-            // Функция для показа уведомления
+            // Уведомление через ml-alert
             function showNotification(title, message, type) {
-                const notification = $('#notification');
-                const icon = notification.find('.notification-icon svg');
-
-                // Устанавливаем заголовок и сообщение
-                $('#notification-title').text(title);
-                $('#notification-message').text(message);
-
-                // Меняем стиль в зависимости от типа
-                notification.removeClass('success error');
-                notification.addClass(type);
-
-                // Показываем уведомление
-                notification.removeClass('hidden');
-                notification.addClass('show');
-
-                // Автоматически скрываем через 5 секунд
-                setTimeout(function () {
-                    notification.removeClass('show');
-                    notification.addClass('hidden');
-                }, 5000);
+                $('#contactAlertTitle').text(title);
+                $('#contactAlertMessage').text(message);
+                $alert.toggleClass('ml-alert--error', type === 'error').addClass('is-shown');
+                clearTimeout(hideTimer);
+                hideTimer = setTimeout(function () { $alert.removeClass('is-shown'); }, 7000);
             }
 
-            // Если есть сообщение в TempData, показываем его при загрузке страницы
-        @if (TempData["SuccessMessage"] != null)
-        {
-            <text>
-                    showNotification('Успешно!', '@Html.Raw(TempData["SuccessMessage"])', 'success');
-            </text>
-        }
+            // Тип проекта и бюджет подмешиваются в поле Msg (модель не меняется)
+            function buildData() {
+                var arr = $form.serializeArray();
+                var type = $form.find('input[name="pgProjectType"]:checked').val();
+                var budget = $form.find('input[name="pgBudget"]:checked').val();
+                var prefix = [];
+                if (type) prefix.push('Тип проекта: ' + type);
+                if (budget) prefix.push('Бюджет: ' + budget);
+                return $.map(arr, function (f) {
+                    if (f.name === 'pgProjectType' || f.name === 'pgBudget') return null;
+                    if (f.name === 'Msg' && prefix.length) f = { name: 'Msg', value: prefix.join('\n') + '\n\n' + f.value };
+                    return f;
                 });
+            }
+
+            $form.on('submit', function (e) {
+                e.preventDefault();
+                if ($.fn.valid && !$form.valid()) return;
+
+                $btn.prop('disabled', true);
+                $btnText.text('Отправка…');
+
+                $.ajax({
+                    url: $form.attr('action'),
+                    type: 'POST',
+                    data: $.param(buildData()),
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+                    },
+                    success: function (response) {
+                        if (response && response.success) {
+                            showNotification('Успешно!', response.message, 'success');
+                            $form[0].reset();
+                        } else {
+                            showNotification('Ошибка!', (response && response.message) || 'Не удалось отправить сообщение.', 'error');
+                        }
+                    },
+                    error: function () {
+                        showNotification('Ошибка!', 'Произошла ошибка при отправке формы.', 'error');
+                    },
+                    complete: function () {
+                        $btn.prop('disabled', false);
+                        $btnText.text('Отправить');
+                    }
+                });
+            });
+
+        });
     </script>
 }

@@ -59,7 +59,7 @@ namespace WebLava.Controllers
             }
             else
             {
-                return View(model);
+                return View("Index", model);
             }
         }
 
