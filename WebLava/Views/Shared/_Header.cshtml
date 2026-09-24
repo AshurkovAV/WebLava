@@ -1,0 +1,42 @@
+@{
+    var active = ViewData["ActivePage"] as string ?? "";
+    var nav = new[] {
+        (Key: "service", Href: "/service", Text: "Услуги"),
+        (Key: "portfolio", Href: "/portfolio", Text: "Кейсы"),
+        (Key: "pricingplan", Href: "/pricingplan", Text: "Цены"),
+        (Key: "blog", Href: "/blog", Text: "Блог"),
+        (Key: "contact", Href: "/contact", Text: "Контакты"),
+    };
+}
+<header class="ml-header">
+    <div class="ml-container ml-header__inner">
+        <a class="ml-logo" href="/" aria-label="Big Lava — на главную">
+            <img src="/images/logo.png" alt="Big Lava" width="152" height="30" />
+        </a>
+        <nav class="ml-nav" aria-label="Основное меню">
+            @foreach (var item in nav)
+            {
+                <a href="@item.Href" class="@(active == item.Key ? "is-active" : "")">@item.Text</a>
+            }
+        </nav>
+        <div class="ml-header__cta">
+            <a class="ml-header__phone" href="tel:+79081209023">+7 (908) 120-90-23</a>
+            <a class="ml-btn ml-btn--primary" href="/contact">Обсудить проект</a>
+            <button class="ml-burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="ml-mobile-menu"><span></span><span></span></button>
+        </div>
+    </div>
+</header>
+<div class="ml-mobile-menu" id="ml-mobile-menu">
+    <nav aria-label="Мобильное меню">
+        <a href="/" class="@(active == "home" ? "is-active" : "")">Главная</a>
+        @foreach (var item in nav)
+        {
+            <a href="@item.Href" class="@(active == item.Key ? "is-active" : "")">@item.Text</a>
+        }
+    </nav>
+    <div class="ml-mobile-menu__foot">
+        <a href="tel:+79081209023">+7 (908) 120-90-23</a>
+        <a href="mailto:ashurkovav@yandex.ru">ashurkovav@yandex.ru</a>
+        <span>г. Курск, ул. Радищева, 64</span>
+    </div>
+</div>

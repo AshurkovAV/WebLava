@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
+    <meta charset="utf-8">
     @{
         var currentPath = Context.Request.Path.Value ?? "/";
         var canonicalPath = currentPath == "/" ? "/" : currentPath.TrimEnd('/');
@@ -17,25 +18,18 @@
     <meta property="og:image" content="@ogImage" />
     <meta name="twitter:card" content="summary_large_image" />
     <!-- /SEO Ultimate -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-    <meta charset="utf-8">  
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
-    <!-- Latest compiled and minified CSS -->
-    <link href="~/bootstrap/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="~/js/bootstrap.min.js">
-    <!-- Font Awesome link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <!-- StyleSheet link CSS -->
-    <link href="~/css/style.css" rel="stylesheet" type="text/css">
-    <link href="~/css/custom-style.css" rel="stylesheet" type="text/css">
-    <link href="~/css/special-classes.css" rel="stylesheet" type="text/css">
-    <link href="~/css/responsive.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="~/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#0b0b0c">
+    @if (ViewData["Keywords"] != null)
+    {
+        <meta name="keywords" content="@Html.Raw(ViewData["Keywords"])" />
+    }
+    <link rel="icon" href="/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="~/css/ml.css" rel="stylesheet" asp-append-version="true">
+    @await RenderSectionAsync("Head", required: false)
 
     <script type="application/ld+json">
         {
@@ -57,8 +51,7 @@
         }
     </script>
     <link rel="canonical" href="https://biglv.ru@(canonicalPath)" />
-</head>
-<!-- Yandex.Metrika counter -->
+    <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
     (function (m, e, t, r, i, k, a) {
         m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
@@ -74,120 +67,25 @@
         accurateTrackBounce: true
     });
 </script>
-<noscript><div><img src="https://mc.yandex.ru/watch/101658266" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
 <!-- /Yandex.Metrika counter -->
+</head>
+
 
 <body>
-    @RenderBody()
-    
-    <!-- Footer -->
-    <section class="footer-section">
-        <div class="container">
-            <figure class="footer-leftimage mb-0">
-                <img src="/images/footer-leftimage.png" alt="" class="img-fluid">
-            </figure>
-            <figure class="mb-0 about-leftcircle">
-                <img src="~/images/about-rightcircle.png" alt="" class="img-fluid">
-            </figure>
-            <div class="middle-portion">
-                <div class="row">
-                    <div class="col-lg-4 col-md-5 col-sm-6 col-12">
-                        <div class="first-column">
-                            <a href="./index">
-                                <figure class="footer-logo">
-                                    <img src="~/images/logo.png" class="img-fluid" alt="Big Lava — логотип">
-                                </figure>
-                            </a>
-                            <p class="text-size-18 footer-text">
-                                Мы разрабатываем ИТ-решения для клиентов, хорошо знающих особенности своего бизнеса. Поможем превратить ваши знания в эффективно работающий продукт.
-                            </p>
-                            <div class="lower">
-                                <div class="lower-content">
-                                    <figure class="icon">
-                                        <img src="~/images/footer-callicon.png" alt="Иконка: телефон" class="img-fluid">
-                                    </figure>
-                                    <div class="content" itemscope itemtype="http://schema.org/LocalBusiness">
-                                        <span class="text-white">Телефон:</span>
-                                        <a class="text-size-18 mb-0 text text-decoration-none" href="tel:+79081209023" itemprop="telephone">+7 (908) 120-90-23</a>
-                                    </div>
-                                </div>
-                                <div class="lower-content">
-                                    <figure class="icon">
-                                        <img src="~/images/footer-emailicon.png" alt="Иконка: email" class="img-fluid">
-                                    </figure>
-                                    <div class="content">
-                                        <span class="text-white">Email:</span>
-                                        <a href="mailto:ashurkovav@yandex.ru" class="text-size-18 mb-0 text-decoration-none">ashurkovav@yandex.ru</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-sm-12 col-12 d-md-block d-none">
-                        <div class="links list-pd">
-                            <h4 class="heading text-white">Меню</h4>
-                            <ul class="list-unstyled mb-0">
-                                <li><a href="./index" class="text-size-18 text text-decoration-none ">Главная</a></li>                                
-                                <li><a href="./service" class="text-size-18 text text-decoration-none ">Услуги</a></li>
-                                <li><a href="./blog" class="text-size-18 text text-decoration-none ">Блог</a></li>
-                                <li><a href="./pricingplan" class="text-size-18 text text-decoration-none ">Цены</a></li>
-                                <li><a href="./contact" class="text-size-18 text text-decoration-none ">Контакты</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-2 col-sm-12 col-12 d-lg-block d-none">
-                        <div class="links">
-                            <h4 class="heading text-white">Услуги</h4>
-                            <ul class="list-unstyled mb-0">
-                                <li><a href="./service" class="text-size-18 text text-decoration-none">Разработка</a></li>
-                                <li><a href="./Design" class="text-size-18 text text-decoration-none">UX/UI-дизайн</a></li>
-                                <li><a href="./service" class="text-size-18 text text-decoration-none">Тестирование</a></li>
-                                <li><a href="./service" class="text-size-18 text text-decoration-none">Frontend</a></li>
-                                <li><a href="./service" class="text-size-18 text text-decoration-none">Backend</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-            <div class="copyright">
-                <div class="container">
-                    <div class="row copyright-border">
-                        <div class="col-lg-6 col-md-6 col-sm-12 co-12 column">
-                            <p class="text-size-16">Copyright ©2025 biglv.ru Все права защищены</p>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12 co-12 d-md-block d-none">
-                            <div class="social-icons position-relative">
-                                <ul class="list-unstyled position-absolute">
-                                    <li><a href="" class="text-decoration-none"><i class="fa-brands fa-facebook-f social-networks"></i></a></li>
-                                    <li><a href="" class="text-decoration-none"><i class="fa-brands fa-twitter social-networks"></i></a></li>
-                                    <li><a href="" class="text-decoration-none"><i class="fa-brands fa-google-plus-g social-networks"></i></a></li>
-                                    <li><a href="" class="text-decoration-none"><i class="fa-brands fa-instagram social-networks"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <figure class="footer-dotimage mb-0">
-                <img src="~/images/footer-dotimage.png" alt="" class="img-fluid">
-            </figure>
-            <figure class="footer-leftlayer mb-0">
-                <img src="~/images/footer-leftlayer.png" alt="" class="img-fluid">
-            </figure>
-        </div>
-    </section>
+    <noscript><div><img src="https://mc.yandex.ru/watch/101658266" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <partial name="_Header" />
+    <main id="main">
+        @RenderBody()
+    </main>
+    @if (!(ViewData["HideCta"] is bool hide && hide))
+    {
+        <partial name="_Cta" />
+    }
+    <partial name="_Footer" />
 
-    <!-- Latest compiled JavaScript -->
-    <script src="~/js/jquery-3.6.0.min.js"> </script>
-    <script src="~/js/bootstrap.min.js"> </script>
-    <script src="~/js/video_link.js"></script>
-    <script src="~/js/counter.js"></script>
-    <script src="~/js/owl.carousel.js"></script>
-    <script src="~/js/custom-carousel.js"></script>
-    <script src="~/js/custom.js"></script>
-    <script src="~/js/animation_links.js"></script>
-    <script src="~/js/animation.js"></script>
+    <script src="~/js/jquery-3.6.0.min.js"></script>
+    <script src="~/js/ml.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html> 
