@@ -1,0 +1,25 @@
+@{
+    var code = ViewData["Code"] as int? ?? 404;
+    var notFound = code == 404;
+    ViewData["Title"] = notFound ? "Страница не найдена | Big Lava" : "Ошибка на сервере | Big Lava";
+    ViewData["Description"] = "Студия разработки мобильных приложений Big Lava. Вернитесь на главную или напишите нам.";
+}
+@section Head {
+    <meta name="robots" content="noindex" />
+}
+
+<section class="ml-hero">
+    <div class="ml-hero__glow" aria-hidden="true"></div>
+    <div class="ml-container">
+        <p class="ml-eyebrow">Ошибка @code</p>
+        <h1 class="ml-display">@(notFound ? "Такой страницы нет" : "Что-то пошло не так")</h1>
+        <p class="ml-lead">@(notFound
+            ? "Возможно, ссылка устарела или в адресе опечатка. Зато у нас есть кейсы, тарифы и статьи о разработке приложений."
+            : "Мы уже разбираемся. Попробуйте обновить страницу чуть позже или свяжитесь с нами напрямую.")</p>
+        <div class="ml-hero__actions">
+            <a class="ml-btn ml-btn--primary ml-btn--lg" href="/">На главную <span class="ml-arrow">→</span></a>
+            <a class="ml-btn ml-btn--ghost ml-btn--lg" href="/portfolio">Кейсы</a>
+            <a class="ml-btn ml-btn--ghost ml-btn--lg" href="/blog">Блог</a>
+        </div>
+    </div>
+</section>

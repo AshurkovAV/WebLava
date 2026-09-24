@@ -1,4 +1,4 @@
-var builder = WebApplication.CreateBuilder(args);
+﻿var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
@@ -19,8 +19,10 @@ app.UseRequestLocalization(localizationOptions);
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Error");
+    app.UseExceptionHandler("/error/500");
 }
+// Брендированные страницы 404 и других кодов ошибок
+app.UseStatusCodePagesWithReExecute("/error/{0}");
 app.UseDefaultFiles();
 app.UseStaticFiles();
 
