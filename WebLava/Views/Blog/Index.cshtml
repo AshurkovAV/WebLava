@@ -4,95 +4,72 @@
     ViewData["Description"] = "Читайте наш блог о разработке мобильных приложений. Узнайте, как создать успешное приложение, избежать ошибок и оценить стоимость разработки.";
 }
 
-<!-- Header  -->
-<div class="sub-banner sub-banner4">
-    <figure class="sub-bannerleftlayer mb-0">
-        <img src="~/images/sub-bannerleftlayer.png" alt="" class="img-fluid">
-    </figure>
-    @Html.Partial("Menu");
-    <section class="banner-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="banner_content" data-aos="fade-up">
-                        <figure class="service-rightcircle mb-0">
-                            <img src="~/images/service-rightcircle.png" alt="" class="img-fluid">
-                        </figure>
-                        <h1 class="text-white">Блог</h1>
-                        <p class="lead">Статьи и руководства по созданию успешных мобильных приложений</p>
-                        <div class="box">
-                            <span class="mb-0">Главная</span>
-                            <figure class="mb-0 arrow"><img src="~/images/button-arrow.png" alt="" class="img-fluid"></figure>
-                            <span class="mb-0 box_span">Блог</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+@section Head {
+    <style>
+        .pg-blog-list .ml-post--featured .ml-post__meta { margin-top: 0; }
+        .pg-blog-list .ml-post--featured .ml-post__excerpt { font-size: 18px; margin-top: 16px; }
+        .pg-blog-list .ml-post__meta { flex-wrap: wrap; }
+        .pg-blog-list .ml-posts { margin-top: clamp(56px, 7vw, 112px); padding-top: clamp(40px, 5vw, 72px); border-top: 1px solid var(--ml-line); }
+    </style>
+}
+
+<div class="pg-blog-list">
+    <section class="ml-page-hero">
+        <div class="ml-container">
+            <nav class="ml-breadcrumbs" aria-label="Хлебные крошки">
+                <a href="/">Главная</a><span aria-hidden="true">/</span><span aria-current="page">Блог</span>
+            </nav>
+            <p class="ml-eyebrow" data-reveal>Журнал Big Lava</p>
+            <h1 class="ml-display" data-reveal>Блог</h1>
+            <p class="ml-lead" data-reveal>Статьи и руководства по созданию успешных мобильных приложений</p>
         </div>
     </section>
-    <figure class="banner-circleright mb-0">
-        <img src="~/images/banner-circleright.png" class="img-fluid" alt="">
-    </figure>
-    <figure class="sub-bannerrightlayer mb-0">
-        <img src="~/images/sub-bannerrightlayer.png" alt="" class="img-fluid">
-    </figure>
-</div>
 
-<div class="wrapper">
-    <section class="blog-posts" style="padding: 80px 0;">
-        <div class="container">
-            <div class="cards-grid">
-                <div class="card-item">
-                    <a href="/singlepost" class="card-item-image">
-                        <img alt="Разработка успешного мобильного приложения за 3 шага" src="~/images/post-featured.jpg">
-                    </a>
-                    <div class="card-item-body">
-                        <span class="card-item-badge">Разработка</span>
-                        <h3 class="card-item-title"><a href="/singlepost" style="color: inherit; text-decoration: none;">Разработка успешного мобильного приложения: от идеи до запуска</a></h3>
-                        <div class="card-item-meta">21 января, 2025 · 9 мин чтения</div>
-                        <p class="card-item-result">В этом посте мы рассказываем, каковы ключи к разработке успешного мобильного приложения.</p>
-                        <a href="/singlepost" class="card-item-link">Подробнее <i class="fa fa-arrow-right"></i></a>
+    <section class="ml-section ml-section--tight ml-mt-0" style="padding-top: 0;">
+        <div class="ml-container">
+            <a data-reveal class="ml-post ml-post--featured" href="/singlepost">
+                    <div class="ml-post__media">
+                        <img src="/images/post/og-singlepost.jpg" alt="Разработка успешного мобильного приложения: от идеи до запуска" width="1200" height="630">
                     </div>
-                </div>
+                    <div class="ml-post__body">
+                        <div class="ml-post__meta"><span class="ml-tag">Разработка</span><span><time datetime="2025-01-21">21 января, 2025</time> · 9 мин чтения</span></div>
+                        <h2 class="ml-post__title">Разработка успешного мобильного приложения: от идеи до запуска</h2>
+                        <p class="ml-post__excerpt">В этом посте мы рассказываем, каковы ключи к разработке успешного мобильного приложения.</p>
+                        <span class="ml-link ml-mt-m">Читать статью <span class="ml-arrow">→</span></span>
+                    </div>
+                </a>
 
-                <div class="card-item">
-                    <a href="/QuamDevelopMobili" class="card-item-image">
-                        <img alt="Сколько стоит разработка приложения для бизнеса" src="~/images/post/og-quamdevelopmobili.jpg">
-                    </a>
-                    <div class="card-item-body">
-                        <span class="card-item-badge">Разработка</span>
-                        <h3 class="card-item-title"><a href="/QuamDevelopMobili" style="color: inherit; text-decoration: none;">Сколько стоит разработка приложения для бизнеса?</a></h3>
-                        <div class="card-item-meta">28 февраля, 2025 · 8 мин чтения</div>
-                        <p class="card-item-result">Разработка мобильного приложения для бизнеса — это инвестиция, которая может значительно увеличить доход компании.</p>
-                        <a href="/QuamDevelopMobili" class="card-item-link">Подробнее <i class="fa fa-arrow-right"></i></a>
+            <div class="ml-posts" data-reveal-stagger>
+            <a class="ml-post" href="/QuamDevelopMobili" data-reveal>
+                    <div class="ml-post__media">
+                        <img src="/images/post/og-quamdevelopmobili.jpg" alt="Сколько стоит разработка приложения для бизнеса?" width="1200" height="630">
                     </div>
-                </div>
-
-                <div class="card-item">
-                    <a href="/blog/devandroid" class="card-item-image">
-                        <img alt="Стоимость разработки Android-приложения в 2024 году" src="~/images/post/og-devandroid.jpg">
-                    </a>
-                    <div class="card-item-body">
-                        <span class="card-item-badge">Разработка</span>
-                        <h3 class="card-item-title"><a href="/blog/devandroid" style="color: inherit; text-decoration: none;">Стоимость разработки Android-приложения в 2024 году</a></h3>
-                        <div class="card-item-meta">16 декабря, 2024 · 3 мин чтения</div>
-                        <p class="card-item-result">Подробный анализ стоимости разработки мобильного приложения для Android: из чего складывается цена.</p>
-                        <a href="/blog/devandroid" class="card-item-link">Подробнее <i class="fa fa-arrow-right"></i></a>
+                    <div class="ml-post__body">
+                        <div class="ml-post__meta"><span class="ml-tag">Разработка</span><span><time datetime="2025-02-28">28 февраля, 2025</time> · 8 мин чтения</span></div>
+                        <h2 class="ml-post__title">Сколько стоит разработка приложения для бизнеса?</h2>
+                        <p class="ml-post__excerpt">Разработка мобильного приложения для бизнеса — это инвестиция, которая может значительно увеличить доход компании.</p>
                     </div>
-                </div>
-
-                <div class="card-item">
-                    <a href="/blog/mvp" class="card-item-image">
-                        <img alt="MVP мобильного приложения: как проверить идею с минимальным бюджетом" src="~/images/post/og-mvp.jpg">
-                    </a>
-                    <div class="card-item-body">
-                        <span class="card-item-badge">Разработка</span>
-                        <h3 class="card-item-title"><a href="/blog/mvp" style="color: inherit; text-decoration: none;">MVP мобильного приложения: как проверить идею с минимальным бюджетом</a></h3>
-                        <div class="card-item-meta">20 сентября, 2026 · 4 мин чтения</div>
-                        <p class="card-item-result">Как проверить бизнес-идею через MVP мобильного приложения: что это, из чего состоит и сколько стоит.</p>
-                        <a href="/blog/mvp" class="card-item-link">Подробнее <i class="fa fa-arrow-right"></i></a>
+                </a>
+            <a class="ml-post" href="/blog/devandroid" data-reveal>
+                    <div class="ml-post__media">
+                        <img src="/images/post/og-devandroid.jpg" alt="Стоимость разработки Android-приложения в 2024 году" width="1200" height="630">
                     </div>
-                </div>
+                    <div class="ml-post__body">
+                        <div class="ml-post__meta"><span class="ml-tag">Разработка</span><span><time datetime="2024-12-16">16 декабря, 2024</time> · 3 мин чтения</span></div>
+                        <h2 class="ml-post__title">Стоимость разработки Android-приложения в 2024 году</h2>
+                        <p class="ml-post__excerpt">Подробный анализ стоимости разработки мобильного приложения для Android: из чего складывается цена.</p>
+                    </div>
+                </a>
+            <a class="ml-post" href="/blog/mvp" data-reveal>
+                    <div class="ml-post__media">
+                        <img src="/images/post/og-mvp.jpg" alt="MVP мобильного приложения: как проверить идею с минимальным бюджетом" width="1200" height="630">
+                    </div>
+                    <div class="ml-post__body">
+                        <div class="ml-post__meta"><span class="ml-tag">Разработка</span><span><time datetime="2026-09-20">20 сентября, 2026</time> · 4 мин чтения</span></div>
+                        <h2 class="ml-post__title">MVP мобильного приложения: как проверить идею с минимальным бюджетом</h2>
+                        <p class="ml-post__excerpt">Как проверить бизнес-идею через MVP мобильного приложения: что это, из чего состоит и сколько стоит.</p>
+                    </div>
+                </a>
             </div>
         </div>
     </section>

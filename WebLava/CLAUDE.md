@@ -83,3 +83,11 @@
 # Промт: добавить страницу ЯДРО как отдельный самостоятельный лендинг
  
  У меня уже есть готовый HTML-файл лендинга `yadro-landing.html` (тёмная тема, фиолетово-розово-оранжевый градиент, свой отдельный визуальный стиль — НЕ похож на основной сайт biglv.ru) — я вставлю его содержимое сам, твоя задача подготовить для него правильное место в проекте.
+
+## Дизайн-система (редизайн в стиле metalab.com)
+
+- Все страницы используют только `wwwroot/css/ml.css` + `wwwroot/js/ml.js` (классы `ml-*`). Старые `style.css`, bootstrap, owl, AOS, Font Awesome в `_Layout.cshtml` больше не подключены.
+- Шапка `_Header`, большой CTA `_Cta` и подвал `_Footer` выводит layout. CTA на странице отключается через `ViewData["HideCta"] = true`.
+- Стили, уникальные для страницы, — в `@section Head { <style> … </style> }` с префиксом `.pg-<страница>-*`. В Razor `@media` пишется как `@@media`.
+- Анимация появления: `data-reveal` на блоке или `data-reveal-stagger` на родителе.
+- Страницы ошибок: `ErrorController` + `Views/Error/Status.cshtml` (подключено через `UseStatusCodePagesWithReExecute`).
