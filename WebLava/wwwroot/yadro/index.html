@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>ЯДРО — ИИ-агенты для Telegram, MAX и WhatsApp</title>
+<title>ЯДРО — ИИ-администратор для Telegram, MAX, WhatsApp и Instagram</title>
+<meta name="description" content="ИИ-администратор отвечает клиентам во всех мессенджерах, оформляет заказы и записи. Подписка от 1 500 ₽ в месяц, настройка под ваш бизнес — по запросу.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -201,6 +202,11 @@
     font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--muted-2);
   }
   .channel-card .stat b{color:var(--text); font-family:'Inter',sans-serif;}
+  .channel-card{position:relative;}
+  .soon{position:absolute; top:24px; right:24px; font-size:12px; font-weight:600; color:var(--orange); border:1px solid rgba(255,139,77,.4); border-radius:999px; padding:4px 10px;}
+  .footnote{margin-top:18px; font-size:12.5px; color:var(--muted-2);}
+  .price-card .price .per{font-size:16px; color:var(--muted); font-family:'Inter',sans-serif; font-weight:500;}
+  .pricing-note{margin-top:22px; color:var(--muted); font-size:14px; text-align:center;}
 
   /* Use cases */
   .usecases{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border-radius:20px; overflow:hidden; border:1px solid var(--border);}
@@ -322,11 +328,11 @@
 <main>
   <section class="hero wrap">
     <div>
-      <div class="eyebrow-chip"><span class="dot"></span>Telegram · MAX · WhatsApp — один агент</div>
-      <h1>Один ИИ-агент<br>вместо трёх ботов<br>и <span class="grad">команды поддержки</span></h1>
-      <p>Собираем диалоги из Telegram, MAX и WhatsApp в одного агента, который понимает контекст, оформляет заказы, записывает клиентов и сам обращается к вашей CRM — без сценариев «нажмите 1».</p>
+      <div class="eyebrow-chip"><span class="dot"></span>Telegram · MAX · WhatsApp · Instagram* — один агент</div>
+      <h1>Один ИИ-агент<br>во всех мессенджерах<br>вместо <span class="grad">команды поддержки</span></h1>
+      <p>Собираем диалоги из Telegram, MAX, WhatsApp и Instagram* в одного агента, который понимает контекст, оформляет заказы, записывает клиентов и сам обращается к вашей CRM — без сценариев «нажмите 1».</p>
       <div class="hero-actions">
-        <a href="#cta" class="btn-primary">Рассчитать стоимость</a>
+        <a href="#pricing" class="btn-primary">Подписка от 1 500 ₽/мес</a>
         <a href="#agent" class="btn-secondary">Чем агент отличается от бота</a>
       </div>
     </div>
@@ -374,7 +380,7 @@
     <div class="section-head">
       <span class="tag">Каналы</span>
       <h2>Клиенты пишут туда, где им удобно — мы отвечаем везде одинаково хорошо</h2>
-      <p>Одна логика агента, три точки входа. История переписки и профиль клиента общие, независимо от мессенджера.</p>
+      <p>Одна логика агента на все каналы. История переписки и профиль клиента общие, независимо от мессенджера.</p>
     </div>
     <div class="channels-grid">
       <div class="channel-card">
@@ -401,7 +407,34 @@
         <p>Самая широкая база в России сегодня — особенно среди клиентов старше 30. Через Business API легко подключить оплату и CRM.</p>
         <div class="stat">Доля пишущих бизнесу: <b>самая крупная база</b></div>
       </div>
+      <div class="channel-card">
+        <div class="ic-lg" style="background:linear-gradient(45deg,#F58529,#DD2A7B 50%,#8134AF);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="#fff" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="#fff"/></svg>
+        </div>
+        <h3>Instagram*</h3>
+        <p>Директ для тех, кто продаёт через профиль: агент отвечает на вопросы о товарах, ценах и записи прямо в переписке.</p>
+        <div class="stat">Особенно важен для: <b>СНГ и бьюти-сферы</b></div>
+      </div>
+      <div class="channel-card">
+        <span class="soon">скоро</span>
+        <div class="ic-lg" style="background:#0077FF;">
+          <span style="color:#fff; font-family:'Unbounded',sans-serif; font-size:15px; font-weight:700;">VK</span>
+        </div>
+        <h3>ВКонтакте</h3>
+        <p>Сообщения сообщества: агент принимает заявки и заказы там, где у малого бизнеса часто уже есть группа и подписчики.</p>
+        <div class="stat">Подключение: <b>в разработке</b></div>
+      </div>
+      <div class="channel-card">
+        <span class="soon">скоро</span>
+        <div class="ic-lg" style="background:linear-gradient(135deg,#00AAFF,#97CF26);">
+          <span style="color:#fff; font-family:'Unbounded',sans-serif; font-size:15px; font-weight:700;">Av</span>
+        </div>
+        <h3>Авито</h3>
+        <p>Ответы покупателям в Авито Мессенджере: наличие, цена, доставка — без задержек, даже ночью и в выходные.</p>
+        <div class="stat">Подключение: <b>в разработке</b></div>
+      </div>
     </div>
+    <p class="footnote">* Instagram принадлежит компании Meta, деятельность которой признана экстремистской и запрещена на территории России.</p>
   </section>
 
   <section id="usecases" class="wrap">
@@ -489,7 +522,7 @@
       </div>
       <div class="p-step">
         <div class="p-num mono">03</div>
-        <h3>Подключение MAX и WhatsApp</h3>
+        <h3>Подключение остальных мессенджеров</h3>
         <p>Разворачиваем ту же логику на остальных каналах клиента.</p>
       </div>
       <div class="p-step">
@@ -508,44 +541,48 @@
   <section id="pricing" class="wrap">
     <div class="section-head">
       <span class="tag">Цены</span>
-      <h2>Три уровня — от одного канала до полной автоматизации</h2>
+      <h2>Подписка на ИИ-администратора — и настройка под ваш бизнес, если нужна</h2>
     </div>
     <div class="pricing-grid">
-      <div class="price-card">
-        <h3>Стартовый бот</h3>
-        <div class="price">от 45 000 ₽</div>
-        <div class="desc">Один канал, готовые сценарии, без обучения на диалогах.</div>
-        <ul>
-          <li>Telegram или WhatsApp</li>
-          <li>Каталог или запись</li>
-          <li>Запуск за 5–7 дней</li>
-        </ul>
-        <a href="#cta" class="btn-secondary">Выбрать</a>
-      </div>
       <div class="price-card featured">
-        <h3>Бизнес-агент</h3>
-        <div class="price">от 120 000 ₽</div>
-        <div class="desc">Все три канала на одной логике, с интеграцией CRM.</div>
+        <h3>Подписка ЯДРО</h3>
+        <div class="price">1 500 ₽ <span class="per">/ месяц</span></div>
+        <div class="desc">Готовый ИИ-администратор: подключаете мессенджеры и работаете.</div>
         <ul>
-          <li>Telegram + MAX + WhatsApp</li>
-          <li>ИИ-агент вместо сценария</li>
-          <li>Интеграция с amoCRM/Bitrix24</li>
-          <li>2 недели донастройки после запуска</li>
+          <li>До 100 диалогов с клиентами в месяц</li>
+          <li>Telegram, MAX, WhatsApp, Instagram*</li>
+          <li>Панель: диалоги, заказы, записи</li>
+          <li>Личный кабинет и доступ для сотрудников</li>
+          <li>Можно перехватить диалог и ответить самому</li>
         </ul>
-        <a href="#cta" class="btn-primary">Выбрать</a>
+        <a href="#cta" class="btn-primary">Подключить</a>
+      </div>
+      <div class="price-card">
+        <h3>Индивидуальная настройка</h3>
+        <div class="price">по запросу</div>
+        <div class="desc">Разовая настройка агента под ваши процессы, дальше — та же подписка.</div>
+        <ul>
+          <li>Заполним каталог, услуги и расписание</li>
+          <li>Тон общения и правила под ваш бизнес</li>
+          <li>Интеграция с amoCRM</li>
+          <li>Донастройка по реальным диалогам</li>
+        </ul>
+        <a href="#cta" class="btn-secondary">Рассчитать</a>
       </div>
       <div class="price-card">
         <h3>Комплексная автоматизация</h3>
         <div class="price">по расчёту</div>
-        <div class="desc">Несколько агентов под разные отделы и процессы.</div>
+        <div class="desc">Для сетей, филиалов и нескольких отделов.</div>
         <ul>
+          <li>Больше 100 диалогов в месяц</li>
+          <li>Несколько агентов под разные процессы</li>
           <li>Внутренние агенты для сотрудников</li>
           <li>Своя аналитика диалогов</li>
-          <li>Выделенная команда поддержки</li>
         </ul>
         <a href="#cta" class="btn-secondary">Обсудить</a>
       </div>
     </div>
+    <p class="pricing-note">Подписка оплачивается ежемесячно. Стоимость настройки зависит от объёма работ — назовём её после короткого созвона.</p>
   </section>
 
   <section id="cta" class="wrap">
