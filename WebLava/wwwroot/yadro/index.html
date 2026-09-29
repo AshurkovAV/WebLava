@@ -121,7 +121,9 @@
   /* Hero diagram */
   .diagram{
     position:relative; height:420px;
+    display:flex; align-items:center; justify-content:center; overflow:hidden;
   }
+  .diagram-stage{position:relative; width:460px; height:420px; flex-shrink:0;}
   .diagram-core{
     position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
     width:132px; height:132px; border-radius:32px;
@@ -144,7 +146,7 @@
   .diagram-core span.sub{font-size:11px; color:var(--muted); font-family:'JetBrains Mono',monospace;}
 
   .channel-node{
-    position:absolute; width:168px;
+    position:absolute; width:168px; height:64px;
     padding:14px 16px; border-radius:14px;
     background:var(--surface); border:1px solid var(--border);
     display:flex; align-items:center; gap:10px;
@@ -154,26 +156,29 @@
   .channel-node .meta{display:flex; flex-direction:column;}
   .channel-node .meta b{font-size:13px; font-weight:600;}
   .channel-node .meta small{color:var(--muted); font-size:11px;}
-  .n-telegram{top:6%; left:0;}
-  .n-max{top:6%; right:0;}
-  .n-whatsapp{bottom:4%; left:14%;}
+  .n-telegram{top:40px; left:0;}
+  .n-max{top:40px; right:0;}
+  .n-whatsapp{bottom:40px; left:0;}
+  .n-instagram{bottom:40px; right:0;}
 
   .diagram svg.wires{position:absolute; inset:0; z-index:1; width:100%; height:100%;}
-  .wires path{fill:none; stroke:var(--border); stroke-width:1.5;}
+  .wires path{fill:none; stroke:#3a3350; stroke-width:1.5;}
   .wires .pulse{
     fill:var(--pink); filter:drop-shadow(0 0 5px var(--pink));
   }
-  .pulse-a{offset-path:path('M 84,96 C 200,96 220,180 300,210');}
-  .pulse-b{offset-path:path('M 336,96 C 220,96 200,180 300,210');}
-  .pulse-c{offset-path:path('M 130,330 C 200,300 250,260 300,220');}
-  .pulse-a,.pulse-b,.pulse-c{
+  .pulse-a{offset-path:path('M 168,72 C 230,72 230,140 230,210');}
+  .pulse-b{offset-path:path('M 292,72 C 230,72 230,140 230,210');}
+  .pulse-c{offset-path:path('M 168,348 C 230,348 230,280 230,210');}
+  .pulse-d{offset-path:path('M 292,348 C 230,348 230,280 230,210');}
+  .pulse-a,.pulse-b,.pulse-c,.pulse-d{
     position:absolute; width:6px; height:6px; border-radius:50%;
     background:var(--pink); box-shadow:0 0 10px var(--pink);
     animation:travel 3.2s linear infinite;
     offset-rotate:0deg;
   }
   .pulse-b{animation-delay:1.05s; background:var(--violet); box-shadow:0 0 10px var(--violet);}
-  .pulse-c{animation-delay:2.1s; background:var(--orange); box-shadow:0 0 10px var(--orange);}
+  .pulse-c{animation-delay:1.6s; background:var(--orange); box-shadow:0 0 10px var(--orange);}
+  .pulse-d{animation-delay:2.4s;}
   @keyframes travel{
     0%{offset-distance:0%; opacity:0;}
     8%{opacity:1;}
@@ -292,10 +297,15 @@
   .foot-links a:hover{color:var(--text);}
   .foot-copy{font-size:13px; color:var(--muted-2);}
 
+  @media (max-width:480px){
+    .diagram{height:300px;}
+    .diagram-stage{transform:scale(.7) !important;}
+  }
   @media (max-width:920px){
     .hero{grid-template-columns:1fr; padding-top:56px;}
     .hero h1{font-size:38px;}
-    .diagram{height:340px; order:-1;}
+    .diagram{height:360px; order:-1;}
+    .diagram-stage{transform:scale(.85);}
     .nav-links{display:none;}
     .channels-grid, .usecases, .pricing-grid{grid-template-columns:1fr;}
     .usecases{border-radius:16px;}
@@ -338,14 +348,17 @@
     </div>
 
     <div class="diagram">
-      <svg class="wires" viewBox="0 0 420 420" preserveAspectRatio="none">
-        <path d="M 84,96 C 200,96 220,180 300,210"></path>
-        <path d="M 336,96 C 220,96 200,180 300,210"></path>
-        <path d="M 130,330 C 200,300 250,260 300,220"></path>
+     <div class="diagram-stage">
+      <svg class="wires" viewBox="0 0 460 420">
+        <path d="M 168,72 C 230,72 230,140 230,210"></path>
+        <path d="M 292,72 C 230,72 230,140 230,210"></path>
+        <path d="M 168,348 C 230,348 230,280 230,210"></path>
+        <path d="M 292,348 C 230,348 230,280 230,210"></path>
       </svg>
       <div class="pulse-a"></div>
       <div class="pulse-b"></div>
       <div class="pulse-c"></div>
+      <div class="pulse-d"></div>
 
       <div class="channel-node n-telegram">
         <div class="ic" style="background:#26A5E4;">
@@ -368,11 +381,19 @@
         <div class="meta"><b>WhatsApp</b><small>основной канал клиентов</small></div>
       </div>
 
+      <div class="channel-node n-instagram">
+        <div class="ic" style="background:linear-gradient(45deg,#F58529,#DD2A7B 50%,#8134AF);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="#fff" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="#fff"/></svg>
+        </div>
+        <div class="meta"><b>Instagram*</b><small>Директ, продажи</small></div>
+      </div>
+
       <div class="diagram-core">
         <div class="core-ring"></div>
         <span class="label">ИИ-агент</span>
         <span class="sub">core.v1</span>
       </div>
+     </div>
     </div>
   </section>
 
