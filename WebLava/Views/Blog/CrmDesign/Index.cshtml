@@ -1,0 +1,171 @@
+@{
+    ViewData["Title"] = "CRM для малого бизнеса: новый дизайн панели ЯДРО | Big Lava";
+    ViewData["Description"] = "Как мы спроектировали CRM для малого бизнеса: диалоги из всех мессенджеров, заказы, записи и каталог в одном окне, где ИИ-агент и менеджер работают вместе.";
+    ViewData["Keywords"] = "CRM для малого бизнеса, CRM для салона красоты, дизайн CRM, единое окно мессенджеров, учёт заказов и записей, UX/UI-дизайн веб-панели";
+    ViewData["ActivePage"] = "blog";
+    ViewData["OgImage"] = "https://biglv.ru/images/post/og-crm-design.jpg";
+}
+
+@section Head {
+    <style>
+        .pg-post-body { padding-top: clamp(48px, 6vw, 96px); padding-bottom: clamp(24px, 3vw, 48px); }
+        .pg-post .ml-prose > * + p { margin-top: 1em; }
+        .pg-post .ml-prose > :is(h2, h3, h4) + p { margin-top: .6em; }
+        .pg-post .ml-article-hero .ml-tags { margin-bottom: 28px; }
+        .pg-post .ml-article-hero .ml-lead { margin-top: 28px; }
+        .pg-post .ml-article-cover { max-width: 1200px; margin: 0 auto; aspect-ratio: 1200 / 630; }
+        .pg-post .ml-prose figure img { height: auto; border: 1px solid var(--ml-line); }
+        .pg-post .ml-prose .ml-callout { font-size: 17px; line-height: 1.65; padding: 24px 28px; }
+        .pg-post .ml-prose .ml-callout > * + * { margin-top: .75em; }
+        .pg-post .ml-prose a.ml-btn { color: #fff; border-bottom: 0; }
+        .pg-post .ml-prose a.ml-btn:hover { color: var(--ml-ink); }
+        @@media (min-width: 1200px) { .pg-post .ml-prose figure.pg-shot { margin-left: -140px; margin-right: -140px; } }
+        .pg-post-related { border-top: 1px solid var(--ml-line); }
+        .pg-post-related .ml-post__meta { flex-wrap: wrap; }
+        @@media (max-width: 760px) {
+            .pg-post .ml-prose { font-size: 17px; }
+            .pg-post .ml-prose .ml-callout { padding: 20px; }
+        }
+    </style>
+}
+
+<div class="pg-post">
+    <section class="ml-article-hero">
+        <div class="ml-container">
+            <nav class="ml-breadcrumbs" aria-label="Хлебные крошки">
+                <a href="/">Главная</a><span aria-hidden="true">/</span><a href="/blog">Блог</a><span aria-hidden="true">/</span><span aria-current="page">Новый дизайн CRM</span>
+            </nav>
+            <div class="ml-tags" data-reveal>
+                <span class="ml-tag">Кейс</span>
+                <span class="ml-tag">UX/UI-дизайн</span>
+                <span class="ml-tag">CRM</span>
+                <span class="ml-tag">Малый бизнес</span>
+            </div>
+            <h1 class="ml-h1" data-reveal>Новый дизайн CRM: диалоги, заказы и записи в одном окне</h1>
+            <p class="ml-lead" data-reveal>Как мы проектировали CRM, в которой ИИ-агент и менеджер работают вместе</p>
+            <div class="ml-article-meta" data-reveal>
+                <span>Дизайн</span>
+                <time datetime="2026-10-01">1 октября, 2026</time>
+                <span>4 мин чтения</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="ml-container" data-reveal>
+        <div class="ml-article-cover">
+            <img src="/images/post/og-crm-design.jpg" alt="Новый дизайн CRM: окно диалогов с перепиской клиента и ИИ-агента и карточкой клиента" width="1200" height="630">
+        </div>
+    </div>
+
+    <div class="ml-container pg-post-body">
+        <article class="ml-prose">
+            <p>Вместе с ИИ-агентом <a href="/yadro/">ЯДРО</a> бизнес получает встроенную CRM. Это рабочее место владельца и менеджеров: переписка с клиентами, заказы, записи на услуги и каталог. Мы полностью перерисовали её интерфейс. Рассказываем, какие задачи решали и как это выглядит сейчас.</p>
+
+            <p>Пользователи такой CRM — не менеджеры по продажам в большой компании, а администратор салона, бариста или мастер-приёмщик автосервиса. Они заходят в панель между делами и за полминуты должны понять, что происходит и где нужна их помощь. Отсюда три правила дизайна: главное на первом экране, минимум кликов до действия и понятные статусы вместо таблиц с цифрами.</p>
+
+            <h2>Обзор: день бизнеса на одном экране</h2>
+
+            <p>Первый экран отвечает на вопрос «что сейчас происходит?». Сверху четыре карточки: сколько диалогов использовано из месячного лимита, заказы и записи за неделю и сколько клиентов ждут менеджера. Ниже последние диалоги с каналом, последним сообщением и режимом: отвечает агент или диалог взял человек.</p>
+
+            <figure class="pg-shot">
+                <img src="/images/blog/crm/overview.jpg" alt="Обзор CRM: диалоги за месяц, заказы и записи за 7 дней, ожидающие менеджера и список последних диалогов" width="1440" height="900" loading="lazy">
+                <figcaption>«Обзор»: лимит, заказы, записи и диалоги, которым нужен человек.</figcaption>
+            </figure>
+
+            <h2>Диалоги: все мессенджеры в одном окне</h2>
+
+            <p>Самый важный экран разделён на три колонки. Слева список диалогов с фильтрами по каналу (Telegram, MAX, WhatsApp, Instagram) и по режиму. В центре переписка, где ответы ИИ-агента выделены цветом. Справа карточка клиента: канал, первое обращение, последняя запись и последний заказ. Менеджеру не нужно переключаться между приложениями, чтобы понять контекст.</p>
+
+            <p>Ключевая кнопка — «Взять диалог на себя». Она ставит агента на паузу для этого клиента, и дальше отвечает человек прямо из панели. Диалоги, где клиент ждёт менеджера, подсвечены оранжевым и вынесены в отдельный фильтр.</p>
+
+            <figure class="pg-shot">
+                <img src="/images/blog/crm/inbox.jpg" alt="Окно диалогов CRM: список диалогов из Telegram, WhatsApp, MAX и Instagram, переписка с ИИ-агентом и карточка клиента" width="1440" height="900" loading="lazy">
+                <figcaption>Три колонки: список, переписка и карточка клиента.</figcaption>
+            </figure>
+
+            <h2>Заказы и записи</h2>
+
+            <p>Заказы и записи оформляет сам агент прямо в переписке, а в CRM они попадают уже готовыми. У заказа есть дата, клиент с иконкой канала, состав, сумма и статус. Статус меняется выпадающим списком прямо в строке, без перехода в отдельную карточку. Кнопка «Диалог» открывает переписку, из которой появился заказ.</p>
+
+            <figure class="pg-shot">
+                <img src="/images/blog/crm/orders.jpg" alt="Список заказов CRM: дата, клиент, состав, сумма, статус и кнопка перехода к диалогу" width="1440" height="900" loading="lazy">
+                <figcaption>Заказы с фильтрами по статусу и каналу.</figcaption>
+            </figure>
+
+            <p>Записи сгруппированы по дням, как в бумажном журнале администратора: время, услуга, мастер, клиент и статус. Переключатель «сегодня / 7 дней / 30 дней» и поиск по клиенту, услуге и мастеру помогают быстро найти нужную запись.</p>
+
+            <figure class="pg-shot">
+                <img src="/images/blog/crm/bookings.jpg" alt="Журнал записей CRM: записи на маникюр, стрижку и окрашивание по дням с мастером и статусом" width="1440" height="900" loading="lazy">
+                <figcaption>Записи по дням: время, услуга, мастер и клиент.</figcaption>
+            </figure>
+
+            <h2>Каталог, который читает агент</h2>
+
+            <p>Каталог — это то, что агент знает о товарах и услугах. Добавить позицию можно одной строкой сверху: название, цена, порядок и наличие. Если что-то закончилось, достаточно снять галочку «В наличии», и агент перестанет это предлагать.</p>
+
+            <figure class="pg-shot">
+                <img src="/images/blog/crm/catalog.jpg" alt="Каталог CRM: услуги и товары салона с ценами и наличием, форма добавления нового товара" width="1440" height="900" loading="lazy">
+                <figcaption>Каталог: цены и наличие, которые агент показывает клиентам.</figcaption>
+            </figure>
+
+            <h2>Что получилось</h2>
+
+            <ul>
+                <li>Единый визуальный язык: тёмное меню, светлая рабочая область, цветные метки каналов и статусов.</li>
+                <li>Каждое частое действие делается в один клик из списка: сменить статус заказа, отменить запись, открыть диалог.</li>
+                <li>Интерфейс на русском и английском, роли «владелец» и «менеджер».</li>
+                <li>Если бизнес уже работает в amoCRM, сделки уходят туда, а встроенная CRM остаётся окном для переписки.</li>
+            </ul>
+
+            <p>Как устроена административная часть платформы — подключение компаний, выбор нейросети и учёт расхода — мы рассказали в статье <a href="/blog/yadro-panel">«ЯДРО изнутри: как устроена панель управления ИИ-агентом»</a>.</p>
+
+            <div class="ml-callout">
+                <p><strong>Нужна похожая панель под ваш бизнес?</strong> Проектируем и разрабатываем веб-панели, CRM и личные кабинеты: от прототипа и UX/UI-дизайна до запуска.</p>
+                <p><a class="ml-btn ml-btn--accent" href="/contact">Обсудить проект</a></p>
+            </div>
+
+            <p>Скриншоты сделаны на демо-данных вымышленного салона красоты «Лиса».</p>
+        </article>
+    </div>
+
+    <section class="ml-section ml-section--tight pg-post-related">
+        <div class="ml-container">
+            <div class="ml-section-head">
+                <h2 class="ml-h2">Читайте также</h2>
+                <a class="ml-link" href="/blog">Все статьи <span class="ml-arrow">→</span></a>
+            </div>
+            <div class="ml-posts" data-reveal-stagger>
+                <a class="ml-post" href="/blog/yadro-panel" data-reveal>
+                    <div class="ml-post__media">
+                        <img src="/images/post/og-yadro-admin.jpg" alt="ЯДРО изнутри: как устроена панель управления ИИ-агентом" width="1200" height="630" loading="lazy">
+                    </div>
+                    <div class="ml-post__body">
+                        <div class="ml-post__meta"><span class="ml-tag">Кейс</span><span><time datetime="2026-10-01">1 октября, 2026</time> · 5 мин чтения</span></div>
+                        <h3 class="ml-post__title">ЯДРО изнутри: как устроена панель управления ИИ-агентом</h3>
+                        <p class="ml-post__excerpt">Регистрация за минуту, мастер настройки, смена бота без программиста и несколько нейросетей.</p>
+                    </div>
+                </a>
+                <a class="ml-post" href="/blog/mvp" data-reveal>
+                    <div class="ml-post__media">
+                        <img src="/images/post/og-mvp.jpg" alt="MVP мобильного приложения: как проверить идею с минимальным бюджетом" width="1200" height="630" loading="lazy">
+                    </div>
+                    <div class="ml-post__body">
+                        <div class="ml-post__meta"><span class="ml-tag">Разработка</span><span><time datetime="2026-09-20">20 сентября, 2026</time> · 4 мин чтения</span></div>
+                        <h3 class="ml-post__title">MVP мобильного приложения: как проверить идею с минимальным бюджетом</h3>
+                        <p class="ml-post__excerpt">Как проверить бизнес-идею через MVP мобильного приложения: что это, из чего состоит и сколько стоит.</p>
+                    </div>
+                </a>
+                <a class="ml-post" href="/QuamDevelopMobili" data-reveal>
+                    <div class="ml-post__media">
+                        <img src="/images/post/og-quamdevelopmobili.jpg" alt="Сколько стоит разработка приложения для бизнеса?" width="1200" height="630" loading="lazy">
+                    </div>
+                    <div class="ml-post__body">
+                        <div class="ml-post__meta"><span class="ml-tag">Разработка</span><span><time datetime="2025-02-28">28 февраля, 2025</time> · 8 мин чтения</span></div>
+                        <h3 class="ml-post__title">Сколько стоит разработка приложения для бизнеса?</h3>
+                        <p class="ml-post__excerpt">Разработка мобильного приложения для бизнеса — это инвестиция, которая может значительно увеличить доход компании.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,169 @@
+@{
+    ViewData["Title"] = "ЯДРО: панель управления ИИ-агентом для бизнеса | Big Lava";
+    ViewData["Description"] = "Как устроена панель ЯДРО: регистрация за минуту, мастер настройки, смена бота без программиста, GigaChat, YandexGPT и Claude, учёт расхода по каждому клиенту.";
+    ViewData["Keywords"] = "ИИ-агент для бизнеса, чат-бот для салона, бот для Telegram и MAX, GigaChat для бизнеса, YandexGPT бот, панель управления ботом, ЯДРО";
+    ViewData["ActivePage"] = "blog";
+    ViewData["OgImage"] = "https://biglv.ru/images/post/og-yadro-admin.jpg";
+}
+
+@section Head {
+    <style>
+        .pg-post-body { padding-top: clamp(48px, 6vw, 96px); padding-bottom: clamp(24px, 3vw, 48px); }
+        .pg-post .ml-prose > * + p { margin-top: 1em; }
+        .pg-post .ml-prose > :is(h2, h3, h4) + p { margin-top: .6em; }
+        .pg-post .ml-article-hero .ml-tags { margin-bottom: 28px; }
+        .pg-post .ml-article-hero .ml-lead { margin-top: 28px; }
+        .pg-post .ml-article-cover { max-width: 1200px; margin: 0 auto; aspect-ratio: 1200 / 630; }
+        .pg-post .ml-prose figure img { height: auto; border: 1px solid var(--ml-line); }
+        .pg-post .ml-prose .ml-callout { font-size: 17px; line-height: 1.65; padding: 24px 28px; }
+        .pg-post .ml-prose .ml-callout > * + * { margin-top: .75em; }
+        .pg-post .ml-prose a.ml-btn { color: #fff; border-bottom: 0; }
+        .pg-post .ml-prose a.ml-btn:hover { color: var(--ml-ink); }
+        @@media (min-width: 1200px) { .pg-post .ml-prose figure.pg-shot { margin-left: -140px; margin-right: -140px; } }
+        .pg-post-related { border-top: 1px solid var(--ml-line); }
+        .pg-post-related .ml-post__meta { flex-wrap: wrap; }
+        @@media (max-width: 760px) {
+            .pg-post .ml-prose { font-size: 17px; }
+            .pg-post .ml-prose .ml-callout { padding: 20px; }
+        }
+    </style>
+}
+
+<div class="pg-post">
+    <section class="ml-article-hero">
+        <div class="ml-container">
+            <nav class="ml-breadcrumbs" aria-label="Хлебные крошки">
+                <a href="/">Главная</a><span aria-hidden="true">/</span><a href="/blog">Блог</a><span aria-hidden="true">/</span><span aria-current="page">Панель ЯДРО</span>
+            </nav>
+            <div class="ml-tags" data-reveal>
+                <span class="ml-tag">Кейс</span>
+                <span class="ml-tag">ИИ-агент</span>
+                <span class="ml-tag">Telegram и MAX</span>
+                <span class="ml-tag">GigaChat</span>
+            </div>
+            <h1 class="ml-h1" data-reveal>ЯДРО изнутри: как устроена панель управления ИИ-агентом</h1>
+            <p class="ml-lead" data-reveal>Регистрация за минуту, настройка за четыре шага и один ИИ-агент, который отвечает клиентам в мессенджерах</p>
+            <div class="ml-article-meta" data-reveal>
+                <span>Кейс</span>
+                <time datetime="2026-10-01">1 октября, 2026</time>
+                <span>5 мин чтения</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="ml-container" data-reveal>
+        <div class="ml-article-cover">
+            <img src="/images/post/og-yadro-admin.jpg" alt="Панель управления ЯДРО: список клиентов платформы с тарифами, каналами и расходом на ИИ" width="1200" height="630">
+        </div>
+    </div>
+
+    <div class="ml-container pg-post-body">
+        <article class="ml-prose">
+            <p><a href="/yadro/">ЯДРО</a> — наш собственный продукт: ИИ-агент, который отвечает клиентам бизнеса в Telegram, MAX, WhatsApp и Instagram, принимает заказы и записывает на услуги. Агент работает круглосуточно, а владелец видит всё в одной панели. В этой статье показываем, как панель выглядит сейчас и почему мы сделали её именно такой.</p>
+
+            <p>Главный принцип — «всё в коробке». Владельцу салона или кофейни не нужно разбираться в нейросетях, API-ключах и вебхуках. Он регистрируется, рассказывает о бизнесе, вставляет токен бота, и агент начинает отвечать. Всё остальное берёт на себя платформа.</p>
+
+            <h2>Регистрация и мастер настройки</h2>
+
+            <p>Компания регистрируется сама: название, имя, email и пароль. Сразу после этого открывается мастер из четырёх шагов: «О бизнесе», «Услуги и цены», «Мессенджер», «Готово». На первом шаге владелец описывает компанию так, как рассказал бы новому администратору: адрес, часы работы, условия оплаты, тон общения. Агент опирается на этот текст в каждом ответе.</p>
+
+            <figure class="pg-shot">
+                <img src="/images/blog/yadro/setup.jpg" alt="Мастер настройки ЯДРО: шаг «О бизнесе» с описанием салона красоты, часовым поясом и языком агента" width="1440" height="900" loading="lazy">
+                <figcaption>Мастер настройки: четыре шага, любой можно пропустить и вернуться позже.</figcaption>
+            </figure>
+
+            <h2>Смена бота без программиста</h2>
+
+            <p>Раньше, чтобы поменять бота, владельцу приходилось писать нам. Теперь в кабинете есть раздел «Мессенджеры». Там видно, какие каналы подключены. Telegram и MAX владелец переподключает сам: создаёт нового бота по инструкции из трёх шагов и вставляет токен. Любой канал можно выключить и включить одной кнопкой, и токен при этом не теряется. WhatsApp и Instagram подключаются через Meta, поэтому их меняет поддержка.</p>
+
+            <figure class="pg-shot">
+                <img src="/images/blog/yadro/channels.jpg" alt="Раздел «Мессенджеры»: Telegram, MAX и WhatsApp Business с инструкцией по подключению и кнопкой «Заменить токен»" width="1440" height="900" loading="lazy">
+                <figcaption>«Мессенджеры»: замена токена, включение и выключение канала.</figcaption>
+            </figure>
+
+            <h2>Несколько нейросетей вместо одной</h2>
+
+            <p>Клиенты ЯДРО не подключают собственные ИИ-сервисы, а работают на общей подписке платформы. Порядок провайдеров зависит от региона. Для клиентов из России первым идёт GigaChat, за ним YandexGPT, затем Claude. Для остальных стран первым идёт Claude. Если провайдер не ответил, агент сразу пробует следующий, и клиент в чате этого не замечает.</p>
+
+            <figure class="pg-shot">
+                <img src="/images/blog/yadro/system.jpg" alt="Страница «Система»: ключи Anthropic, GigaChat и YandexGPT и порядок провайдеров ИИ для России и других стран" width="1440" height="900" loading="lazy">
+                <figcaption>Ключи и модели задаются один раз для всей платформы.</figcaption>
+            </figure>
+
+            <p>Если какому-то клиенту нужна конкретная модель, администратор закрепляет её в карточке клиента на вкладке «Агент». Там же задаются регион, язык агента, часовой пояс и описание бизнеса.</p>
+
+            <figure class="pg-shot">
+                <img src="/images/blog/yadro/agent.jpg" alt="Карточка клиента, вкладка «Агент»: регион, провайдер ИИ, язык, часовой пояс и описание бизнеса" width="1440" height="900" loading="lazy">
+                <figcaption>Провайдер «Авто по региону» или конкретная модель для отдельного клиента.</figcaption>
+            </figure>
+
+            <h2>Платформа для нескольких компаний</h2>
+
+            <p>ЯДРО изначально сделано для многих компаний сразу. В разделе «Клиенты» видны все подключённые компании: их тариф, каналы, использованный лимит диалогов и расход на ИИ за месяц. Данные компаний изолированы друг от друга, и каждый владелец видит только свой бизнес.</p>
+
+            <figure class="pg-shot">
+                <img src="/images/blog/yadro/tenants.jpg" alt="Список клиентов платформы ЯДРО: автосервис, кофейня, салон красоты и стоматология с лимитами диалогов и расходом" width="1440" height="900" loading="lazy">
+                <figcaption>Все компании платформы на одном экране.</figcaption>
+            </figure>
+
+            <p>Расход считается отдельно по каждому клиенту: число вызовов ИИ, токены и стоимость в рублях и долларах. Для GigaChat и YandexGPT цена берётся из тарифа провайдера в рублях, для Claude пересчитывается по курсу. Так видно, сколько на самом деле стоит один диалог.</p>
+
+            <figure class="pg-shot">
+                <img src="/images/blog/yadro/billing.jpg" alt="Расход и биллинг: вызовы ИИ, токены, стоимость в рублях и долларах и доля каждого клиента за месяц" width="1440" height="900" loading="lazy">
+                <figcaption>Средняя стоимость диалога в демо-данных — около 3 ₽.</figcaption>
+            </figure>
+
+            <h2>Что видит сам бизнес</h2>
+
+            <p>У владельца и менеджеров своя часть панели: диалоги из всех мессенджеров в одном окне, заказы, записи и каталог. Это по сути встроенная CRM. Её мы разобрали в отдельной статье: <a href="/blog/crm-design">«Новый дизайн CRM: диалоги, заказы и записи в одном окне»</a>.</p>
+
+            <div class="ml-callout">
+                <p><strong>Сколько стоит.</strong> Подписка на ЯДРО — 1 500 ₽ в месяц: ИИ-агент, до 100 диалогов с клиентами, панель со встроенной CRM и доступ для сотрудников. Индивидуальную настройку под сложный бизнес (интеграция с amoCRM, свои сценарии) делаем по запросу.</p>
+                <p><a class="ml-btn ml-btn--accent" href="/yadro/">Подробнее о ЯДРО</a></p>
+            </div>
+
+            <p>Скриншоты сделаны на демо-данных: салон красоты «Лиса», кофейня, автосервис и стоматологическая клиника придуманы для примера.</p>
+        </article>
+    </div>
+
+    <section class="ml-section ml-section--tight pg-post-related">
+        <div class="ml-container">
+            <div class="ml-section-head">
+                <h2 class="ml-h2">Читайте также</h2>
+                <a class="ml-link" href="/blog">Все статьи <span class="ml-arrow">→</span></a>
+            </div>
+            <div class="ml-posts" data-reveal-stagger>
+                <a class="ml-post" href="/blog/crm-design" data-reveal>
+                    <div class="ml-post__media">
+                        <img src="/images/post/og-crm-design.jpg" alt="Новый дизайн CRM: диалоги, заказы и записи в одном окне" width="1200" height="630" loading="lazy">
+                    </div>
+                    <div class="ml-post__body">
+                        <div class="ml-post__meta"><span class="ml-tag">Дизайн</span><span><time datetime="2026-10-01">1 октября, 2026</time> · 4 мин чтения</span></div>
+                        <h3 class="ml-post__title">Новый дизайн CRM: диалоги, заказы и записи в одном окне</h3>
+                        <p class="ml-post__excerpt">Как мы спроектировали CRM для малого бизнеса, где ИИ-агент и менеджер работают вместе.</p>
+                    </div>
+                </a>
+                <a class="ml-post" href="/blog/mvp" data-reveal>
+                    <div class="ml-post__media">
+                        <img src="/images/post/og-mvp.jpg" alt="MVP мобильного приложения: как проверить идею с минимальным бюджетом" width="1200" height="630" loading="lazy">
+                    </div>
+                    <div class="ml-post__body">
+                        <div class="ml-post__meta"><span class="ml-tag">Разработка</span><span><time datetime="2026-09-20">20 сентября, 2026</time> · 4 мин чтения</span></div>
+                        <h3 class="ml-post__title">MVP мобильного приложения: как проверить идею с минимальным бюджетом</h3>
+                        <p class="ml-post__excerpt">Как проверить бизнес-идею через MVP мобильного приложения: что это, из чего состоит и сколько стоит.</p>
+                    </div>
+                </a>
+                <a class="ml-post" href="/singlepost" data-reveal>
+                    <div class="ml-post__media">
+                        <img src="/images/post/og-singlepost.jpg" alt="Разработка успешного мобильного приложения: от идеи до запуска" width="1200" height="630" loading="lazy">
+                    </div>
+                    <div class="ml-post__body">
+                        <div class="ml-post__meta"><span class="ml-tag">Разработка</span><span><time datetime="2025-01-21">21 января, 2025</time> · 9 мин чтения</span></div>
+                        <h3 class="ml-post__title">Разработка успешного мобильного приложения: от идеи до запуска</h3>
+                        <p class="ml-post__excerpt">В этом посте мы рассказываем, каковы ключи к разработке успешного мобильного приложения.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,6 +1,6 @@
 @{
     ViewData["Title"] = "Кейсы разработки мобильных приложений | Big Lava";
-    ViewData["Description"] = "Проекты Big Lava: мобильное приложение-агрегатор вакансий для таксопарков и ИИ-агент ЯДРО для бизнеса. Смотрите кейсы и обсудите свой проект.";
+    ViewData["Description"] = "Проекты Big Lava: мобильное приложение-агрегатор вакансий для таксопарков, ИИ-агент ЯДРО и CRM для малого бизнеса. Смотрите кейсы и обсудите свой проект.";
     ViewData["ActivePage"] = "portfolio";
 }
 
@@ -15,6 +15,10 @@
         .pg-work-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 27px; }
         .ml-case:hover .pg-work-shot { transform: translateY(-10px) rotate(-2deg); }
         .ml-case:hover .pg-work-shot img { transform: none; }
+        .pg-work-web { position: absolute; left: 8%; top: 12%; width: 104%; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,.2); box-shadow: 0 40px 80px rgba(0,0,0,.55); transition: transform 1s var(--ml-ease); }
+        .ml-case__media .pg-work-web img { display: block; width: 100%; height: auto; }
+        .ml-case:hover .pg-work-web { transform: translateY(-8px); }
+        .ml-case:hover .pg-work-web img { transform: none; }
         .ml-case[hidden] { display: none; }
         .pg-work-next .ml-cover__label { color: rgba(255,255,255,.75); }
         @@media (max-width: 760px) { .pg-work-case .ml-case__media { aspect-ratio: 1 / 1; } .pg-work-shot { border-radius: 26px; padding: 6px; } .pg-work-shot img { border-radius: 21px; } }
@@ -34,9 +38,10 @@
         </p>
 
         <div class="pg-work-filter" role="group" aria-label="Фильтр по направлению" data-reveal>
-            <button type="button" class="ml-tag" data-filter="all" aria-pressed="true">Все<sup>2</sup></button>
+            <button type="button" class="ml-tag" data-filter="all" aria-pressed="true">Все<sup>3</sup></button>
             <button type="button" class="ml-tag" data-filter="mobile" aria-pressed="false">Мобильные приложения<sup>1</sup></button>
             <button type="button" class="ml-tag" data-filter="ai" aria-pressed="false">ИИ и интеграции<sup>1</sup></button>
+            <button type="button" class="ml-tag" data-filter="web" aria-pressed="false">CRM и веб-панели<sup>1</sup></button>
         </div>
     </div>
 </section>
@@ -71,17 +76,22 @@
 
             <a class="ml-case" href="/yadro/" data-cat="ai" data-reveal>
                 <div class="ml-case__media">
-                    <img src="~/images/post/og-case-ai-agent.jpg" alt="ЯДРО — схема ИИ-агента Big Lava, который связывает несколько каналов общения в одном центре">
+                    <div class="ml-cover ml-cover--violet">
+                        <div class="pg-work-web">
+                            <img src="~/images/blog/yadro/tenants.jpg" alt="Панель управления ЯДРО: список компаний платформы с тарифами, каналами, лимитом диалогов и расходом на ИИ" loading="lazy">
+                        </div>
+                    </div>
                 </div>
                 <div class="ml-case__body">
                     <div>
                         <h2 class="ml-case__title">ЯДРО — ИИ-агент для бизнеса</h2>
                         <p class="ml-case__desc">
-                            Один ИИ-агент вместо трёх ботов и команды поддержки: обрабатывает заказы и запись в Telegram, MAX и WhatsApp
-                            через единый ИИ-пайплайн с интеграцией amoCRM.
+                            Один ИИ-агент вместо нескольких ботов и дежурного администратора: отвечает клиентам в Telegram, MAX, WhatsApp и Instagram,
+                            оформляет заказы и записи. Работает на GigaChat, YandexGPT и Claude, подключается самостоятельно за четыре шага.
                         </p>
                         <div class="ml-tags">
                             <span class="ml-tag">ИИ-агент</span>
+                            <span class="ml-tag">GigaChat и YandexGPT</span>
                             <span class="ml-tag">Интеграция amoCRM</span>
                         </div>
                     </div>
@@ -89,7 +99,32 @@
                 </div>
             </a>
 
-            <a class="ml-case pg-work-next" href="/contact" data-cat="all" data-reveal>
+            <a class="ml-case" href="/blog/crm-design" data-cat="web" data-reveal>
+                <div class="ml-case__media">
+                    <div class="ml-cover ml-cover--blue">
+                        <div class="pg-work-web">
+                            <img src="~/images/blog/crm/inbox.jpg" alt="CRM для малого бизнеса: окно диалогов из всех мессенджеров, переписка с ИИ-агентом и карточка клиента" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+                <div class="ml-case__body">
+                    <div>
+                        <h2 class="ml-case__title">CRM для малого бизнеса</h2>
+                        <p class="ml-case__desc">
+                            Рабочее место владельца и менеджеров: диалоги из всех мессенджеров в одном окне, заказы, журнал записей и каталог.
+                            Менеджер в один клик забирает диалог у ИИ-агента и отвечает сам.
+                        </p>
+                        <div class="ml-tags">
+                            <span class="ml-tag">UX/UI-дизайн</span>
+                            <span class="ml-tag">Веб-панель</span>
+                            <span class="ml-tag">CRM</span>
+                        </div>
+                    </div>
+                    <span class="ml-case__arrow" aria-hidden="true">→</span>
+                </div>
+            </a>
+
+            <a class="ml-case ml-case--wide pg-work-next" href="/contact" data-cat="all" data-reveal>
                 <div class="ml-case__media">
                     <div class="ml-cover ml-cover--violet">
                         <div class="ml-cover__phone" aria-hidden="true"><i></i><i></i><i></i><i></i></div>

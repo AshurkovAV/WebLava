@@ -38,6 +38,10 @@
             .pg-home-teasers { grid-template-columns: 1fr; }
             .pg-home-teaser, .pg-home-teaser + .pg-home-teaser { padding: 28px 0; border-left: 0; }
         }
+        .pg-home-web { position: absolute; left: 8%; top: 12%; width: 104%; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,.2); box-shadow: 0 40px 80px rgba(0,0,0,.55); transition: transform 1s var(--ml-ease); }
+        .ml-case__media .pg-home-web img { display: block; width: 100%; height: auto; }
+        .ml-case:hover .pg-home-web { transform: translateY(-8px); }
+        .ml-case:hover .pg-home-web img { transform: none; }
     </style>
 }
 
@@ -124,30 +128,35 @@
 
             <a class="ml-case" href="/yadro/">
                 <div class="ml-case__media">
-                    <img src="~/images/post/og-case-ai-agent.jpg" alt="ЯДРО — схема ИИ-агента, связанного с несколькими мессенджерами">
+                    <div class="ml-cover ml-cover--violet">
+                        <div class="pg-home-web">
+                            <img src="~/images/blog/yadro/tenants.jpg" alt="Панель управления ЯДРО: список компаний платформы с тарифами, каналами, лимитом диалогов и расходом на ИИ" loading="lazy">
+                        </div>
+                    </div>
                 </div>
                 <div class="ml-case__body">
                     <div>
                         <h3 class="ml-case__title">ЯДРО — ИИ-агент для бизнеса</h3>
-                        <p class="ml-case__desc">Один ИИ-агент вместо трёх ботов и команды поддержки: заказы и запись в Telegram, MAX и WhatsApp через единый пайплайн с интеграцией amoCRM.</p>
+                        <p class="ml-case__desc">Один ИИ-агент вместо нескольких ботов и дежурного администратора: заказы и запись в Telegram, MAX, WhatsApp и Instagram на GigaChat, YandexGPT и Claude.</p>
                         <div class="ml-tags"><span class="ml-tag">Интеграция / ИИ</span></div>
                     </div>
                     <span class="ml-case__arrow" aria-hidden="true">→</span>
                 </div>
             </a>
 
-            <a class="ml-case" href="/contact">
+            <a class="ml-case" href="/blog/crm-design">
                 <div class="ml-case__media">
-                    <div class="ml-cover ml-cover--violet" aria-hidden="true">
-                        <div class="ml-cover__phone"><i></i><i></i><i></i><i></i></div>
-                        <span class="ml-cover__label">Ваш проект</span>
+                    <div class="ml-cover ml-cover--blue">
+                        <div class="pg-home-web">
+                            <img src="~/images/blog/crm/inbox.jpg" alt="CRM для малого бизнеса: окно диалогов из всех мессенджеров, переписка с ИИ-агентом и карточка клиента" loading="lazy">
+                        </div>
                     </div>
                 </div>
                 <div class="ml-case__body">
                     <div>
-                        <h3 class="ml-case__title">Следующий кейс — ваш</h3>
-                        <p class="ml-case__desc">MVP, кроссплатформенное приложение или сложная система — расскажите об идее, и мы предложим выгодное решение под ваш бюджет.</p>
-                        <div class="ml-tags"><span class="ml-tag">MVP</span><span class="ml-tag">Кроссплатформа</span></div>
+                        <h3 class="ml-case__title">CRM для малого бизнеса</h3>
+                        <p class="ml-case__desc">Диалоги из всех мессенджеров в одном окне, заказы, журнал записей и каталог. Менеджер в один клик забирает диалог у ИИ-агента.</p>
+                        <div class="ml-tags"><span class="ml-tag">UX/UI-дизайн</span><span class="ml-tag">Веб-панель</span></div>
                     </div>
                     <span class="ml-case__arrow" aria-hidden="true">→</span>
                 </div>
