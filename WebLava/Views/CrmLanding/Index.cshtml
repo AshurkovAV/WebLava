@@ -1,0 +1,36 @@
+@using WebLava.Models.Crm
+@{
+    Layout = "_CrmLayout";
+    ViewData["Title"] = "Big Lava CRM для малых производств | Big Lava";
+    ViewData["Description"] = "Big Lava CRM — система для пекарен, кондитерских и мебельных производств: заказы, расчёт себестоимости, план производства, склад и закупки. 14 дней бесплатно.";
+    ViewData["Keywords"] = "Big Lava CRM, CRM для производства, CRM для кондитерской, CRM для мебельного производства";
+    ViewData["OgImage"] = "https://biglv.ru/images/crm/bakery-order-recipe.png";
+    ViewData["CrmNav"] = false;
+}
+
+<section class="crm-hero crm-hero--hub" aria-labelledby="hero-title">
+    <div class="crm-wrap">
+        <span class="crm-chip"><span class="crm-chip__dot" aria-hidden="true"></span>Новый продукт · ранний доступ</span>
+        <h1 id="hero-title">Big Lava CRM для малых производств</h1>
+        <p class="crm-hero__sub">Заказы, расчёт себестоимости, план производства, склад и закупки — в версиях под конкретную нишу. Выберите свою: @CrmPricing.TrialDays дней бесплатно, оплата по СБП.</p>
+
+        <div class="crm-hub">
+            <a class="crm-hub__card" href="/crm/konditerskie">
+                <div class="crm-window">
+                    <partial name="_CrmPicture" model='new CrmImage("bakery-orders", "Канбан заказов кондитерской на неделю в Big Lava CRM", 1600, 1000, Eager: true)' />
+                </div>
+                <h2>Для пекарен и кондитерских</h2>
+                <p>Заказы тортов, техкарты с пересчётом под размер, себестоимость, план производства и список закупки.</p>
+                <span class="crm-hub__more">Подробнее →</span>
+            </a>
+            <a class="crm-hub__card" href="/crm/mebel">
+                <div class="crm-window">
+                    <partial name="_CrmPicture" model='new CrmImage("mebel-deals", "Канбан сделок мебельного производства в Big Lava CRM", 1600, 1000, Eager: true)' />
+                </div>
+                <h2>Для мебельных производств</h2>
+                <p>Расчёт себестоимости изделия и КП, сделки, производство и сроки, склад, закупки и подрядчики.</p>
+                <span class="crm-hub__more">Подробнее →</span>
+            </a>
+        </div>
+    </div>
+</section>

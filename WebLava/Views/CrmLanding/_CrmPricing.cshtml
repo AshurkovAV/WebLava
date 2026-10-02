@@ -1,0 +1,38 @@
+@using WebLava.Models.Crm
+@* Блок тарифов. Цены и состав — только в Models/Crm/CrmPricing.cs *@
+<section class="crm-section" id="pricing" aria-labelledby="pricing-title">
+    <div class="crm-wrap">
+        <div class="crm-head">
+            <p class="crm-eyebrow">Тарифы</p>
+            <h2 id="pricing-title">Подписка без внедрения и долгих договоров</h2>
+            <p class="crm-lead">Первые @CrmPricing.TrialDays дней бесплатно на любом тарифе. Дальше — помесячная оплата, отменить можно в любой момент.</p>
+            <div class="crm-pay">
+                <span class="crm-sbp" aria-label="Оплата по СБП — Системе быстрых платежей"><span class="crm-sbp__mark" aria-hidden="true">СБП</span> Оплата по СБП</span>
+                <span class="crm-pay__note">Первые @CrmPricing.TrialDays дней бесплатно</span>
+            </div>
+        </div>
+        <div class="crm-plans">
+            @foreach (var plan in CrmPricing.Plans)
+            {
+                <article class="crm-plan@(plan.Highlighted ? " crm-plan--hl" : "")" aria-labelledby="plan-@plan.Id">
+                    @if (plan.Highlighted)
+                    {
+                        <span class="crm-plan__badge">Оптимальный</span>
+                    }
+                    <h3 id="plan-@plan.Id" class="crm-plan__name">@plan.Name</h3>
+                    <p class="crm-plan__summary">@plan.Summary</p>
+                    <p class="crm-plan__price"><span class="crm-plan__num">@plan.PriceFormatted&nbsp;₽</span><span class="crm-plan__per">/мес</span></p>
+                    <p class="crm-plan__sbp">оплата по СБП · @CrmPricing.TrialDays дней бесплатно</p>
+                    <ul class="crm-checks crm-plan__list">
+                        @foreach (var f in plan.Features)
+                        {
+                            <li>@f</li>
+                        }
+                    </ul>
+                    <a class="crm-btn @(plan.Highlighted ? "crm-btn--primary" : "crm-btn--ghost") crm-btn--block"
+                       href="?plan=@plan.Id#lead" data-plan="@plan.Id">Начать с «@plan.Name»</a>
+                </article>
+            }
+        </div>
+    </div>
+</section>

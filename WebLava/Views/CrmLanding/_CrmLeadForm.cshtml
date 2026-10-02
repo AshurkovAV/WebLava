@@ -1,0 +1,84 @@
+@using WebLava.Models.Crm
+@model string
+@{
+    // Model — код лендинга: "konditerskie" или "mebel".
+    var product = Model;
+    var preselected = CrmPricing.Find(Context.Request.Query["plan"].ToString())?.Id ?? CrmPricing.Plans.First(p => p.Highlighted).Id;
+    var success = TempData["CrmLeadSuccess"] as string;
+    var error = TempData["CrmLeadError"] as string;
+    var companyPlaceholder = product == "mebel" ? "Например: мебельный цех, кухни на заказ" : "Например: домашняя кондитерская, пекарня";
+}
+<section class="crm-section crm-final" id="lead" aria-labelledby="lead-title">
+    <div class="crm-wrap crm-final__grid">
+        <div class="crm-final__text">
+            <p class="crm-eyebrow">Ранний доступ</p>
+            <h2 id="lead-title">Попробуйте Big Lava CRM @CrmPricing.TrialDays дней бесплатно</h2>
+            <p class="crm-lead">Оставьте контакты — мы откроем доступ, поможем настроить первые заказы и ответим на вопросы.</p>
+            <ul class="crm-checks">
+                <li>Без установки — работает в браузере и на телефоне</li>
+                <li>Вход через Яндекс</li>
+                <li>Оплата по СБП после пробного периода</li>
+            </ul>
+        </div>
+
+        <div class="crm-formcard">
+            <div class="crm-success" data-lead-success @(success is null ? "hidden" : "") role="status" tabindex="-1">
+                <div class="crm-success__icon" aria-hidden="true">✓</div>
+                <h3>Заявка отправлена</h3>
+                <p data-lead-success-text>@(success ?? "Спасибо! Мы свяжемся с вами.")</p>
+            </div>
+
+            <!form class="crm-form" method="post" action="/crm/lead" data-lead-form novalidate @(success is null ? "" : "hidden")>
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="Product" value="@product">
+                <div class="crm-form__alert" data-lead-alert role="alert" @(error is null ? "hidden" : "")>@error</div>
+
+                <div class="crm-field">
+                    <label for="lead-name">Имя <span aria-hidden="true">*</span></label>
+                    <input id="lead-name" name="Name" type="text" autocomplete="name" required minlength="2" maxlength="100" aria-describedby="err-Name">
+                    <span class="crm-field__err" id="err-Name" data-err="Name"></span>
+                </div>
+                <div class="crm-field">
+                    <label for="lead-phone">Телефон <span aria-hidden="true">*</span></label>
+                    <input id="lead-phone" name="Phone" type="tel" inputmode="tel" autocomplete="tel" required maxlength="30" placeholder="+7 900 000-00-00" aria-describedby="err-Phone">
+                    <span class="crm-field__err" id="err-Phone" data-err="Phone"></span>
+                </div>
+                <div class="crm-field">
+                    <label for="lead-email">Email <span class="crm-field__opt">необязательно</span></label>
+                    <input id="lead-email" name="Email" type="email" autocomplete="email" maxlength="150" aria-describedby="err-Email">
+                    <span class="crm-field__err" id="err-Email" data-err="Email"></span>
+                </div>
+                <div class="crm-field">
+                    <label for="lead-company">Компания или вид бизнеса</label>
+                    <input id="lead-company" name="Company" type="text" autocomplete="organization" maxlength="150" placeholder="@companyPlaceholder" aria-describedby="err-Company">
+                    <span class="crm-field__err" id="err-Company" data-err="Company"></span>
+                </div>
+                <div class="crm-field">
+                    <label for="lead-plan">Тариф</label>
+                    <select id="lead-plan" name="Plan" data-plan-select aria-describedby="err-Plan">
+                        @foreach (var plan in CrmPricing.Plans)
+                        {
+                            <option value="@plan.Id" selected="@(plan.Id == preselected)">@plan.Name — @plan.PriceFormatted ₽/мес</option>
+                        }
+                    </select>
+                    <span class="crm-field__err" id="err-Plan" data-err="Plan"></span>
+                </div>
+
+                @* Honeypot: скрыто от людей и скринридеров, боты заполняют *@
+                <div class="crm-hp" aria-hidden="true">
+                    <label for="lead-website">Сайт</label>
+                    <input id="lead-website" name="Website" type="text" tabindex="-1" autocomplete="off">
+                </div>
+
+                <div class="crm-consent">
+                    <input id="lead-consent" name="Consent" type="checkbox" value="true" required aria-describedby="err-Consent">
+                    <label for="lead-consent">Согласен на обработку персональных данных в соответствии с <a href="/privacy" target="_blank" rel="noopener">политикой конфиденциальности</a></label>
+                </div>
+                <span class="crm-field__err" id="err-Consent" data-err="Consent"></span>
+
+                <button class="crm-btn crm-btn--primary crm-btn--block" type="submit" data-lead-submit>Попробовать @CrmPricing.TrialDays дней бесплатно</button>
+                <p class="crm-form__note">Поля со звёздочкой обязательны. Продукт в раннем доступе — мы лично свяжемся и поможем начать.</p>
+            </!form>
+        </div>
+    </div>
+</section>

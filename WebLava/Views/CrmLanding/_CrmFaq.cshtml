@@ -1,0 +1,20 @@
+@using WebLava.Models.Crm
+@model IReadOnlyList<CrmFaqItem>
+<section class="crm-section" id="faq" aria-labelledby="faq-title">
+    <div class="crm-wrap crm-wrap--narrow">
+        <div class="crm-head">
+            <p class="crm-eyebrow">Вопросы</p>
+            <h2 id="faq-title">Частые вопросы</h2>
+        </div>
+        <div class="crm-faq">
+            @foreach (var item in Model)
+            {
+                <details class="crm-faq__item">
+                    <summary>@item.Question</summary>
+                    <p>@item.Answer</p>
+                </details>
+            }
+        </div>
+    </div>
+</section>
+<script type="application/ld+json">@Html.Raw(CrmSchema.FaqPage(Model))</script>

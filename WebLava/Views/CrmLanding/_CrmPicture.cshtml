@@ -1,0 +1,7 @@
+@using WebLava.Models.Crm
+@model CrmImage
+<picture class="@Model.CssClass">
+    <source srcset="/images/crm/@(Model.Name).webp" type="image/webp">
+    <img src="/images/crm/@(Model.Name).png" alt="@Model.Alt" width="@Model.Width" height="@Model.Height"
+         loading="@(Model.Eager ? "eager" : "lazy")" decoding="async" @(Model.Eager ? "fetchpriority=high" : "")>
+</picture>

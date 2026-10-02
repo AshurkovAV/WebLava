@@ -361,3 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+# Заявки с лендингов Big Lava CRM (персональные данные, не коммитить)
+WebLava/App_Data/

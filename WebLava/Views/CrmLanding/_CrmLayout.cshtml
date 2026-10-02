@@ -1,0 +1,116 @@
+@{
+    // Лёгкий layout для продуктовых лендингов Big Lava CRM (без Bootstrap/jQuery/Owl/AOS основного сайта).
+    // SEO-соглашения те же, что в Views/Shared/_Layout.cshtml: Title/Description/Keywords через ViewData, canonical по пути.
+    var currentPath = Context.Request.Path.Value ?? "/";
+    var canonicalPath = currentPath == "/" ? "/" : currentPath.TrimEnd('/').ToLowerInvariant();
+    var ogImage = ViewData["OgImage"] as string ?? "https://biglv.ru/images/logo-og-default.jpg";
+    var showNav = ViewData["CrmNav"] as bool? ?? true;
+}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewData["Title"]</title>
+    <meta name="description" content="@ViewData["Description"]" />
+    @if (ViewData["Keywords"] is string keywords && keywords.Length > 0)
+    {
+        <meta name="keywords" content="@keywords" />
+    }
+    <link rel="canonical" href="https://biglv.ru@(canonicalPath)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Big Lava" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:title" content="@ViewData["Title"]" />
+    <meta property="og:description" content="@ViewData["Description"]" />
+    <meta property="og:url" content="https://biglv.ru@(canonicalPath)" />
+    <meta property="og:image" content="@ogImage" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#010521">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap">
+    <link rel="stylesheet" href="~/css/crm-landing.css" asp-append-version="true">
+    @await RenderSectionAsync("Head", required: false)
+
+    <!-- Yandex.Metrika counter (тот же счётчик 101658266, что и в Views/Shared/_Layout.cshtml; на этих страницах основной layout не подключается, поэтому дубля нет) -->
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+            m[i].l = 1 * new Date();
+            for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })
+            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(101658266, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true
+        });
+    </script>
+    <!-- /Yandex.Metrika counter -->
+</head>
+<body class="crm">
+    <noscript><div><img src="https://mc.yandex.ru/watch/101658266" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <a class="crm-skip" href="#main">Перейти к содержимому</a>
+
+    <header class="crm-header">
+        <div class="crm-wrap crm-header__inner">
+            <a class="crm-brand" href="/crm" aria-label="Big Lava CRM — на страницу продукта">
+                <img src="~/images/logo.png" width="213" height="42" alt="Big Lava — логотип">
+                <span class="crm-brand__tag">CRM</span>
+            </a>
+            @if (showNav)
+            {
+                <nav class="crm-nav" aria-label="Разделы страницы">
+                    <a href="#features">Возможности</a>
+                    <a href="#pricing">Тарифы</a>
+                    <a href="#faq">Вопросы</a>
+                </nav>
+                <a class="crm-btn crm-btn--primary crm-btn--sm" href="#lead">Попробовать</a>
+            }
+            else
+            {
+                <a class="crm-header__back" href="/">biglv.ru</a>
+            }
+        </div>
+    </header>
+
+    <main id="main">
+        @RenderBody()
+    </main>
+
+    <footer class="crm-footer">
+        <div class="crm-wrap crm-footer__grid">
+            <div>
+                <img src="~/images/logo.png" width="160" height="32" alt="Big Lava — логотип" loading="lazy">
+                <p class="crm-footer__text">Big Lava CRM — продукт студии Big Lava. Студия разрабатывает мобильные приложения и ИТ-решения для бизнеса.</p>
+            </div>
+            <nav aria-label="Продукты Big Lava CRM">
+                <h2 class="crm-footer__h">Big Lava CRM</h2>
+                <ul>
+                    <li><a href="/crm/konditerskie">Для пекарен и кондитерских</a></li>
+                    <li><a href="/crm/mebel">Для мебельных производств</a></li>
+                    <li><a href="/">Студия Big Lava</a></li>
+                    <li><a href="/privacy">Политика конфиденциальности</a></li>
+                </ul>
+            </nav>
+            <div>
+                <h2 class="crm-footer__h">Контакты</h2>
+                <address class="crm-footer__nap">
+                    Big Lava<br>
+                    г. Курск, ул. Радищева, 64, 305004<br>
+                    <a href="tel:+79081209023">+7 (908) 120-90-23</a><br>
+                    <a href="mailto:ashurkovav@yandex.ru">ashurkovav@yandex.ru</a>
+                </address>
+            </div>
+        </div>
+        <div class="crm-wrap crm-footer__copy">© @DateTime.Now.Year Big Lava, biglv.ru</div>
+    </footer>
+
+    <script src="~/js/crm-landing.js" asp-append-version="true" defer></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

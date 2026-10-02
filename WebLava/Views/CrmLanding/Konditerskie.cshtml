@@ -1,0 +1,210 @@
+@using WebLava.Models.Crm
+@{
+    Layout = "_CrmLayout";
+    ViewData["Title"] = "CRM для кондитерской и пекарни — учёт заказов | Big Lava";
+    ViewData["Description"] = "Программа для пекарни и кондитерской: учёт заказов тортов, техкарты с пересчётом под размер, себестоимость, план производства и закупки. 14 дней бесплатно.";
+    ViewData["Keywords"] = "CRM для кондитерской, программа для пекарни, учёт заказов тортов, программа для кондитерской, CRM для пекарни, техкарты тортов, пересчёт рецепта под размер, себестоимость торта";
+    ViewData["OgImage"] = "https://biglv.ru/images/crm/bakery-order-recipe.png";
+
+    const string pageUrl = "https://biglv.ru/crm/konditerskie";
+
+    var faq = new List<CrmFaqItem>
+    {
+        new("Где хранятся данные и насколько это безопасно?",
+            "Данные хранятся в облаке Big Lava и передаются только по защищённому соединению (HTTPS). Каждый сотрудник видит только то, что разрешено его ролью, а вход выполняется через Яндекс — отдельный пароль придумывать не нужно. Если решите уйти, по запросу передадим ваши данные."),
+        new("Сколько пользователей можно подключить?",
+            "Зависит от тарифа: " + string.Join("; ", CrmPricing.Plans.Select(p => $"«{p.Name}» — {p.Features[0].ToLowerInvariant()}")) + ". Тариф можно сменить в любой момент."),
+        new("Можно ли работать с телефона?",
+            "Да. Big Lava CRM открывается на телефоне: можно принять заказ, посмотреть план на завтра и список закупки прямо в цехе. Устанавливать ничего не нужно."),
+        new("Можно ли перенести данные из Excel?",
+            "Да. Пришлите таблицу с клиентами, рецептами или остатками — в рамках раннего доступа поможем перенести их в систему."),
+        new("Как оплатить по СБП и отменить подписку?",
+            $"Первые {CrmPricing.TrialDays} дней бесплатно. Затем оплата помесячно по СБП — через приложение вашего банка по QR-коду или ссылке. Отменить подписку можно в любой момент: просто не продлевайте следующий месяц или напишите нам."),
+        new("Нужен ли интернет?",
+            "Да, Big Lava CRM работает онлайн — так все сотрудники видят одни и те же заказы и план. Для работы достаточно обычного мобильного интернета."),
+    };
+}
+
+@section Head {
+    <link rel="preload" as="image" href="/images/crm/bakery-order-recipe.webp" type="image/webp">
+    <script type="application/ld+json">@Html.Raw(CrmSchema.SoftwareApplication(
+        "Big Lava CRM для пекарен и кондитерских",
+        (string)ViewData["Description"]!,
+        pageUrl,
+        "https://biglv.ru/images/crm/bakery-order-recipe.png"))</script>
+}
+
+<!-- Hero -->
+<section class="crm-hero" aria-labelledby="hero-title">
+    <div class="crm-wrap crm-hero__grid">
+        <div class="crm-hero__text">
+            <span class="crm-chip"><span class="crm-chip__dot" aria-hidden="true"></span>Новый продукт · ранний доступ</span>
+            <h1 id="hero-title">Big Lava CRM для пекарен и кондитерских</h1>
+            <p class="crm-hero__sub">Заказы тортов, техкарты с пересчётом под размер, себестоимость и план производства — в одной программе. С компьютера и телефона.</p>
+            <div class="crm-hero__cta">
+                <a class="crm-btn crm-btn--primary" href="#lead">Попробовать @CrmPricing.TrialDays дней бесплатно</a>
+                <a class="crm-btn crm-btn--ghost" href="#features">Смотреть, как работает</a>
+            </div>
+            <p class="crm-hero__meta">от @CrmPricing.Plans.First().PriceFormatted ₽/мес · оплата по СБП · вход через Яндекс</p>
+        </div>
+        <div class="crm-hero__visual">
+            <div class="crm-window">
+                <partial name="_CrmPicture" model='new CrmImage("bakery-order-recipe", "Big Lava CRM: новый заказ по техкарте — торт «Медовик» пересчитан с Ø20 на Ø22, остатки склада по ингредиентам, себестоимость 2 377 ₽ и цена для клиента 4 150 ₽", 1600, 1000, Eager: true)' />
+            </div>
+            <div class="crm-phone">
+                <partial name="_CrmPicture" model='new CrmImage("bakery-mobile", "Мобильная версия Big Lava CRM для кондитерской на экране телефона", 585, 1266, Eager: true)' />
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pains -->
+<section class="crm-section" aria-labelledby="pains-title">
+    <div class="crm-wrap">
+        <div class="crm-head">
+            <p class="crm-eyebrow">Знакомо?</p>
+            <h2 id="pains-title">Когда заказов больше десятка в неделю, блокнот перестаёт справляться</h2>
+        </div>
+        <div class="crm-cards">
+            <article class="crm-card">
+                <span class="crm-card__icon"><partial name="_CrmIcon" model='"notebook"' /></span>
+                <h3>Заказы в голове и блокноте</h3>
+                <p>Мессенджеры, звонки, листочки на холодильнике. Легко перепутать дату выдачи, диаметр или надпись на торте.</p>
+            </article>
+            <article class="crm-card">
+                <span class="crm-card__icon"><partial name="_CrmIcon" model='"scale"' /></span>
+                <h3>Пересчёт рецепта под размер</h3>
+                <p>Клиент хочет Ø22 вместо Ø20 и два яруса — снова калькулятор, граммы и риск ошибиться.</p>
+            </article>
+            <article class="crm-card">
+                <span class="crm-card__icon"><partial name="_CrmIcon" model='"ruble"' /></span>
+                <h3>Непонятная себестоимость</h3>
+                <p>Масло и сливки дорожают, а цена торта остаётся прежней. Сколько вы на самом деле зарабатываете с заказа?</p>
+            </article>
+            <article class="crm-card">
+                <span class="crm-card__icon"><partial name="_CrmIcon" model='"cart"' /></span>
+                <h3>Что купить и когда выдать</h3>
+                <p>Список закупки собирается вручную, а утром выясняется, что сливок не хватает к заказу на 13:30.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- Features -->
+<section class="crm-section crm-section--alt" id="features" aria-labelledby="features-title">
+    <div class="crm-wrap">
+        <div class="crm-head">
+            <p class="crm-eyebrow">Как работает</p>
+            <h2 id="features-title">От заказа до выдачи — в одной системе</h2>
+        </div>
+
+        <div class="crm-feature">
+            <div class="crm-feature__media crm-window">
+                <partial name="_CrmPicture" model='new CrmImage("bakery-orders", "Канбан заказов кондитерской на неделю: карточки тортов и капкейков по дням со временем выдачи, клиентом, надписью и статусом оплаты", 1600, 1000)' />
+            </div>
+            <div class="crm-feature__text">
+                <h3>Все заказы — на одной доске</h3>
+                <p>Канбан по дням недели: что выдаём сегодня, что в работе, что ещё не оплачено.</p>
+                <ul class="crm-checks">
+                    <li>Клиент, дата и время выдачи в карточке заказа</li>
+                    <li>Надпись на торте и пожелания по декору — не потеряются</li>
+                    <li>Предоплата и статус заказа видны сразу</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="crm-feature crm-feature--rev">
+            <div class="crm-feature__media crm-window">
+                <partial name="_CrmPicture" model='new CrmImage("bakery-order-recipe", "Техкарта торта с автоматическим пересчётом ингредиентов под новый диаметр и количество ярусов, расчёт себестоимости и наценки", 1600, 1000)' />
+            </div>
+            <div class="crm-feature__text">
+                <h3>Рецепты и техкарты с пересчётом под размер</h3>
+                <p>Выберите рецепт, диаметр и количество ярусов — граммы пересчитаются сами.</p>
+                <ul class="crm-checks">
+                    <li>Сразу видно, хватает ли ингредиентов на складе</li>
+                    <li>Себестоимость заказа: ингредиенты, работа, упаковка</li>
+                    <li>Цена для клиента с вашей наценкой</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="crm-feature">
+            <div class="crm-feature__media crm-window">
+                <partial name="_CrmPicture" model='new CrmImage("bakery-production-plan", "План производства на завтра по этапам — выпечка, крем, сборка, декор — и список закупки с отправкой заказа в магазин-партнёр", 1600, 1000)' />
+            </div>
+            <div class="crm-feature__text">
+                <h3>План производства, склад и закупки</h3>
+                <p>План на завтра собирается из техкарт заказов: какие коржи печь, какой крем готовить, что собирать.</p>
+                <ul class="crm-checks">
+                    <li>Список закупки = заказы минус остатки склада</li>
+                    <li>ИИ соберёт корзину в магазине-партнёре по списку закупки, вы подтверждаете</li>
+                    <li>Видно, что готовить к каждому времени выдачи</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="crm-feature crm-feature--rev crm-feature--phone">
+            <div class="crm-feature__media">
+                <div class="crm-phone crm-phone--static">
+                    <partial name="_CrmPicture" model='new CrmImage("bakery-mobile", "Экран Big Lava CRM на телефоне: заказы и задачи кондитерской", 585, 1266)' />
+                </div>
+            </div>
+            <div class="crm-feature__text">
+                <h3>Команда и работа с телефона</h3>
+                <p>Кондитеры видят свои задачи прямо в цехе, а вы — что происходит, даже если вы не на месте.</p>
+                <ul class="crm-checks">
+                    <li>Сотрудники и роли: каждый видит только нужное</li>
+                    <li>Пароли команды хранятся в одном месте</li>
+                    <li>Вход через Яндекс — без отдельных паролей</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Video -->
+<section class="crm-section" aria-labelledby="video-title">
+    <div class="crm-wrap crm-video">
+        <div class="crm-video__text">
+            <p class="crm-eyebrow">Видео</p>
+            <h2 id="video-title">Посмотрите, как это выглядит в работе</h2>
+            <p class="crm-lead">Короткий ролик: заказ торта, пересчёт техкарты, план производства и список закупки.</p>
+            <a class="crm-btn crm-btn--primary" href="#lead">Попробовать @CrmPricing.TrialDays дней бесплатно</a>
+        </div>
+        <div class="crm-video__frame">
+            <video controls playsinline preload="none" poster="/media/crm/bakery-poster.jpg" width="1080" height="1920"
+                   aria-label="Видеообзор Big Lava CRM для пекарен и кондитерских">
+                <source src="/media/crm/bakery-promo.mp4" type="video/mp4">
+                Ваш браузер не поддерживает видео. <a href="/media/crm/bakery-promo.mp4">Скачать ролик</a>.
+            </video>
+        </div>
+    </div>
+</section>
+
+<!-- Steps -->
+<section class="crm-section crm-section--alt" aria-labelledby="steps-title">
+    <div class="crm-wrap">
+        <div class="crm-head">
+            <p class="crm-eyebrow">Как начать</p>
+            <h2 id="steps-title">Три шага до первого заказа в системе</h2>
+        </div>
+        <ol class="crm-steps">
+            <li class="crm-step">
+                <h3>Оставьте заявку</h3>
+                <p>Мы откроем доступ на @CrmPricing.TrialDays дней. Войдите через Яндекс — без отдельной регистрации.</p>
+            </li>
+            <li class="crm-step">
+                <h3>Добавьте рецепты и команду</h3>
+                <p>Заведите техкарты, остатки склада и пригласите сотрудников с нужными ролями.</p>
+            </li>
+            <li class="crm-step">
+                <h3>Принимайте заказы</h3>
+                <p>План производства и список закупки соберутся из заказов автоматически.</p>
+            </li>
+        </ol>
+    </div>
+</section>
+
+<partial name="_CrmPricing" />
+<partial name="_CrmFaq" model="faq" />
+<partial name="_CrmLeadForm" model='"konditerskie"' />

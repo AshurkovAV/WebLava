@@ -1,0 +1,211 @@
+@using WebLava.Models.Crm
+@{
+    Layout = "_CrmLayout";
+    ViewData["Title"] = "CRM для мебельного производства и расчёта мебели | Big Lava";
+    ViewData["Description"] = "Программа для мебельного производства: расчёт стоимости мебели и себестоимости изделия, КП, сделки, план производства, склад и подрядчики. 14 дней бесплатно.";
+    ViewData["Keywords"] = "CRM для мебельного производства, программа расчёта стоимости мебели, расчёт себестоимости мебели, программа для мебельного цеха, CRM для мебели на заказ, КП на мебель";
+    ViewData["OgImage"] = "https://biglv.ru/images/crm/mebel-calculator.png";
+
+    const string pageUrl = "https://biglv.ru/crm/mebel";
+
+    var faq = new List<CrmFaqItem>
+    {
+        new("Где хранятся данные и насколько это безопасно?",
+            "Данные хранятся в облаке Big Lava и передаются только по защищённому соединению (HTTPS). Каждый сотрудник видит только то, что разрешено его ролью: например, монтажник не видит маржу. Вход выполняется через Яндекс. Если решите уйти, по запросу передадим ваши данные."),
+        new("Сколько пользователей можно подключить?",
+            "Зависит от тарифа: " + string.Join("; ", CrmPricing.Plans.Select(p => $"«{p.Name}» — {p.Features[0].ToLowerInvariant()}")) + ". Тариф можно сменить в любой момент."),
+        new("Можно ли работать с телефона?",
+            "Да. Big Lava CRM открывается на телефоне: можно проверить сделку на замере, посмотреть этап заказа в цехе или остатки на складе. Устанавливать ничего не нужно."),
+        new("Можно ли перенести данные из Excel?",
+            "Да. Пришлите таблицу с номенклатурой материалов, расценками на операции или клиентами — в рамках раннего доступа поможем перенести их в систему."),
+        new("Как оплатить по СБП и отменить подписку?",
+            $"Первые {CrmPricing.TrialDays} дней бесплатно. Затем оплата помесячно по СБП — через приложение вашего банка по QR-коду или ссылке. Отменить подписку можно в любой момент: просто не продлевайте следующий месяц или напишите нам."),
+        new("Нужен ли интернет?",
+            "Да, Big Lava CRM работает онлайн — так менеджеры, цех и склад видят одни и те же данные. Для работы достаточно обычного мобильного интернета."),
+    };
+}
+
+@section Head {
+    <link rel="preload" as="image" href="/images/crm/mebel-calculator.webp" type="image/webp">
+    <script type="application/ld+json">@Html.Raw(CrmSchema.SoftwareApplication(
+        "Big Lava CRM для мебельных производств",
+        (string)ViewData["Description"]!,
+        pageUrl,
+        "https://biglv.ru/images/crm/mebel-calculator.png"))</script>
+}
+
+<!-- Hero -->
+<section class="crm-hero" aria-labelledby="hero-title">
+    <div class="crm-wrap crm-hero__grid">
+        <div class="crm-hero__text">
+            <span class="crm-chip"><span class="crm-chip__dot" aria-hidden="true"></span>Новый продукт · ранний доступ</span>
+            <h1 id="hero-title">Big Lava CRM для мебельных производств</h1>
+            <p class="crm-hero__sub">Расчёт себестоимости изделия и КП за минуты, сделки на канбане, производство, склад и подрядчики — в одной системе.</p>
+            <div class="crm-hero__cta">
+                <a class="crm-btn crm-btn--primary" href="#lead">Попробовать @CrmPricing.TrialDays дней бесплатно</a>
+                <a class="crm-btn crm-btn--ghost" href="#features">Смотреть, как работает</a>
+            </div>
+            <p class="crm-hero__meta">от @CrmPricing.Plans.First().PriceFormatted ₽/мес · оплата по СБП · вход через Яндекс</p>
+        </div>
+        <div class="crm-hero__visual">
+            <div class="crm-window">
+                <partial name="_CrmPicture" model='new CrmImage("mebel-calculator", "Big Lava CRM: расчёт себестоимости шкафа-купе — материалы, операции, упаковка и накладные, наценка 45% и итоговая цена 52 317 ₽", 1600, 1000, Eager: true)' />
+            </div>
+            <div class="crm-phone">
+                <partial name="_CrmPicture" model='new CrmImage("mebel-mobile", "Мобильная версия Big Lava CRM для мебельного производства на экране телефона", 585, 1266, Eager: true)' />
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pains -->
+<section class="crm-section" aria-labelledby="pains-title">
+    <div class="crm-wrap">
+        <div class="crm-head">
+            <p class="crm-eyebrow">Знакомо?</p>
+            <h2 id="pains-title">Мебель на заказ — это десятки позиций в каждом расчёте</h2>
+        </div>
+        <div class="crm-cards">
+            <article class="crm-card">
+                <span class="crm-card__icon"><partial name="_CrmIcon" model='"calc"' /></span>
+                <h3>Расчёт стоимости изделия</h3>
+                <p>Таблица с формулами, в которой разбирается один человек. ЛДСП, кромка, фурнитура, работа — что-то обязательно забудут.</p>
+            </article>
+            <article class="crm-card">
+                <span class="crm-card__icon"><partial name="_CrmIcon" model='"deals"' /></span>
+                <h3>Сделки и КП теряются</h3>
+                <p>Заявки в мессенджерах, КП в разных файлах. Кому перезвонить и какую версию цены отправили — непонятно.</p>
+            </article>
+            <article class="crm-card">
+                <span class="crm-card__icon"><partial name="_CrmIcon" model='"factory"' /></span>
+                <h3>Производство и сроки</h3>
+                <p>На каком этапе кухня клиента и успеет ли цех к сроку — узнаём, только обойдя всех.</p>
+            </article>
+            <article class="crm-card">
+                <span class="crm-card__icon"><partial name="_CrmIcon" model='"box"' /></span>
+                <h3>Склад, закупки и подрядчики</h3>
+                <p>Плита заканчивается внезапно, а работы подрядчиков учитываются в блокноте и не попадают в себестоимость.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- Features -->
+<section class="crm-section crm-section--alt" id="features" aria-labelledby="features-title">
+    <div class="crm-wrap">
+        <div class="crm-head">
+            <p class="crm-eyebrow">Как работает</p>
+            <h2 id="features-title">От заявки до монтажа — в одной системе</h2>
+        </div>
+
+        <div class="crm-feature">
+            <div class="crm-feature__media crm-window">
+                <partial name="_CrmPicture" model='new CrmImage("mebel-calculator", "Калькулятор себестоимости изделия: номенклатура материалов, спецификация шкафа-купе, структура затрат и кнопка «Создать КП»", 1600, 1000)' />
+            </div>
+            <div class="crm-feature__text">
+                <h3>Расчёт себестоимости и КП</h3>
+                <p>Собирайте спецификацию из своей номенклатуры: материалы, операции, упаковка, накладные расходы.</p>
+                <ul class="crm-checks">
+                    <li>Себестоимость за единицу и структура затрат</li>
+                    <li>Наценка — и сразу видны прибыль и маржинальность</li>
+                    <li>Коммерческое предложение из готового расчёта</li>
+                    <li>Работы подрядчиков — в той же спецификации</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="crm-feature crm-feature--rev">
+            <div class="crm-feature__media crm-window">
+                <partial name="_CrmPicture" model='new CrmImage("mebel-deals", "Канбан сделок мебельного производства по этапам: новая, расчёт, КП отправлено, согласование, оплата — с суммами, клиентами и сроками", 1600, 1000)' />
+            </div>
+            <div class="crm-feature__text">
+                <h3>Сделки на канбане</h3>
+                <p>Каждая заявка проходит понятный путь: расчёт → КП → согласование → оплата.</p>
+                <ul class="crm-checks">
+                    <li>Сумма и количество сделок на каждом этапе</li>
+                    <li>Ответственный и срок в карточке сделки</li>
+                    <li>Просроченные сделки подсвечиваются</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="crm-feature">
+            <div class="crm-feature__media crm-window">
+                <partial name="_CrmPicture" model='new CrmImage("mebel-dashboard", "Главная панель Big Lava CRM: выручка по месяцам, сделки в работе, заказы в производстве с этапом, готовностью и сроком", 1600, 1000)' />
+            </div>
+            <div class="crm-feature__text">
+                <h3>План производства, склад и закупки</h3>
+                <p>Все заказы в производстве с этапом и готовностью — видно, какие из них под риском срока.</p>
+                <ul class="crm-checks">
+                    <li>Этапы: раскрой, кромкование, сборка, покраска, упаковка</li>
+                    <li>Склад материалов и закупки</li>
+                    <li>Подрядчики и их работы</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="crm-feature crm-feature--rev crm-feature--phone">
+            <div class="crm-feature__media">
+                <div class="crm-phone crm-phone--static">
+                    <partial name="_CrmPicture" model='new CrmImage("mebel-mobile", "Экран Big Lava CRM на телефоне: сделки и заказы мебельного производства", 585, 1266)' />
+                </div>
+            </div>
+            <div class="crm-feature__text">
+                <h3>Команда и работа с телефона</h3>
+                <p>Менеджер на замере, мастер в цехе, руководитель в дороге — все работают в одной системе.</p>
+                <ul class="crm-checks">
+                    <li>Сотрудники и роли: цех не видит маржу</li>
+                    <li>Пароли команды хранятся в одном месте</li>
+                    <li>Вход через Яндекс — без отдельных паролей</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Video -->
+<section class="crm-section" aria-labelledby="video-title">
+    <div class="crm-wrap crm-video">
+        <div class="crm-video__text">
+            <p class="crm-eyebrow">Видео</p>
+            <h2 id="video-title">Посмотрите, как это выглядит в работе</h2>
+            <p class="crm-lead">Короткий ролик: сделки, расчёт себестоимости изделия и заказы в производстве.</p>
+            <a class="crm-btn crm-btn--primary" href="#lead">Попробовать @CrmPricing.TrialDays дней бесплатно</a>
+        </div>
+        <div class="crm-video__frame">
+            <video controls playsinline preload="none" poster="/media/crm/mebel-poster.jpg" width="1080" height="1920"
+                   aria-label="Видеообзор Big Lava CRM для мебельных производств">
+                <source src="/media/crm/mebel-promo.mp4" type="video/mp4">
+                Ваш браузер не поддерживает видео. <a href="/media/crm/mebel-promo.mp4">Скачать ролик</a>.
+            </video>
+        </div>
+    </div>
+</section>
+
+<!-- Steps -->
+<section class="crm-section crm-section--alt" aria-labelledby="steps-title">
+    <div class="crm-wrap">
+        <div class="crm-head">
+            <p class="crm-eyebrow">Как начать</p>
+            <h2 id="steps-title">Три шага до первого расчёта в системе</h2>
+        </div>
+        <ol class="crm-steps">
+            <li class="crm-step">
+                <h3>Оставьте заявку</h3>
+                <p>Мы откроем доступ на @CrmPricing.TrialDays дней. Войдите через Яндекс — без отдельной регистрации.</p>
+            </li>
+            <li class="crm-step">
+                <h3>Добавьте номенклатуру и команду</h3>
+                <p>Материалы с ценами, расценки на операции, подрядчики и сотрудники с нужными ролями.</p>
+            </li>
+            <li class="crm-step">
+                <h3>Считайте и отправляйте КП</h3>
+                <p>Расчёт превращается в КП, сделка — в заказ, заказ — в план производства.</p>
+            </li>
+        </ol>
+    </div>
+</section>
+
+<partial name="_CrmPricing" />
+<partial name="_CrmFaq" model="faq" />
+<partial name="_CrmLeadForm" model='"mebel"' />
