@@ -18,8 +18,10 @@ namespace WebLava.Models.Crm
             WriteIndented = false,
         };
 
-        public static string SoftwareApplication(string name, string description, string url, string image)
+        public static string SoftwareApplication(string name, string description, string url, string image,
+            IEnumerable<(string Name, int PricePerMonth)>? plans = null, string currency = CrmPricing.Currency)
         {
+            var offers = plans ?? CrmPricing.Plans.Select(p => (p.Name, p.PricePerMonth));
             var data = new Dictionary<string, object>
             {
                 ["@context"] = "https://schema.org",
@@ -31,18 +33,18 @@ namespace WebLava.Models.Crm
                 ["applicationCategory"] = "BusinessApplication",
                 ["operatingSystem"] = "Web, Android, iOS (через браузер)",
                 ["inLanguage"] = "ru",
-                ["offers"] = CrmPricing.Plans.Select(p => new Dictionary<string, object>
+                ["offers"] = offers.Select(p => new Dictionary<string, object>
                 {
                     ["@type"] = "Offer",
                     ["name"] = $"Тариф «{p.Name}»",
                     ["price"] = p.PricePerMonth.ToString(System.Globalization.CultureInfo.InvariantCulture),
-                    ["priceCurrency"] = CrmPricing.Currency,
+                    ["priceCurrency"] = currency,
                     ["url"] = url + "#pricing",
                     ["priceSpecification"] = new Dictionary<string, object>
                     {
                         ["@type"] = "UnitPriceSpecification",
                         ["price"] = p.PricePerMonth.ToString(System.Globalization.CultureInfo.InvariantCulture),
-                        ["priceCurrency"] = CrmPricing.Currency,
+                        ["priceCurrency"] = currency,
                         ["billingDuration"] = "P1M",
                         ["unitText"] = "месяц",
                     },

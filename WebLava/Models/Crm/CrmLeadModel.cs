@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 namespace WebLava.Models.Crm
 {
     /// <summary>
-    /// Заявка на пробный период Big Lava CRM с лендингов /crm/konditerskie и /crm/mebel.
+    /// Заявка на пробный период Big Lava CRM с лендинга /crm/mebel.
     /// </summary>
     public class CrmLeadModel : IValidatableObject
     {

@@ -7,7 +7,7 @@ using WebLava.Models.Crm;
 namespace WebLava.Controllers
 {
     /// <summary>
-    /// Продуктовые лендинги Big Lava CRM: хаб /crm и ниши /crm/konditerskie, /crm/mebel.
+    /// Продуктовые лендинги Big Lava CRM: хаб /crm и /crm/mebel (/crm/konditerskie → 301 на /bakesoft).
     /// Отдельный лёгкий layout (Views/CrmLanding/_CrmLayout.cshtml), цены — Models/Crm/CrmPricing.cs.
     /// </summary>
     [Route("crm")]
@@ -31,8 +31,9 @@ namespace WebLava.Controllers
         [HttpGet("")]
         public IActionResult Index() => View();
 
+        /// <summary>Страница для кондитерских переехала на /bakesoft (Bakesoft — отдельный продукт, не CRM).</summary>
         [HttpGet("konditerskie")]
-        public IActionResult Konditerskie() => View();
+        public IActionResult Konditerskie() => RedirectPermanent("/bakesoft");
 
         [HttpGet("mebel")]
         public IActionResult Mebel() => View();
@@ -48,7 +49,7 @@ namespace WebLava.Controllers
         {
             var isAjax = Request.Headers["X-Requested-With"] == "XMLHttpRequest";
             var product = model.Product == "mebel" ? "mebel" : "konditerskie";
-            var backUrl = $"/crm/{product}#lead";
+            var backUrl = product == "mebel" ? "/crm/mebel#lead" : "/bakesoft#lead";
 
             // Honeypot: людям поле не видно; бот получает «успех», заявка не сохраняется.
             if (!string.IsNullOrWhiteSpace(model.Website))

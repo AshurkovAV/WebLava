@@ -18,7 +18,7 @@ namespace WebLava.Models.Crm
 
     /// <summary>
     /// ЕДИНСТВЕННОЕ место, где заданы тарифы и цены Big Lava CRM.
-    /// Используется в блоке тарифов на /crm/konditerskie и /crm/mebel, в выпадающем списке
+    /// Используется в блоке тарифов на /crm/mebel, в выпадающем списке
     /// формы заявки и в JSON-LD (SoftwareApplication → offers).
     /// </summary>
     public static class CrmPricing

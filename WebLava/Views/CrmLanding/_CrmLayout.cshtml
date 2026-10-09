@@ -5,6 +5,13 @@
     var canonicalPath = currentPath == "/" ? "/" : currentPath.TrimEnd('/').ToLowerInvariant();
     var ogImage = ViewData["OgImage"] as string ?? "https://biglv.ru/images/logo-og-default.jpg";
     var showNav = ViewData["CrmNav"] as bool? ?? true;
+    // Продукт в шапке: по умолчанию Big Lava CRM; страница Bakesoft задаёт своё название, ссылку и кнопку.
+    var brandTag = ViewData["BrandTag"] as string ?? "CRM";
+    var brandHref = ViewData["BrandHref"] as string ?? "/crm";
+    var brandLabel = ViewData["BrandLabel"] as string ?? "Big Lava CRM — на страницу продукта";
+    var headerCtaHref = ViewData["HeaderCtaHref"] as string ?? "#lead";
+    var footerText = ViewData["FooterText"] as string
+        ?? "Big Lava CRM — продукт студии Big Lava. Студия разрабатывает мобильные приложения и ИТ-решения для бизнеса.";
 }
 <!DOCTYPE html>
 <html lang="ru">
@@ -58,9 +65,9 @@
 
     <header class="crm-header">
         <div class="crm-wrap crm-header__inner">
-            <a class="crm-brand" href="/crm" aria-label="Big Lava CRM — на страницу продукта">
+            <a class="crm-brand" href="@brandHref" aria-label="@brandLabel">
                 <img src="~/images/logo.png" width="213" height="42" alt="Big Lava — логотип">
-                <span class="crm-brand__tag">CRM</span>
+                <span class="crm-brand__tag">@brandTag</span>
             </a>
             @if (showNav)
             {
@@ -69,7 +76,7 @@
                     <a href="#pricing">Тарифы</a>
                     <a href="#faq">Вопросы</a>
                 </nav>
-                <a class="crm-btn crm-btn--primary crm-btn--sm" href="#lead">Попробовать</a>
+                <a class="crm-btn crm-btn--primary crm-btn--sm" href="@headerCtaHref">Попробовать</a>
             }
             else
             {
@@ -86,13 +93,13 @@
         <div class="crm-wrap crm-footer__grid">
             <div>
                 <img src="~/images/logo.png" width="160" height="32" alt="Big Lava — логотип" loading="lazy">
-                <p class="crm-footer__text">Big Lava CRM — продукт студии Big Lava. Студия разрабатывает мобильные приложения и ИТ-решения для бизнеса.</p>
+                <p class="crm-footer__text">@footerText</p>
             </div>
-            <nav aria-label="Продукты Big Lava CRM">
-                <h2 class="crm-footer__h">Big Lava CRM</h2>
+            <nav aria-label="Продукты Big Lava">
+                <h2 class="crm-footer__h">Продукты Big Lava</h2>
                 <ul>
-                    <li><a href="/crm/konditerskie">Для пекарен и кондитерских</a></li>
-                    <li><a href="/crm/mebel">Для мебельных производств</a></li>
+                    <li><a href="/bakesoft">Bakesoft — для кондитерских</a></li>
+                    <li><a href="/crm/mebel">CRM для мебельных производств</a></li>
                     <li><a href="/">Студия Big Lava</a></li>
                     <li><a href="/privacy">Политика конфиденциальности</a></li>
                 </ul>
